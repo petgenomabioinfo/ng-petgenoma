@@ -1,0 +1,24 @@
+{
+	"home.register": "Register a kit",
+	"home.welcome": "Welcome to PetGenoma",
+	"home.subwelcome":"You are one step closer to improve your pet's life.",
+	"home.register.sub":"Once you use your Kit and BEFORE sending it, you need to Register your kit. This allows full traceability of the sample and better serve you.",
+	"home.reportEx.sub":"Get Familiar with the report you will obtain for your loved pet.",
+	"home.reportEx":"Read an example of report",
+	"home.more.sub":"Get Familiar with the power of Genomics and how it will help protect your pet’s health.",
+	"home.more":"Learn More about Pet Genomics",
+	"home.quote":"If your Pet could talk, he/she would tell you: Thanks for caring about me, it really matters to me. By the way, may I have a treat ?",
+	"home.kits.list":"Your registered kits",
+	"nav.home":"Home",
+	"nav.register":"Register a kit",
+	"register.title":"Register a kit",
+	"register.petname":"Pet Name :",
+	"register.veterinary":"Veterinary",
+	"register.health":"Health",
+	"register.healthbreed":"Health & Breed",
+	"register.button":"Register",
+	"register.error.kitID":"kit ID is required",
+	"register.error.kitFormat":"kit ID format is XX00000000",
+	"register.error.petName":"Pet name is required"
+
+  }

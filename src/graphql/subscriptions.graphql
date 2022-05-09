@@ -1,0 +1,109 @@
+# this is an auto generated file. This will be overwritten
+subscription OnCreateUser {
+  onCreateUser {
+    id
+    username
+    phoneNb
+    kits {
+      items {
+        id
+        kitType
+        userID
+        kitBatchNb
+        processStatus
+        registrationDate
+        petName
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateUser {
+  onUpdateUser {
+    id
+    username
+    phoneNb
+    kits {
+      items {
+        id
+        kitType
+        userID
+        kitBatchNb
+        processStatus
+        registrationDate
+        petName
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteUser {
+  onDeleteUser {
+    id
+    username
+    phoneNb
+    kits {
+      items {
+        id
+        kitType
+        userID
+        kitBatchNb
+        processStatus
+        registrationDate
+        petName
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateKit {
+  onCreateKit {
+    id
+    kitType
+    userID
+    kitBatchNb
+    processStatus
+    registrationDate
+    petName
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateKit {
+  onUpdateKit {
+    id
+    kitType
+    userID
+    kitBatchNb
+    processStatus
+    registrationDate
+    petName
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteKit {
+  onDeleteKit {
+    id
+    kitType
+    userID
+    kitBatchNb
+    processStatus
+    registrationDate
+    petName
+    createdAt
+    updatedAt
+  }
+}

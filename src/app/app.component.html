@@ -1,0 +1,44 @@
+
+	<div>
+		<app-header></app-header>
+		<app-nav *ngIf="authState === 'signedin'"></app-nav>
+		<div class="row d-flex justify-content-center">
+			<div class="en-sign col-md-3" *ngIf="authState !== 'signedin'">
+				<p>
+					<em>If you already have an account, please sign-in.<br/>
+					If you don't have an account, please "Create account".<br/>
+					Once your account created, you will receive an e-mail with your activation code.</em>
+				</p>
+				<p>
+					<em>Si vous avez déjà un compte, vous pouvez vous connecter.<br/>
+					Si vous n'avez pas encore de compte, vous pouvez "Créer un compte".<br/>
+					Une fois votre compte créé, vous recevrez un e-mail avec votre code d'activation.</em>
+				</p>
+			</div>
+			<div>
+				<amplify-authenticator style="text-align:center;">
+					<amplify-sign-up [formFields]="formFields" slot="sign-up"></amplify-sign-up>
+					<div class="container">
+						<router-outlet></router-outlet>
+					</div>
+				</amplify-authenticator>
+			</div>
+			<div class="es-sign col-md-3" *ngIf="authState !== 'signedin'">
+				<p>
+					<em>Si ya tiene una cuenta, por favor regístrese.<br/>
+						Si no tiene una cuenta, por favor "Cree una cuenta".<br/>
+						Una vez creada su cuenta, recibirá un correo electrónico con un código de activación.</em>
+				</p>
+				<p>
+					<em>Als u al een account heeft, log dan in.<br/>
+					Indien u nog geen account heeft, gelieve "Account aanmaken".<br/>
+					Zodra uw account is aangemaakt, ontvangt u een e-mail met uw activeringscode.</em>
+				</p>
+			</div>
+		</div>
+		<app-footer></app-footer>
+	</div>
+
+	<div *ngIf="authState === 'signedin'">
+		<amplify-sign-out></amplify-sign-out>
+	</div>

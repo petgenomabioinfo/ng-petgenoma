@@ -1,0 +1,23 @@
+{
+	"home.register": "Registreer een kit",
+	"home.welcome": "Welkom bij PetGenoma",
+	"home.subwelcome": "U bent een stap dichter bij het verbeteren van het leven van uw huisdier.",
+	"home.register.sub": "Zodra u uw kit gebruikt en VOORDAT u hem verstuurt, dient u uw kit te registreren. Dit maakt volledige traceerbaarheid van het monster mogelijk en kan u beter van dienst zijn.",
+	"home.reportEx.sub": "Raak vertrouwd met het rapport dat u zult verkrijgen voor uw geliefd huisdier.",
+	"home.reportEx": "Lees een voorbeeld van een rapport (Binnenkort beschikbaar)",
+	"home.more.sub": "Raak vertrouwd met de kracht van Genomics en hoe het de gezondheid van uw huisdier zal helpen beschermen.",
+	"home.more": "Leer meer over Pet Genomics",
+	"home.quote": "Als uw huisdier kon praten, zou hij/zij u vertellen: Bedankt dat u om me geeft, dat is heel belangrijk voor me. Trouwens, mag ik een snoepje?",
+	"home.kits.list": "Uw geregistreerde kits",
+	"nav.home": "Thuis",
+	"nav.register": "Registreer een kit",
+	"register.title": "Registreer een kit",
+	"register.petname": "Naam huisdier :",
+	"register.veterinair": "Veterinair",
+	"register.health": "Gezondheid",
+	"register.healthbreed":"Gezondheid en Ras",
+	"register.button": "Registreren",
+	"register.error.kitID": "kit-ID is vereist",
+	"register.error.kitFormat": "formaat kit-ID is XX00000000",
+	"register.error.petName": "Naam huisdier is verplicht"
+  }

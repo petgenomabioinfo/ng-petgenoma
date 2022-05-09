@@ -1,0 +1,40 @@
+<div class="title">
+	<h1 [translate]="'register.title'"></h1>
+</div>
+<form #registerKitForm="ngForm" (ngSubmit)="saveKit()">
+	<div class="form-row registerKit">
+	  <label class="col-md-3 col-sm-12 registerKit" for="kitId">Kit ID :</label>
+	  <input type="text" class="col-md-5 col-sm-12 form-control registerKit" id="kitId" 
+		  aria-describedby="kitIdHelp" placeholder="XX00000000" [(ngModel)]="kit.id" name="kitId" 
+		  required [pattern]="kitNamePattern" #kitIdName="ngModel">
+	  <span class="warning-message registerKit col-md-3 col-sm-12" *ngIf="kitIdName.errors?.required" [translate]="'register.error.kitID'">* </span>
+	  <span class="warning-message registerKit col-md-3 col-sm-12" *ngIf="kitIdName.errors?.pattern" [translate]="'register.error.kitFormat'">* </span>
+	</div>
+
+	<div class="form-row registerKit">
+		<label class="col-md-3 col-sm-12 registerKit" for="petName" [translate]="'register.petname'"></label>
+		<input type="text" class="col-md-5 col-sm-12 form-control registerKit" id="petName" 
+			aria-describedby="petNameHelp" [(ngModel)]="kit.petName" name="petName" 
+			required #petNameValid="ngModel">
+		<span class="warning-message registerKit col-md-3 col-sm-12" *ngIf="petNameValid.errors?.required" [translate]="'register.error.petName'">* </span>
+	</div>
+	
+	<div class="form-row registerKit">
+	  <label class="col-md-3 col-sm-12 registerKit" for="kitType">Kit Type :</label>
+	  <select class="col-md-5 col-sm-12 form-control registerKit" id="kitType" [(ngModel)]="kit.kitType" name="kitType">
+		<option value="Health" [translate]="'register.health'"></option>
+		<option value="Health & Breed" [translate]="'register.healthbreed'"></option>
+	  </select>
+	</div>
+
+	<div class="form-row registerKit">
+		<label class="col-md-3 col-sm-12 registerKit" for="vetName" [translate]="'register.veterinary'"></label>
+		<input type="text" class="col-md-5 col-sm-12 form-control registerKit" id="vetName" 
+			aria-describedby="vetNameHelp" [(ngModel)]="kit.vetName" name="vetName" 
+			required #vetNameValid="ngModel">
+	</div>
+	<div>
+		<button type="submit" [disabled]="!registerKitForm.valid" class="submit-btn btn btn-warning" [translate]="'register.button'"></button>
+	</div>
+	
+  </form>

@@ -1,0 +1,88 @@
+<div *ngIf="isDataLoaded">
+<div class="welcome">
+	<h1 [translate]="'home.welcome'"></h1>
+	<h3 [translate]="'home.subwelcome'"></h3>
+</div>
+<div class="kit-list" *ngIf="isUserLoaded && connectedUserData.kits.items.length != 0">
+	<h5 [translate]="'home.kits.list'"></h5>
+	<table class="table table-striped table-hover table-sm table-responsive-sm">
+		<thead class="thead-light">
+			<tr>
+				<th>Kit Id</th>
+				<th>Kit Type</th>
+				<th>Status</th>
+				<th>Pet Name</th>
+				<th style="text-align: center; vertical-align: middle;">Download Report</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let item of connectedUserData.kits.items">
+				<td>{{item.id}}</td>
+				<td>{{item.kitType}}</td>
+				<td>
+					<ng-template [ngIf]="item.reportFile" [ngIfElse]="noreport">
+						Processed
+					</ng-template>
+					<ng-template #noreport>
+						Registered
+					</ng-template>
+				</td>
+				<td>{{item.petName}}</td>
+				<td style="text-align: center; vertical-align: middle;">
+					<ng-template [ngIf]="item.reportFile" [ngIfElse]="noreportdl">
+						<button (click)="dlfile(item.reportFile)" class="btn btn-primary btn-dl" type="button">Download PDF report</button>
+					</ng-template>
+					<ng-template #noreportdl>
+						Report not available.
+					</ng-template>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<div class="content">
+	<div class="card mb-3">
+		<div class="row no-gutters">
+		<div class="col-md-4 col-sm-12 button-card d-flex align-items-center">
+			<a href="register" class="btn home-button btn-lg register-button" role="button" aria-pressed="true" [translate]="'home.register'"></a>
+		</div>
+		<div class="col-md-8 col-sm-12">
+			<div class="card-body">
+			<p class="card-text"[translate]="'home.register.sub'"></p>
+			</div>
+		</div>
+		</div>
+	</div>
+	<div class="card mb-3">
+		<div class="row no-gutters">
+		<div class="col-md-4 col-sm-12 button-card d-flex align-items-center">
+			<button (click)="dlpublicfile('mock')" 
+			class="btn home-button btn-lg other-button" type="button"
+			[translate]="'home.reportEx'"></button>
+		</div>
+		<div class="col-md-8 col-sm-12">
+			<div class="card-body">
+			<p class="card-text" [translate]="'home.reportEx.sub'"></p>
+			</div>
+		</div>
+		</div>
+	</div>
+	<div class="card mb-3">
+		<div class="row no-gutters">
+		<div class="col-md-4 col-sm-12 button-card d-flex align-items-center">
+			<a href="https://petgenoma.com" class="btn home-button btn-lg other-button" role="button" aria-pressed="true" [translate]="'home.more'"></a>
+		</div>
+		<div class="col-md-8 col-sm-12">
+			<div class="card-body">
+			<p class="card-text" [translate]="'home.more.sub'"></p>
+			</div>
+		</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="quote">
+	<p><em [translate]="'home.quote'"></em></p>
+</div>
+</div>

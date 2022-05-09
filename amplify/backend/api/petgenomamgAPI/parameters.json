@@ -1,0 +1,11 @@
+{
+  "AppSyncApiName": "petgenomamgAPI",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authpetgenomang94a7a4d2",
+      "Outputs.UserPoolId"
+    ]
+  }
+}

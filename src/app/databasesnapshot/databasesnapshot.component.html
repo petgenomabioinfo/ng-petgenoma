@@ -1,0 +1,21 @@
+<div class="kit-list" *ngIf="isUserLoaded">
+	<h5>Registered kits</h5>
+	<table class="table table-striped table-hover table-sm table-responsive-sm" >
+		<thead class="thead-light">
+			<tr>
+				<th>Kit Id</th>
+				<th>Kit Type</th>
+				<th>Pet Name</th>
+				<th>User Mail</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let kit of kits">
+				<td>{{kit.id}}</td>
+				<td>{{kit.kitType}}</td>
+				<td>{{kit.petName}}</td>
+				<td>{{kit.userMail}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

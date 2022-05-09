@@ -1,0 +1,23 @@
+{
+	"home.register" : "Enregistrer un kit",
+	"home.welcome" : "Bienvenue chez PetGenoma",
+	"home.subwelcome" : "Vous êtes à un pas d'améliorer la vie de votre animal",
+	"home.register.sub" : "Une fois que vous avez utilisé votre kit et AVANT de l'envoyer, vous devez l'enregistrer. Cela permettra une traçabilité complète de l'échantillon et de mieux vous servir.",
+	"home.reportEx.sub" : "Familiarisez-vous avec le rapport que vous obtiendrez pour votre animal de compagnie.",
+	"home.reportEx" : "Exemple de rapport (bientôt disponible)",
+	"home.more.sub" : "Familiarisez-vous avec la puissance de la génomique et la façon dont elle vous aidera à protéger la santé de votre animal.",
+	"home.more" : "Plus sur la génomique des animaux de compagnie",
+	"home.quote" : "Si votre animal pouvait parler, il vous dirait : Merci de vous soucier de moi, c'est très important pour moi. Au fait, je peux avoir une friandise ?",
+	"home.kits.list" : "Vos kits enregistrés",
+	"nav.home" : "Accueil",
+	"nav.register" : "Enregistrer un kit",
+	"register.title" : "Enregistrer un kit",
+	"register.petname" : "Nom de l'animal :",
+	"register.veterinary" : "Vétérinaire",
+	"register.health" : "Santé",
+	"register.healthbreed":"Santé et Race",
+	"register.button" : "Enregistrer",
+	"register.error.kitID" : "L'ID du kit est requis",
+	"register.error.kitFormat" : "Le format de l'ID du kit est XX00000000",
+	"register.error.petName" : "Le nom de l'animal est obligatoire"
+  }

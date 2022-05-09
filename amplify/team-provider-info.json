@@ -1,0 +1,26 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-petgenomang-dev-224505-authRole",
+      "UnauthRoleArn": "arn:aws:iam::574918379033:role/amplify-petgenomang-dev-224505-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::574918379033:role/amplify-petgenomang-dev-224505-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-petgenomang-dev-224505-deployment",
+      "UnauthRoleName": "amplify-petgenomang-dev-224505-unauthRole",
+      "StackName": "amplify-petgenomang-dev-224505",
+      "StackId": "arn:aws:cloudformation:us-east-2:574918379033:stack/amplify-petgenomang-dev-224505/80dc0ea0-fd14-11ea-95c6-02b28f38529c",
+      "AmplifyAppId": "d2due3s21am4b6"
+    },
+    "categories": {
+      "auth": {
+        "petgenomang94a7a4d2": {}
+      },
+      "function": {
+        "S3Trigger41ffb741": {
+          "deploymentBucketName": "amplify-petgenomang-dev-224505-deployment",
+          "s3Key": "amplify-builds/S3Trigger41ffb741-69756b44646362735874-build.zip"
+        }
+      }
+    }
+  }
+}
