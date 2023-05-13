@@ -1,50 +1,68 @@
 {
-  "auth": {
-    "petgenomang94a7a4d2": {
-      "service": "Cognito",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": []
-    }
-  },
   "api": {
     "petgenomamgAPI": {
-      "service": "AppSync",
-      "providerPlugin": "awscloudformation",
       "output": {
         "authConfig": {
+          "additionalAuthenticationProviders": [],
           "defaultAuthentication": {
             "authenticationType": "AMAZON_COGNITO_USER_POOLS",
             "userPoolConfig": {
               "userPoolId": "authpetgenomang94a7a4d2"
             }
-          },
-          "additionalAuthenticationProviders": []
+          }
         }
-      }
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "AppSync"
+    }
+  },
+  "auth": {
+    "petgenomang94a7a4d2": {
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito"
     }
   },
   "function": {
     "S3Trigger41ffb741": {
-      "service": "Lambda",
+      "build": true,
       "providerPlugin": "awscloudformation",
-      "build": true
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_S3Trigger41ffb741_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "S3Trigger41ffb741"
+        }
+      ]
+    },
+    "AMPLIFY_function_S3Trigger41ffb741_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "S3Trigger41ffb741"
+        }
+      ]
     }
   },
   "storage": {
     "petGenomaWorkspaceData": {
-      "service": "S3",
-      "providerPlugin": "awscloudformation",
       "dependsOn": [
         {
-          "category": "function",
-          "resourceName": "S3Trigger41ffb741",
           "attributes": [
             "Name",
             "Arn",
             "LambdaExecutionRole"
-          ]
+          ],
+          "category": "function",
+          "resourceName": "S3Trigger41ffb741"
         }
-      ]
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "S3"
     }
   }
 }
