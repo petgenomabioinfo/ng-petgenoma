@@ -10,8 +10,8 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
-import { AmplifyUIAngularModule } from '@aws-amplify/ui-angular';
-import {FormsModule} from "@angular/forms";
+import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';
+import { FormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { NavComponent } from './nav/nav.component';
@@ -29,19 +29,19 @@ import { DatabasesnapshotComponent } from './databasesnapshot/databasesnapshot.c
   ],
   imports: [
     BrowserModule,
-	AppRoutingModule,
-	AmplifyUIAngularModule,
-	HttpClientModule,
-	TranslateModule.forRoot({
-		loader: {
-			provide: TranslateLoader,
-			useFactory: HttpLoaderFactory,
-			deps: [HttpClient]
-		}
-	}),
-	FormsModule,
-	BrowserAnimationsModule,
-	ToastrModule.forRoot()
+    AppRoutingModule,
+    AmplifyAuthenticatorModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
+    FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
@@ -49,5 +49,5 @@ import { DatabasesnapshotComponent } from './databasesnapshot/databasesnapshot.c
 export class AppModule { }
 
 export function HttpLoaderFactory(http: HttpClient) {
-    return new TranslateHttpLoader(http);
+  return new TranslateHttpLoader(http);
 }
