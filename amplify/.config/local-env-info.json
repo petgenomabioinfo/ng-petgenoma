@@ -1,5 +1,5 @@
 {
-    "projectPath": "/Users/iandry/PetGenoma/PetGenomaApp/petGenomaNg",
-    "envName": "dev",
-    "defaultEditor": "vscode"
+  "projectPath": "/Users/iandry/PetGenoma/PetGenomaApp/new_version/ng-petgenoma-aws",
+  "defaultEditor": "vscode",
+  "envName": "pg"
 }

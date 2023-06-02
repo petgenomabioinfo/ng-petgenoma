@@ -2,19 +2,26 @@
 query GetUser($id: ID!) {
   getUser(id: $id) {
     id
-    username
+    firstname
+    lastname
     phoneNb
-    kits {
+    street
+    city
+    postalCode
+    researchAuthorization
+    surveyAuthorization
+    dogs {
       items {
         id
-        kitType
-        userID
-        kitBatchNb
-        processStatus
-        registrationDate
-        petName
+        name
+        breed
+        gender
+        age
+        microchip
+        conditions
         createdAt
         updatedAt
+        userDogsId
       }
       nextToken
     }
@@ -30,9 +37,15 @@ query ListUsers(
   listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
-      username
+      firstname
+      lastname
       phoneNb
-      kits {
+      street
+      city
+      postalCode
+      researchAuthorization
+      surveyAuthorization
+      dogs {
         nextToken
       }
       createdAt
@@ -41,17 +54,120 @@ query ListUsers(
     nextToken
   }
 }
+query GetDog($id: ID!) {
+  getDog(id: $id) {
+    id
+    kits {
+      items {
+        id
+        kitType
+        kitBatchNb
+        processStatus
+        registrationDate
+        createdAt
+        updatedAt
+        dogKitsId
+      }
+      nextToken
+    }
+    name
+    breed
+    gender
+    age
+    microchip
+    conditions
+    user {
+      id
+      firstname
+      lastname
+      phoneNb
+      street
+      city
+      postalCode
+      researchAuthorization
+      surveyAuthorization
+      dogs {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+    userDogsId
+  }
+}
+query ListDogs($filter: ModelDogFilterInput, $limit: Int, $nextToken: String) {
+  listDogs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      kits {
+        nextToken
+      }
+      name
+      breed
+      gender
+      age
+      microchip
+      conditions
+      user {
+        id
+        firstname
+        lastname
+        phoneNb
+        street
+        city
+        postalCode
+        researchAuthorization
+        surveyAuthorization
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+      userDogsId
+    }
+    nextToken
+  }
+}
 query GetKit($id: ID!) {
   getKit(id: $id) {
     id
     kitType
-    userID
     kitBatchNb
     processStatus
     registrationDate
-    petName
+    dog {
+      id
+      kits {
+        nextToken
+      }
+      name
+      breed
+      gender
+      age
+      microchip
+      conditions
+      user {
+        id
+        firstname
+        lastname
+        phoneNb
+        street
+        city
+        postalCode
+        researchAuthorization
+        surveyAuthorization
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+      userDogsId
+    }
     createdAt
     updatedAt
+    dogKitsId
   }
 }
 query ListKits($filter: ModelKitFilterInput, $limit: Int, $nextToken: String) {
@@ -59,13 +175,24 @@ query ListKits($filter: ModelKitFilterInput, $limit: Int, $nextToken: String) {
     items {
       id
       kitType
-      userID
       kitBatchNb
       processStatus
       registrationDate
-      petName
+      dog {
+        id
+        name
+        breed
+        gender
+        age
+        microchip
+        conditions
+        createdAt
+        updatedAt
+        userDogsId
+      }
       createdAt
       updatedAt
+      dogKitsId
     }
     nextToken
   }

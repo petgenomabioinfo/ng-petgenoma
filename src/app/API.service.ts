@@ -2,19 +2,46 @@
 /* eslint-disable */
 //  This file was automatically generated and should not be edited.
 import { Injectable } from "@angular/core";
-import { API, graphqlOperation } from "@aws-amplify/api";
-import { GraphQLResult } from "@aws-amplify/api/lib/types";
+import API, { graphqlOperation, GraphQLResult } from "@aws-amplify/api-graphql";
 import { Observable } from "zen-observable-ts";
+
+export interface SubscriptionResponse<T> {
+  value: GraphQLResult<T>;
+}
+
+export type __SubscriptionContainer = {
+  onCreateUser: OnCreateUserSubscription;
+  onUpdateUser: OnUpdateUserSubscription;
+  onDeleteUser: OnDeleteUserSubscription;
+  onCreateDog: OnCreateDogSubscription;
+  onUpdateDog: OnUpdateDogSubscription;
+  onDeleteDog: OnDeleteDogSubscription;
+  onCreateKit: OnCreateKitSubscription;
+  onUpdateKit: OnUpdateKitSubscription;
+  onDeleteKit: OnDeleteKitSubscription;
+};
 
 export type CreateUserInput = {
   id?: string | null;
-  username: string;
+  firstname: string;
+  lastname: string;
   phoneNb: string;
+  street: string;
+  city: string;
+  postalCode: string;
+  researchAuthorization: string;
+  surveyAuthorization: string;
 };
 
 export type ModelUserConditionInput = {
-  username?: ModelStringInput | null;
+  firstname?: ModelStringInput | null;
+  lastname?: ModelStringInput | null;
   phoneNb?: ModelStringInput | null;
+  street?: ModelStringInput | null;
+  city?: ModelStringInput | null;
+  postalCode?: ModelStringInput | null;
+  researchAuthorization?: ModelStringInput | null;
+  surveyAuthorization?: ModelStringInput | null;
   and?: Array<ModelUserConditionInput | null> | null;
   or?: Array<ModelUserConditionInput | null> | null;
   not?: ModelUserConditionInput | null;
@@ -59,36 +86,101 @@ export type ModelSizeInput = {
   between?: Array<number | null> | null;
 };
 
-export type UpdateUserInput = {
+export type User = {
+  __typename: "User";
   id: string;
-  username?: string | null;
-  phoneNb?: string | null;
+  firstname: string;
+  lastname: string;
+  phoneNb: string;
+  street: string;
+  city: string;
+  postalCode: string;
+  researchAuthorization: string;
+  surveyAuthorization: string;
+  dogs?: ModelDogConnection | null;
+  createdAt: string;
+  updatedAt: string;
 };
 
-export type DeleteUserInput = {
-  id?: string | null;
+export type ModelDogConnection = {
+  __typename: "ModelDogConnection";
+  items: Array<Dog | null>;
+  nextToken?: string | null;
 };
 
-export type CreateKitInput = {
-  id?: string | null;
+export type Dog = {
+  __typename: "Dog";
+  id: string;
+  kits?: ModelKitConnection | null;
+  name: string;
+  breed: string;
+  gender: string;
+  age: string;
+  microchip: string;
+  conditions: string;
+  user?: User | null;
+  createdAt: string;
+  updatedAt: string;
+  userDogsId?: string | null;
+};
+
+export type ModelKitConnection = {
+  __typename: "ModelKitConnection";
+  items: Array<Kit | null>;
+  nextToken?: string | null;
+};
+
+export type Kit = {
+  __typename: "Kit";
+  id: string;
   kitType: string;
-  userID: string;
   kitBatchNb?: string | null;
   processStatus: string;
   registrationDate: string;
-  petName: string;
+  dog?: Dog | null;
+  createdAt: string;
+  updatedAt: string;
+  dogKitsId?: string | null;
 };
 
-export type ModelKitConditionInput = {
-  kitType?: ModelStringInput | null;
-  userID?: ModelIDInput | null;
-  kitBatchNb?: ModelStringInput | null;
-  processStatus?: ModelStringInput | null;
-  registrationDate?: ModelStringInput | null;
-  petName?: ModelStringInput | null;
-  and?: Array<ModelKitConditionInput | null> | null;
-  or?: Array<ModelKitConditionInput | null> | null;
-  not?: ModelKitConditionInput | null;
+export type UpdateUserInput = {
+  id: string;
+  firstname?: string | null;
+  lastname?: string | null;
+  phoneNb?: string | null;
+  street?: string | null;
+  city?: string | null;
+  postalCode?: string | null;
+  researchAuthorization?: string | null;
+  surveyAuthorization?: string | null;
+};
+
+export type DeleteUserInput = {
+  id: string;
+};
+
+export type CreateDogInput = {
+  id?: string | null;
+  name: string;
+  breed: string;
+  gender: string;
+  age: string;
+  microchip: string;
+  conditions: string;
+  userDogsId?: string | null;
+};
+
+export type ModelDogConditionInput = {
+  name?: ModelStringInput | null;
+  breed?: ModelStringInput | null;
+  gender?: ModelStringInput | null;
+  age?: ModelStringInput | null;
+  microchip?: ModelStringInput | null;
+  conditions?: ModelStringInput | null;
+  and?: Array<ModelDogConditionInput | null> | null;
+  or?: Array<ModelDogConditionInput | null> | null;
+  not?: ModelDogConditionInput | null;
+  userDogsId?: ModelIDInput | null;
 };
 
 export type ModelIDInput = {
@@ -107,62 +199,194 @@ export type ModelIDInput = {
   size?: ModelSizeInput | null;
 };
 
+export type UpdateDogInput = {
+  id: string;
+  name?: string | null;
+  breed?: string | null;
+  gender?: string | null;
+  age?: string | null;
+  microchip?: string | null;
+  conditions?: string | null;
+  userDogsId?: string | null;
+};
+
+export type DeleteDogInput = {
+  id: string;
+};
+
+export type CreateKitInput = {
+  id?: string | null;
+  kitType: string;
+  kitBatchNb?: string | null;
+  processStatus: string;
+  registrationDate: string;
+  dogKitsId?: string | null;
+};
+
+export type ModelKitConditionInput = {
+  kitType?: ModelStringInput | null;
+  kitBatchNb?: ModelStringInput | null;
+  processStatus?: ModelStringInput | null;
+  registrationDate?: ModelStringInput | null;
+  and?: Array<ModelKitConditionInput | null> | null;
+  or?: Array<ModelKitConditionInput | null> | null;
+  not?: ModelKitConditionInput | null;
+  dogKitsId?: ModelIDInput | null;
+};
+
 export type UpdateKitInput = {
   id: string;
   kitType?: string | null;
-  userID?: string | null;
   kitBatchNb?: string | null;
   processStatus?: string | null;
   registrationDate?: string | null;
-  petName?: string | null;
+  dogKitsId?: string | null;
 };
 
 export type DeleteKitInput = {
-  id?: string | null;
+  id: string;
 };
 
 export type ModelUserFilterInput = {
   id?: ModelIDInput | null;
-  username?: ModelStringInput | null;
+  firstname?: ModelStringInput | null;
+  lastname?: ModelStringInput | null;
   phoneNb?: ModelStringInput | null;
+  street?: ModelStringInput | null;
+  city?: ModelStringInput | null;
+  postalCode?: ModelStringInput | null;
+  researchAuthorization?: ModelStringInput | null;
+  surveyAuthorization?: ModelStringInput | null;
   and?: Array<ModelUserFilterInput | null> | null;
   or?: Array<ModelUserFilterInput | null> | null;
   not?: ModelUserFilterInput | null;
 };
 
+export type ModelUserConnection = {
+  __typename: "ModelUserConnection";
+  items: Array<User | null>;
+  nextToken?: string | null;
+};
+
+export type ModelDogFilterInput = {
+  id?: ModelIDInput | null;
+  name?: ModelStringInput | null;
+  breed?: ModelStringInput | null;
+  gender?: ModelStringInput | null;
+  age?: ModelStringInput | null;
+  microchip?: ModelStringInput | null;
+  conditions?: ModelStringInput | null;
+  and?: Array<ModelDogFilterInput | null> | null;
+  or?: Array<ModelDogFilterInput | null> | null;
+  not?: ModelDogFilterInput | null;
+  userDogsId?: ModelIDInput | null;
+};
+
 export type ModelKitFilterInput = {
   id?: ModelIDInput | null;
   kitType?: ModelStringInput | null;
-  userID?: ModelIDInput | null;
   kitBatchNb?: ModelStringInput | null;
   processStatus?: ModelStringInput | null;
   registrationDate?: ModelStringInput | null;
-  petName?: ModelStringInput | null;
   and?: Array<ModelKitFilterInput | null> | null;
   or?: Array<ModelKitFilterInput | null> | null;
   not?: ModelKitFilterInput | null;
+  dogKitsId?: ModelIDInput | null;
+};
+
+export type ModelSubscriptionUserFilterInput = {
+  id?: ModelSubscriptionIDInput | null;
+  firstname?: ModelSubscriptionStringInput | null;
+  lastname?: ModelSubscriptionStringInput | null;
+  phoneNb?: ModelSubscriptionStringInput | null;
+  street?: ModelSubscriptionStringInput | null;
+  city?: ModelSubscriptionStringInput | null;
+  postalCode?: ModelSubscriptionStringInput | null;
+  researchAuthorization?: ModelSubscriptionStringInput | null;
+  surveyAuthorization?: ModelSubscriptionStringInput | null;
+  and?: Array<ModelSubscriptionUserFilterInput | null> | null;
+  or?: Array<ModelSubscriptionUserFilterInput | null> | null;
+};
+
+export type ModelSubscriptionIDInput = {
+  ne?: string | null;
+  eq?: string | null;
+  le?: string | null;
+  lt?: string | null;
+  ge?: string | null;
+  gt?: string | null;
+  contains?: string | null;
+  notContains?: string | null;
+  between?: Array<string | null> | null;
+  beginsWith?: string | null;
+  in?: Array<string | null> | null;
+  notIn?: Array<string | null> | null;
+};
+
+export type ModelSubscriptionStringInput = {
+  ne?: string | null;
+  eq?: string | null;
+  le?: string | null;
+  lt?: string | null;
+  ge?: string | null;
+  gt?: string | null;
+  contains?: string | null;
+  notContains?: string | null;
+  between?: Array<string | null> | null;
+  beginsWith?: string | null;
+  in?: Array<string | null> | null;
+  notIn?: Array<string | null> | null;
+};
+
+export type ModelSubscriptionDogFilterInput = {
+  id?: ModelSubscriptionIDInput | null;
+  name?: ModelSubscriptionStringInput | null;
+  breed?: ModelSubscriptionStringInput | null;
+  gender?: ModelSubscriptionStringInput | null;
+  age?: ModelSubscriptionStringInput | null;
+  microchip?: ModelSubscriptionStringInput | null;
+  conditions?: ModelSubscriptionStringInput | null;
+  and?: Array<ModelSubscriptionDogFilterInput | null> | null;
+  or?: Array<ModelSubscriptionDogFilterInput | null> | null;
+};
+
+export type ModelSubscriptionKitFilterInput = {
+  id?: ModelSubscriptionIDInput | null;
+  kitType?: ModelSubscriptionStringInput | null;
+  kitBatchNb?: ModelSubscriptionStringInput | null;
+  processStatus?: ModelSubscriptionStringInput | null;
+  registrationDate?: ModelSubscriptionStringInput | null;
+  and?: Array<ModelSubscriptionKitFilterInput | null> | null;
+  or?: Array<ModelSubscriptionKitFilterInput | null> | null;
 };
 
 export type CreateUserMutation = {
   __typename: "User";
   id: string;
-  username: string;
+  firstname: string;
+  lastname: string;
   phoneNb: string;
-  kits: {
-    __typename: "ModelKitConnection";
+  street: string;
+  city: string;
+  postalCode: string;
+  researchAuthorization: string;
+  surveyAuthorization: string;
+  dogs?: {
+    __typename: "ModelDogConnection";
     items: Array<{
-      __typename: "Kit";
+      __typename: "Dog";
       id: string;
-      kitType: string;
-      userID: string;
-      kitBatchNb: string | null;
-      processStatus: string;
-      registrationDate: string;
-      petName: string;
+      name: string;
+      breed: string;
+      gender: string;
+      age: string;
+      microchip: string;
+      conditions: string;
       createdAt: string;
       updatedAt: string;
-    } | null> | null;
-    nextToken: string | null;
+      userDogsId?: string | null;
+    } | null>;
+    nextToken?: string | null;
   } | null;
   createdAt: string;
   updatedAt: string;
@@ -171,23 +395,30 @@ export type CreateUserMutation = {
 export type UpdateUserMutation = {
   __typename: "User";
   id: string;
-  username: string;
+  firstname: string;
+  lastname: string;
   phoneNb: string;
-  kits: {
-    __typename: "ModelKitConnection";
+  street: string;
+  city: string;
+  postalCode: string;
+  researchAuthorization: string;
+  surveyAuthorization: string;
+  dogs?: {
+    __typename: "ModelDogConnection";
     items: Array<{
-      __typename: "Kit";
+      __typename: "Dog";
       id: string;
-      kitType: string;
-      userID: string;
-      kitBatchNb: string | null;
-      processStatus: string;
-      registrationDate: string;
-      petName: string;
+      name: string;
+      breed: string;
+      gender: string;
+      age: string;
+      microchip: string;
+      conditions: string;
       createdAt: string;
       updatedAt: string;
-    } | null> | null;
-    nextToken: string | null;
+      userDogsId?: string | null;
+    } | null>;
+    nextToken?: string | null;
   } | null;
   createdAt: string;
   updatedAt: string;
@@ -196,87 +427,332 @@ export type UpdateUserMutation = {
 export type DeleteUserMutation = {
   __typename: "User";
   id: string;
-  username: string;
+  firstname: string;
+  lastname: string;
   phoneNb: string;
-  kits: {
+  street: string;
+  city: string;
+  postalCode: string;
+  researchAuthorization: string;
+  surveyAuthorization: string;
+  dogs?: {
+    __typename: "ModelDogConnection";
+    items: Array<{
+      __typename: "Dog";
+      id: string;
+      name: string;
+      breed: string;
+      gender: string;
+      age: string;
+      microchip: string;
+      conditions: string;
+      createdAt: string;
+      updatedAt: string;
+      userDogsId?: string | null;
+    } | null>;
+    nextToken?: string | null;
+  } | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type CreateDogMutation = {
+  __typename: "Dog";
+  id: string;
+  kits?: {
     __typename: "ModelKitConnection";
     items: Array<{
       __typename: "Kit";
       id: string;
       kitType: string;
-      userID: string;
-      kitBatchNb: string | null;
+      kitBatchNb?: string | null;
       processStatus: string;
       registrationDate: string;
-      petName: string;
       createdAt: string;
       updatedAt: string;
-    } | null> | null;
-    nextToken: string | null;
+      dogKitsId?: string | null;
+    } | null>;
+    nextToken?: string | null;
+  } | null;
+  name: string;
+  breed: string;
+  gender: string;
+  age: string;
+  microchip: string;
+  conditions: string;
+  user?: {
+    __typename: "User";
+    id: string;
+    firstname: string;
+    lastname: string;
+    phoneNb: string;
+    street: string;
+    city: string;
+    postalCode: string;
+    researchAuthorization: string;
+    surveyAuthorization: string;
+    dogs?: {
+      __typename: "ModelDogConnection";
+      nextToken?: string | null;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
   } | null;
   createdAt: string;
   updatedAt: string;
+  userDogsId?: string | null;
+};
+
+export type UpdateDogMutation = {
+  __typename: "Dog";
+  id: string;
+  kits?: {
+    __typename: "ModelKitConnection";
+    items: Array<{
+      __typename: "Kit";
+      id: string;
+      kitType: string;
+      kitBatchNb?: string | null;
+      processStatus: string;
+      registrationDate: string;
+      createdAt: string;
+      updatedAt: string;
+      dogKitsId?: string | null;
+    } | null>;
+    nextToken?: string | null;
+  } | null;
+  name: string;
+  breed: string;
+  gender: string;
+  age: string;
+  microchip: string;
+  conditions: string;
+  user?: {
+    __typename: "User";
+    id: string;
+    firstname: string;
+    lastname: string;
+    phoneNb: string;
+    street: string;
+    city: string;
+    postalCode: string;
+    researchAuthorization: string;
+    surveyAuthorization: string;
+    dogs?: {
+      __typename: "ModelDogConnection";
+      nextToken?: string | null;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+  } | null;
+  createdAt: string;
+  updatedAt: string;
+  userDogsId?: string | null;
+};
+
+export type DeleteDogMutation = {
+  __typename: "Dog";
+  id: string;
+  kits?: {
+    __typename: "ModelKitConnection";
+    items: Array<{
+      __typename: "Kit";
+      id: string;
+      kitType: string;
+      kitBatchNb?: string | null;
+      processStatus: string;
+      registrationDate: string;
+      createdAt: string;
+      updatedAt: string;
+      dogKitsId?: string | null;
+    } | null>;
+    nextToken?: string | null;
+  } | null;
+  name: string;
+  breed: string;
+  gender: string;
+  age: string;
+  microchip: string;
+  conditions: string;
+  user?: {
+    __typename: "User";
+    id: string;
+    firstname: string;
+    lastname: string;
+    phoneNb: string;
+    street: string;
+    city: string;
+    postalCode: string;
+    researchAuthorization: string;
+    surveyAuthorization: string;
+    dogs?: {
+      __typename: "ModelDogConnection";
+      nextToken?: string | null;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+  } | null;
+  createdAt: string;
+  updatedAt: string;
+  userDogsId?: string | null;
 };
 
 export type CreateKitMutation = {
   __typename: "Kit";
   id: string;
   kitType: string;
-  userID: string;
-  kitBatchNb: string | null;
+  kitBatchNb?: string | null;
   processStatus: string;
   registrationDate: string;
-  petName: string;
+  dog?: {
+    __typename: "Dog";
+    id: string;
+    kits?: {
+      __typename: "ModelKitConnection";
+      nextToken?: string | null;
+    } | null;
+    name: string;
+    breed: string;
+    gender: string;
+    age: string;
+    microchip: string;
+    conditions: string;
+    user?: {
+      __typename: "User";
+      id: string;
+      firstname: string;
+      lastname: string;
+      phoneNb: string;
+      street: string;
+      city: string;
+      postalCode: string;
+      researchAuthorization: string;
+      surveyAuthorization: string;
+      createdAt: string;
+      updatedAt: string;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+    userDogsId?: string | null;
+  } | null;
   createdAt: string;
   updatedAt: string;
+  dogKitsId?: string | null;
 };
 
 export type UpdateKitMutation = {
   __typename: "Kit";
   id: string;
   kitType: string;
-  userID: string;
-  kitBatchNb: string | null;
+  kitBatchNb?: string | null;
   processStatus: string;
   registrationDate: string;
-  petName: string;
+  dog?: {
+    __typename: "Dog";
+    id: string;
+    kits?: {
+      __typename: "ModelKitConnection";
+      nextToken?: string | null;
+    } | null;
+    name: string;
+    breed: string;
+    gender: string;
+    age: string;
+    microchip: string;
+    conditions: string;
+    user?: {
+      __typename: "User";
+      id: string;
+      firstname: string;
+      lastname: string;
+      phoneNb: string;
+      street: string;
+      city: string;
+      postalCode: string;
+      researchAuthorization: string;
+      surveyAuthorization: string;
+      createdAt: string;
+      updatedAt: string;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+    userDogsId?: string | null;
+  } | null;
   createdAt: string;
   updatedAt: string;
+  dogKitsId?: string | null;
 };
 
 export type DeleteKitMutation = {
   __typename: "Kit";
   id: string;
   kitType: string;
-  userID: string;
-  kitBatchNb: string | null;
+  kitBatchNb?: string | null;
   processStatus: string;
   registrationDate: string;
-  petName: string;
+  dog?: {
+    __typename: "Dog";
+    id: string;
+    kits?: {
+      __typename: "ModelKitConnection";
+      nextToken?: string | null;
+    } | null;
+    name: string;
+    breed: string;
+    gender: string;
+    age: string;
+    microchip: string;
+    conditions: string;
+    user?: {
+      __typename: "User";
+      id: string;
+      firstname: string;
+      lastname: string;
+      phoneNb: string;
+      street: string;
+      city: string;
+      postalCode: string;
+      researchAuthorization: string;
+      surveyAuthorization: string;
+      createdAt: string;
+      updatedAt: string;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+    userDogsId?: string | null;
+  } | null;
   createdAt: string;
   updatedAt: string;
+  dogKitsId?: string | null;
 };
 
 export type GetUserQuery = {
   __typename: "User";
   id: string;
-  username: string;
+  firstname: string;
+  lastname: string;
   phoneNb: string;
-  kits: {
-    __typename: "ModelKitConnection";
+  street: string;
+  city: string;
+  postalCode: string;
+  researchAuthorization: string;
+  surveyAuthorization: string;
+  dogs?: {
+    __typename: "ModelDogConnection";
     items: Array<{
-      __typename: "Kit";
+      __typename: "Dog";
       id: string;
-      kitType: string;
-      userID: string;
-      kitBatchNb: string | null;
-      processStatus: string;
-      registrationDate: string;
-      petName: string;
+      name: string;
+      breed: string;
+      gender: string;
+      age: string;
+      microchip: string;
+      conditions: string;
       createdAt: string;
       updatedAt: string;
-    } | null> | null;
-    nextToken: string | null;
+      userDogsId?: string | null;
+    } | null>;
+    nextToken?: string | null;
   } | null;
   createdAt: string;
   updatedAt: string;
@@ -287,29 +763,148 @@ export type ListUsersQuery = {
   items: Array<{
     __typename: "User";
     id: string;
-    username: string;
+    firstname: string;
+    lastname: string;
     phoneNb: string;
-    kits: {
-      __typename: "ModelKitConnection";
-      nextToken: string | null;
+    street: string;
+    city: string;
+    postalCode: string;
+    researchAuthorization: string;
+    surveyAuthorization: string;
+    dogs?: {
+      __typename: "ModelDogConnection";
+      nextToken?: string | null;
     } | null;
     createdAt: string;
     updatedAt: string;
-  } | null> | null;
-  nextToken: string | null;
+  } | null>;
+  nextToken?: string | null;
+};
+
+export type GetDogQuery = {
+  __typename: "Dog";
+  id: string;
+  kits?: {
+    __typename: "ModelKitConnection";
+    items: Array<{
+      __typename: "Kit";
+      id: string;
+      kitType: string;
+      kitBatchNb?: string | null;
+      processStatus: string;
+      registrationDate: string;
+      createdAt: string;
+      updatedAt: string;
+      dogKitsId?: string | null;
+    } | null>;
+    nextToken?: string | null;
+  } | null;
+  name: string;
+  breed: string;
+  gender: string;
+  age: string;
+  microchip: string;
+  conditions: string;
+  user?: {
+    __typename: "User";
+    id: string;
+    firstname: string;
+    lastname: string;
+    phoneNb: string;
+    street: string;
+    city: string;
+    postalCode: string;
+    researchAuthorization: string;
+    surveyAuthorization: string;
+    dogs?: {
+      __typename: "ModelDogConnection";
+      nextToken?: string | null;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+  } | null;
+  createdAt: string;
+  updatedAt: string;
+  userDogsId?: string | null;
+};
+
+export type ListDogsQuery = {
+  __typename: "ModelDogConnection";
+  items: Array<{
+    __typename: "Dog";
+    id: string;
+    kits?: {
+      __typename: "ModelKitConnection";
+      nextToken?: string | null;
+    } | null;
+    name: string;
+    breed: string;
+    gender: string;
+    age: string;
+    microchip: string;
+    conditions: string;
+    user?: {
+      __typename: "User";
+      id: string;
+      firstname: string;
+      lastname: string;
+      phoneNb: string;
+      street: string;
+      city: string;
+      postalCode: string;
+      researchAuthorization: string;
+      surveyAuthorization: string;
+      createdAt: string;
+      updatedAt: string;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+    userDogsId?: string | null;
+  } | null>;
+  nextToken?: string | null;
 };
 
 export type GetKitQuery = {
   __typename: "Kit";
   id: string;
   kitType: string;
-  userID: string;
-  kitBatchNb: string | null;
+  kitBatchNb?: string | null;
   processStatus: string;
   registrationDate: string;
-  petName: string;
+  dog?: {
+    __typename: "Dog";
+    id: string;
+    kits?: {
+      __typename: "ModelKitConnection";
+      nextToken?: string | null;
+    } | null;
+    name: string;
+    breed: string;
+    gender: string;
+    age: string;
+    microchip: string;
+    conditions: string;
+    user?: {
+      __typename: "User";
+      id: string;
+      firstname: string;
+      lastname: string;
+      phoneNb: string;
+      street: string;
+      city: string;
+      postalCode: string;
+      researchAuthorization: string;
+      surveyAuthorization: string;
+      createdAt: string;
+      updatedAt: string;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+    userDogsId?: string | null;
+  } | null;
   createdAt: string;
   updatedAt: string;
+  dogKitsId?: string | null;
 };
 
 export type ListKitsQuery = {
@@ -318,37 +913,56 @@ export type ListKitsQuery = {
     __typename: "Kit";
     id: string;
     kitType: string;
-    userID: string;
-    kitBatchNb: string | null;
+    kitBatchNb?: string | null;
     processStatus: string;
     registrationDate: string;
-    petName: string;
+    dog?: {
+      __typename: "Dog";
+      id: string;
+      name: string;
+      breed: string;
+      gender: string;
+      age: string;
+      microchip: string;
+      conditions: string;
+      createdAt: string;
+      updatedAt: string;
+      userDogsId?: string | null;
+    } | null;
     createdAt: string;
     updatedAt: string;
-  } | null> | null;
-  nextToken: string | null;
+    dogKitsId?: string | null;
+  } | null>;
+  nextToken?: string | null;
 };
 
 export type OnCreateUserSubscription = {
   __typename: "User";
   id: string;
-  username: string;
+  firstname: string;
+  lastname: string;
   phoneNb: string;
-  kits: {
-    __typename: "ModelKitConnection";
+  street: string;
+  city: string;
+  postalCode: string;
+  researchAuthorization: string;
+  surveyAuthorization: string;
+  dogs?: {
+    __typename: "ModelDogConnection";
     items: Array<{
-      __typename: "Kit";
+      __typename: "Dog";
       id: string;
-      kitType: string;
-      userID: string;
-      kitBatchNb: string | null;
-      processStatus: string;
-      registrationDate: string;
-      petName: string;
+      name: string;
+      breed: string;
+      gender: string;
+      age: string;
+      microchip: string;
+      conditions: string;
       createdAt: string;
       updatedAt: string;
-    } | null> | null;
-    nextToken: string | null;
+      userDogsId?: string | null;
+    } | null>;
+    nextToken?: string | null;
   } | null;
   createdAt: string;
   updatedAt: string;
@@ -357,23 +971,30 @@ export type OnCreateUserSubscription = {
 export type OnUpdateUserSubscription = {
   __typename: "User";
   id: string;
-  username: string;
+  firstname: string;
+  lastname: string;
   phoneNb: string;
-  kits: {
-    __typename: "ModelKitConnection";
+  street: string;
+  city: string;
+  postalCode: string;
+  researchAuthorization: string;
+  surveyAuthorization: string;
+  dogs?: {
+    __typename: "ModelDogConnection";
     items: Array<{
-      __typename: "Kit";
+      __typename: "Dog";
       id: string;
-      kitType: string;
-      userID: string;
-      kitBatchNb: string | null;
-      processStatus: string;
-      registrationDate: string;
-      petName: string;
+      name: string;
+      breed: string;
+      gender: string;
+      age: string;
+      microchip: string;
+      conditions: string;
       createdAt: string;
       updatedAt: string;
-    } | null> | null;
-    nextToken: string | null;
+      userDogsId?: string | null;
+    } | null>;
+    nextToken?: string | null;
   } | null;
   createdAt: string;
   updatedAt: string;
@@ -382,65 +1003,303 @@ export type OnUpdateUserSubscription = {
 export type OnDeleteUserSubscription = {
   __typename: "User";
   id: string;
-  username: string;
+  firstname: string;
+  lastname: string;
   phoneNb: string;
-  kits: {
+  street: string;
+  city: string;
+  postalCode: string;
+  researchAuthorization: string;
+  surveyAuthorization: string;
+  dogs?: {
+    __typename: "ModelDogConnection";
+    items: Array<{
+      __typename: "Dog";
+      id: string;
+      name: string;
+      breed: string;
+      gender: string;
+      age: string;
+      microchip: string;
+      conditions: string;
+      createdAt: string;
+      updatedAt: string;
+      userDogsId?: string | null;
+    } | null>;
+    nextToken?: string | null;
+  } | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type OnCreateDogSubscription = {
+  __typename: "Dog";
+  id: string;
+  kits?: {
     __typename: "ModelKitConnection";
     items: Array<{
       __typename: "Kit";
       id: string;
       kitType: string;
-      userID: string;
-      kitBatchNb: string | null;
+      kitBatchNb?: string | null;
       processStatus: string;
       registrationDate: string;
-      petName: string;
       createdAt: string;
       updatedAt: string;
-    } | null> | null;
-    nextToken: string | null;
+      dogKitsId?: string | null;
+    } | null>;
+    nextToken?: string | null;
+  } | null;
+  name: string;
+  breed: string;
+  gender: string;
+  age: string;
+  microchip: string;
+  conditions: string;
+  user?: {
+    __typename: "User";
+    id: string;
+    firstname: string;
+    lastname: string;
+    phoneNb: string;
+    street: string;
+    city: string;
+    postalCode: string;
+    researchAuthorization: string;
+    surveyAuthorization: string;
+    dogs?: {
+      __typename: "ModelDogConnection";
+      nextToken?: string | null;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
   } | null;
   createdAt: string;
   updatedAt: string;
+  userDogsId?: string | null;
+};
+
+export type OnUpdateDogSubscription = {
+  __typename: "Dog";
+  id: string;
+  kits?: {
+    __typename: "ModelKitConnection";
+    items: Array<{
+      __typename: "Kit";
+      id: string;
+      kitType: string;
+      kitBatchNb?: string | null;
+      processStatus: string;
+      registrationDate: string;
+      createdAt: string;
+      updatedAt: string;
+      dogKitsId?: string | null;
+    } | null>;
+    nextToken?: string | null;
+  } | null;
+  name: string;
+  breed: string;
+  gender: string;
+  age: string;
+  microchip: string;
+  conditions: string;
+  user?: {
+    __typename: "User";
+    id: string;
+    firstname: string;
+    lastname: string;
+    phoneNb: string;
+    street: string;
+    city: string;
+    postalCode: string;
+    researchAuthorization: string;
+    surveyAuthorization: string;
+    dogs?: {
+      __typename: "ModelDogConnection";
+      nextToken?: string | null;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+  } | null;
+  createdAt: string;
+  updatedAt: string;
+  userDogsId?: string | null;
+};
+
+export type OnDeleteDogSubscription = {
+  __typename: "Dog";
+  id: string;
+  kits?: {
+    __typename: "ModelKitConnection";
+    items: Array<{
+      __typename: "Kit";
+      id: string;
+      kitType: string;
+      kitBatchNb?: string | null;
+      processStatus: string;
+      registrationDate: string;
+      createdAt: string;
+      updatedAt: string;
+      dogKitsId?: string | null;
+    } | null>;
+    nextToken?: string | null;
+  } | null;
+  name: string;
+  breed: string;
+  gender: string;
+  age: string;
+  microchip: string;
+  conditions: string;
+  user?: {
+    __typename: "User";
+    id: string;
+    firstname: string;
+    lastname: string;
+    phoneNb: string;
+    street: string;
+    city: string;
+    postalCode: string;
+    researchAuthorization: string;
+    surveyAuthorization: string;
+    dogs?: {
+      __typename: "ModelDogConnection";
+      nextToken?: string | null;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+  } | null;
+  createdAt: string;
+  updatedAt: string;
+  userDogsId?: string | null;
 };
 
 export type OnCreateKitSubscription = {
   __typename: "Kit";
   id: string;
   kitType: string;
-  userID: string;
-  kitBatchNb: string | null;
+  kitBatchNb?: string | null;
   processStatus: string;
   registrationDate: string;
-  petName: string;
+  dog?: {
+    __typename: "Dog";
+    id: string;
+    kits?: {
+      __typename: "ModelKitConnection";
+      nextToken?: string | null;
+    } | null;
+    name: string;
+    breed: string;
+    gender: string;
+    age: string;
+    microchip: string;
+    conditions: string;
+    user?: {
+      __typename: "User";
+      id: string;
+      firstname: string;
+      lastname: string;
+      phoneNb: string;
+      street: string;
+      city: string;
+      postalCode: string;
+      researchAuthorization: string;
+      surveyAuthorization: string;
+      createdAt: string;
+      updatedAt: string;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+    userDogsId?: string | null;
+  } | null;
   createdAt: string;
   updatedAt: string;
+  dogKitsId?: string | null;
 };
 
 export type OnUpdateKitSubscription = {
   __typename: "Kit";
   id: string;
   kitType: string;
-  userID: string;
-  kitBatchNb: string | null;
+  kitBatchNb?: string | null;
   processStatus: string;
   registrationDate: string;
-  petName: string;
+  dog?: {
+    __typename: "Dog";
+    id: string;
+    kits?: {
+      __typename: "ModelKitConnection";
+      nextToken?: string | null;
+    } | null;
+    name: string;
+    breed: string;
+    gender: string;
+    age: string;
+    microchip: string;
+    conditions: string;
+    user?: {
+      __typename: "User";
+      id: string;
+      firstname: string;
+      lastname: string;
+      phoneNb: string;
+      street: string;
+      city: string;
+      postalCode: string;
+      researchAuthorization: string;
+      surveyAuthorization: string;
+      createdAt: string;
+      updatedAt: string;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+    userDogsId?: string | null;
+  } | null;
   createdAt: string;
   updatedAt: string;
+  dogKitsId?: string | null;
 };
 
 export type OnDeleteKitSubscription = {
   __typename: "Kit";
   id: string;
   kitType: string;
-  userID: string;
-  kitBatchNb: string | null;
+  kitBatchNb?: string | null;
   processStatus: string;
   registrationDate: string;
-  petName: string;
+  dog?: {
+    __typename: "Dog";
+    id: string;
+    kits?: {
+      __typename: "ModelKitConnection";
+      nextToken?: string | null;
+    } | null;
+    name: string;
+    breed: string;
+    gender: string;
+    age: string;
+    microchip: string;
+    conditions: string;
+    user?: {
+      __typename: "User";
+      id: string;
+      firstname: string;
+      lastname: string;
+      phoneNb: string;
+      street: string;
+      city: string;
+      postalCode: string;
+      researchAuthorization: string;
+      surveyAuthorization: string;
+      createdAt: string;
+      updatedAt: string;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+    userDogsId?: string | null;
+  } | null;
   createdAt: string;
   updatedAt: string;
+  dogKitsId?: string | null;
 };
 
 @Injectable({
@@ -455,21 +1314,28 @@ export class APIService {
         createUser(input: $input, condition: $condition) {
           __typename
           id
-          username
+          firstname
+          lastname
           phoneNb
-          kits {
+          street
+          city
+          postalCode
+          researchAuthorization
+          surveyAuthorization
+          dogs {
             __typename
             items {
               __typename
               id
-              kitType
-              userID
-              kitBatchNb
-              processStatus
-              registrationDate
-              petName
+              name
+              breed
+              gender
+              age
+              microchip
+              conditions
               createdAt
               updatedAt
+              userDogsId
             }
             nextToken
           }
@@ -496,21 +1362,28 @@ export class APIService {
         updateUser(input: $input, condition: $condition) {
           __typename
           id
-          username
+          firstname
+          lastname
           phoneNb
-          kits {
+          street
+          city
+          postalCode
+          researchAuthorization
+          surveyAuthorization
+          dogs {
             __typename
             items {
               __typename
               id
-              kitType
-              userID
-              kitBatchNb
-              processStatus
-              registrationDate
-              petName
+              name
+              breed
+              gender
+              age
+              microchip
+              conditions
               createdAt
               updatedAt
+              userDogsId
             }
             nextToken
           }
@@ -537,21 +1410,28 @@ export class APIService {
         deleteUser(input: $input, condition: $condition) {
           __typename
           id
-          username
+          firstname
+          lastname
           phoneNb
-          kits {
+          street
+          city
+          postalCode
+          researchAuthorization
+          surveyAuthorization
+          dogs {
             __typename
             items {
               __typename
               id
-              kitType
-              userID
-              kitBatchNb
-              processStatus
-              registrationDate
-              petName
+              name
+              breed
+              gender
+              age
+              microchip
+              conditions
               createdAt
               updatedAt
+              userDogsId
             }
             nextToken
           }
@@ -570,6 +1450,195 @@ export class APIService {
     )) as any;
     return <DeleteUserMutation>response.data.deleteUser;
   }
+  async CreateDog(
+    input: CreateDogInput,
+    condition?: ModelDogConditionInput
+  ): Promise<CreateDogMutation> {
+    const statement = `mutation CreateDog($input: CreateDogInput!, $condition: ModelDogConditionInput) {
+        createDog(input: $input, condition: $condition) {
+          __typename
+          id
+          kits {
+            __typename
+            items {
+              __typename
+              id
+              kitType
+              kitBatchNb
+              processStatus
+              registrationDate
+              createdAt
+              updatedAt
+              dogKitsId
+            }
+            nextToken
+          }
+          name
+          breed
+          gender
+          age
+          microchip
+          conditions
+          user {
+            __typename
+            id
+            firstname
+            lastname
+            phoneNb
+            street
+            city
+            postalCode
+            researchAuthorization
+            surveyAuthorization
+            dogs {
+              __typename
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
+          createdAt
+          updatedAt
+          userDogsId
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <CreateDogMutation>response.data.createDog;
+  }
+  async UpdateDog(
+    input: UpdateDogInput,
+    condition?: ModelDogConditionInput
+  ): Promise<UpdateDogMutation> {
+    const statement = `mutation UpdateDog($input: UpdateDogInput!, $condition: ModelDogConditionInput) {
+        updateDog(input: $input, condition: $condition) {
+          __typename
+          id
+          kits {
+            __typename
+            items {
+              __typename
+              id
+              kitType
+              kitBatchNb
+              processStatus
+              registrationDate
+              createdAt
+              updatedAt
+              dogKitsId
+            }
+            nextToken
+          }
+          name
+          breed
+          gender
+          age
+          microchip
+          conditions
+          user {
+            __typename
+            id
+            firstname
+            lastname
+            phoneNb
+            street
+            city
+            postalCode
+            researchAuthorization
+            surveyAuthorization
+            dogs {
+              __typename
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
+          createdAt
+          updatedAt
+          userDogsId
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <UpdateDogMutation>response.data.updateDog;
+  }
+  async DeleteDog(
+    input: DeleteDogInput,
+    condition?: ModelDogConditionInput
+  ): Promise<DeleteDogMutation> {
+    const statement = `mutation DeleteDog($input: DeleteDogInput!, $condition: ModelDogConditionInput) {
+        deleteDog(input: $input, condition: $condition) {
+          __typename
+          id
+          kits {
+            __typename
+            items {
+              __typename
+              id
+              kitType
+              kitBatchNb
+              processStatus
+              registrationDate
+              createdAt
+              updatedAt
+              dogKitsId
+            }
+            nextToken
+          }
+          name
+          breed
+          gender
+          age
+          microchip
+          conditions
+          user {
+            __typename
+            id
+            firstname
+            lastname
+            phoneNb
+            street
+            city
+            postalCode
+            researchAuthorization
+            surveyAuthorization
+            dogs {
+              __typename
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
+          createdAt
+          updatedAt
+          userDogsId
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <DeleteDogMutation>response.data.deleteDog;
+  }
   async CreateKit(
     input: CreateKitInput,
     condition?: ModelKitConditionInput
@@ -579,13 +1648,43 @@ export class APIService {
           __typename
           id
           kitType
-          userID
           kitBatchNb
           processStatus
           registrationDate
-          petName
+          dog {
+            __typename
+            id
+            kits {
+              __typename
+              nextToken
+            }
+            name
+            breed
+            gender
+            age
+            microchip
+            conditions
+            user {
+              __typename
+              id
+              firstname
+              lastname
+              phoneNb
+              street
+              city
+              postalCode
+              researchAuthorization
+              surveyAuthorization
+              createdAt
+              updatedAt
+            }
+            createdAt
+            updatedAt
+            userDogsId
+          }
           createdAt
           updatedAt
+          dogKitsId
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -608,13 +1707,43 @@ export class APIService {
           __typename
           id
           kitType
-          userID
           kitBatchNb
           processStatus
           registrationDate
-          petName
+          dog {
+            __typename
+            id
+            kits {
+              __typename
+              nextToken
+            }
+            name
+            breed
+            gender
+            age
+            microchip
+            conditions
+            user {
+              __typename
+              id
+              firstname
+              lastname
+              phoneNb
+              street
+              city
+              postalCode
+              researchAuthorization
+              surveyAuthorization
+              createdAt
+              updatedAt
+            }
+            createdAt
+            updatedAt
+            userDogsId
+          }
           createdAt
           updatedAt
+          dogKitsId
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -637,13 +1766,43 @@ export class APIService {
           __typename
           id
           kitType
-          userID
           kitBatchNb
           processStatus
           registrationDate
-          petName
+          dog {
+            __typename
+            id
+            kits {
+              __typename
+              nextToken
+            }
+            name
+            breed
+            gender
+            age
+            microchip
+            conditions
+            user {
+              __typename
+              id
+              firstname
+              lastname
+              phoneNb
+              street
+              city
+              postalCode
+              researchAuthorization
+              surveyAuthorization
+              createdAt
+              updatedAt
+            }
+            createdAt
+            updatedAt
+            userDogsId
+          }
           createdAt
           updatedAt
+          dogKitsId
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -662,21 +1821,28 @@ export class APIService {
         getUser(id: $id) {
           __typename
           id
-          username
+          firstname
+          lastname
           phoneNb
-          kits {
+          street
+          city
+          postalCode
+          researchAuthorization
+          surveyAuthorization
+          dogs {
             __typename
             items {
               __typename
               id
-              kitType
-              userID
-              kitBatchNb
-              processStatus
-              registrationDate
-              petName
+              name
+              breed
+              gender
+              age
+              microchip
+              conditions
               createdAt
               updatedAt
+              userDogsId
             }
             nextToken
           }
@@ -703,9 +1869,15 @@ export class APIService {
           items {
             __typename
             id
-            username
+            firstname
+            lastname
             phoneNb
-            kits {
+            street
+            city
+            postalCode
+            researchAuthorization
+            surveyAuthorization
+            dogs {
               __typename
               nextToken
             }
@@ -730,19 +1902,163 @@ export class APIService {
     )) as any;
     return <ListUsersQuery>response.data.listUsers;
   }
+  async GetDog(id: string): Promise<GetDogQuery> {
+    const statement = `query GetDog($id: ID!) {
+        getDog(id: $id) {
+          __typename
+          id
+          kits {
+            __typename
+            items {
+              __typename
+              id
+              kitType
+              kitBatchNb
+              processStatus
+              registrationDate
+              createdAt
+              updatedAt
+              dogKitsId
+            }
+            nextToken
+          }
+          name
+          breed
+          gender
+          age
+          microchip
+          conditions
+          user {
+            __typename
+            id
+            firstname
+            lastname
+            phoneNb
+            street
+            city
+            postalCode
+            researchAuthorization
+            surveyAuthorization
+            dogs {
+              __typename
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
+          createdAt
+          updatedAt
+          userDogsId
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      id
+    };
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <GetDogQuery>response.data.getDog;
+  }
+  async ListDogs(
+    filter?: ModelDogFilterInput,
+    limit?: number,
+    nextToken?: string
+  ): Promise<ListDogsQuery> {
+    const statement = `query ListDogs($filter: ModelDogFilterInput, $limit: Int, $nextToken: String) {
+        listDogs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+          __typename
+          items {
+            __typename
+            id
+            kits {
+              __typename
+              nextToken
+            }
+            name
+            breed
+            gender
+            age
+            microchip
+            conditions
+            user {
+              __typename
+              id
+              firstname
+              lastname
+              phoneNb
+              street
+              city
+              postalCode
+              researchAuthorization
+              surveyAuthorization
+              createdAt
+              updatedAt
+            }
+            createdAt
+            updatedAt
+            userDogsId
+          }
+          nextToken
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <ListDogsQuery>response.data.listDogs;
+  }
   async GetKit(id: string): Promise<GetKitQuery> {
     const statement = `query GetKit($id: ID!) {
         getKit(id: $id) {
           __typename
           id
           kitType
-          userID
           kitBatchNb
           processStatus
           registrationDate
-          petName
+          dog {
+            __typename
+            id
+            kits {
+              __typename
+              nextToken
+            }
+            name
+            breed
+            gender
+            age
+            microchip
+            conditions
+            user {
+              __typename
+              id
+              firstname
+              lastname
+              phoneNb
+              street
+              city
+              postalCode
+              researchAuthorization
+              surveyAuthorization
+              createdAt
+              updatedAt
+            }
+            createdAt
+            updatedAt
+            userDogsId
+          }
           createdAt
           updatedAt
+          dogKitsId
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -765,13 +2081,25 @@ export class APIService {
             __typename
             id
             kitType
-            userID
             kitBatchNb
             processStatus
             registrationDate
-            petName
+            dog {
+              __typename
+              id
+              name
+              breed
+              gender
+              age
+              microchip
+              conditions
+              createdAt
+              updatedAt
+              userDogsId
+            }
             createdAt
             updatedAt
+            dogKitsId
           }
           nextToken
         }
@@ -791,153 +2119,522 @@ export class APIService {
     )) as any;
     return <ListKitsQuery>response.data.listKits;
   }
-  OnCreateUserListener: Observable<OnCreateUserSubscription> = API.graphql(
-    graphqlOperation(
-      `subscription OnCreateUser {
-        onCreateUser {
+  OnCreateUserListener(
+    filter?: ModelSubscriptionUserFilterInput
+  ): Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onCreateUser">>
+  > {
+    const statement = `subscription OnCreateUser($filter: ModelSubscriptionUserFilterInput) {
+        onCreateUser(filter: $filter) {
           __typename
           id
-          username
+          firstname
+          lastname
           phoneNb
-          kits {
+          street
+          city
+          postalCode
+          researchAuthorization
+          surveyAuthorization
+          dogs {
             __typename
             items {
               __typename
               id
-              kitType
-              userID
-              kitBatchNb
-              processStatus
-              registrationDate
-              petName
+              name
+              breed
+              gender
+              age
+              microchip
+              conditions
               createdAt
               updatedAt
+              userDogsId
             }
             nextToken
           }
           createdAt
           updatedAt
         }
-      }`
-    )
-  ) as Observable<OnCreateUserSubscription>;
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    return API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    ) as Observable<
+      SubscriptionResponse<Pick<__SubscriptionContainer, "onCreateUser">>
+    >;
+  }
 
-  OnUpdateUserListener: Observable<OnUpdateUserSubscription> = API.graphql(
-    graphqlOperation(
-      `subscription OnUpdateUser {
-        onUpdateUser {
+  OnUpdateUserListener(
+    filter?: ModelSubscriptionUserFilterInput
+  ): Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onUpdateUser">>
+  > {
+    const statement = `subscription OnUpdateUser($filter: ModelSubscriptionUserFilterInput) {
+        onUpdateUser(filter: $filter) {
           __typename
           id
-          username
+          firstname
+          lastname
           phoneNb
-          kits {
+          street
+          city
+          postalCode
+          researchAuthorization
+          surveyAuthorization
+          dogs {
             __typename
             items {
               __typename
               id
-              kitType
-              userID
-              kitBatchNb
-              processStatus
-              registrationDate
-              petName
+              name
+              breed
+              gender
+              age
+              microchip
+              conditions
               createdAt
               updatedAt
+              userDogsId
             }
             nextToken
           }
           createdAt
           updatedAt
         }
-      }`
-    )
-  ) as Observable<OnUpdateUserSubscription>;
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    return API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    ) as Observable<
+      SubscriptionResponse<Pick<__SubscriptionContainer, "onUpdateUser">>
+    >;
+  }
 
-  OnDeleteUserListener: Observable<OnDeleteUserSubscription> = API.graphql(
-    graphqlOperation(
-      `subscription OnDeleteUser {
-        onDeleteUser {
+  OnDeleteUserListener(
+    filter?: ModelSubscriptionUserFilterInput
+  ): Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onDeleteUser">>
+  > {
+    const statement = `subscription OnDeleteUser($filter: ModelSubscriptionUserFilterInput) {
+        onDeleteUser(filter: $filter) {
           __typename
           id
-          username
+          firstname
+          lastname
           phoneNb
-          kits {
+          street
+          city
+          postalCode
+          researchAuthorization
+          surveyAuthorization
+          dogs {
             __typename
             items {
               __typename
               id
-              kitType
-              userID
-              kitBatchNb
-              processStatus
-              registrationDate
-              petName
+              name
+              breed
+              gender
+              age
+              microchip
+              conditions
               createdAt
               updatedAt
+              userDogsId
             }
             nextToken
           }
           createdAt
           updatedAt
         }
-      }`
-    )
-  ) as Observable<OnDeleteUserSubscription>;
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    return API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    ) as Observable<
+      SubscriptionResponse<Pick<__SubscriptionContainer, "onDeleteUser">>
+    >;
+  }
 
-  OnCreateKitListener: Observable<OnCreateKitSubscription> = API.graphql(
-    graphqlOperation(
-      `subscription OnCreateKit {
-        onCreateKit {
+  OnCreateDogListener(
+    filter?: ModelSubscriptionDogFilterInput
+  ): Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onCreateDog">>
+  > {
+    const statement = `subscription OnCreateDog($filter: ModelSubscriptionDogFilterInput) {
+        onCreateDog(filter: $filter) {
+          __typename
+          id
+          kits {
+            __typename
+            items {
+              __typename
+              id
+              kitType
+              kitBatchNb
+              processStatus
+              registrationDate
+              createdAt
+              updatedAt
+              dogKitsId
+            }
+            nextToken
+          }
+          name
+          breed
+          gender
+          age
+          microchip
+          conditions
+          user {
+            __typename
+            id
+            firstname
+            lastname
+            phoneNb
+            street
+            city
+            postalCode
+            researchAuthorization
+            surveyAuthorization
+            dogs {
+              __typename
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
+          createdAt
+          updatedAt
+          userDogsId
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    return API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    ) as Observable<
+      SubscriptionResponse<Pick<__SubscriptionContainer, "onCreateDog">>
+    >;
+  }
+
+  OnUpdateDogListener(
+    filter?: ModelSubscriptionDogFilterInput
+  ): Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onUpdateDog">>
+  > {
+    const statement = `subscription OnUpdateDog($filter: ModelSubscriptionDogFilterInput) {
+        onUpdateDog(filter: $filter) {
+          __typename
+          id
+          kits {
+            __typename
+            items {
+              __typename
+              id
+              kitType
+              kitBatchNb
+              processStatus
+              registrationDate
+              createdAt
+              updatedAt
+              dogKitsId
+            }
+            nextToken
+          }
+          name
+          breed
+          gender
+          age
+          microchip
+          conditions
+          user {
+            __typename
+            id
+            firstname
+            lastname
+            phoneNb
+            street
+            city
+            postalCode
+            researchAuthorization
+            surveyAuthorization
+            dogs {
+              __typename
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
+          createdAt
+          updatedAt
+          userDogsId
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    return API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    ) as Observable<
+      SubscriptionResponse<Pick<__SubscriptionContainer, "onUpdateDog">>
+    >;
+  }
+
+  OnDeleteDogListener(
+    filter?: ModelSubscriptionDogFilterInput
+  ): Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onDeleteDog">>
+  > {
+    const statement = `subscription OnDeleteDog($filter: ModelSubscriptionDogFilterInput) {
+        onDeleteDog(filter: $filter) {
+          __typename
+          id
+          kits {
+            __typename
+            items {
+              __typename
+              id
+              kitType
+              kitBatchNb
+              processStatus
+              registrationDate
+              createdAt
+              updatedAt
+              dogKitsId
+            }
+            nextToken
+          }
+          name
+          breed
+          gender
+          age
+          microchip
+          conditions
+          user {
+            __typename
+            id
+            firstname
+            lastname
+            phoneNb
+            street
+            city
+            postalCode
+            researchAuthorization
+            surveyAuthorization
+            dogs {
+              __typename
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
+          createdAt
+          updatedAt
+          userDogsId
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    return API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    ) as Observable<
+      SubscriptionResponse<Pick<__SubscriptionContainer, "onDeleteDog">>
+    >;
+  }
+
+  OnCreateKitListener(
+    filter?: ModelSubscriptionKitFilterInput
+  ): Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onCreateKit">>
+  > {
+    const statement = `subscription OnCreateKit($filter: ModelSubscriptionKitFilterInput) {
+        onCreateKit(filter: $filter) {
           __typename
           id
           kitType
-          userID
           kitBatchNb
           processStatus
           registrationDate
-          petName
+          dog {
+            __typename
+            id
+            kits {
+              __typename
+              nextToken
+            }
+            name
+            breed
+            gender
+            age
+            microchip
+            conditions
+            user {
+              __typename
+              id
+              firstname
+              lastname
+              phoneNb
+              street
+              city
+              postalCode
+              researchAuthorization
+              surveyAuthorization
+              createdAt
+              updatedAt
+            }
+            createdAt
+            updatedAt
+            userDogsId
+          }
           createdAt
           updatedAt
+          dogKitsId
         }
-      }`
-    )
-  ) as Observable<OnCreateKitSubscription>;
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    return API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    ) as Observable<
+      SubscriptionResponse<Pick<__SubscriptionContainer, "onCreateKit">>
+    >;
+  }
 
-  OnUpdateKitListener: Observable<OnUpdateKitSubscription> = API.graphql(
-    graphqlOperation(
-      `subscription OnUpdateKit {
-        onUpdateKit {
+  OnUpdateKitListener(
+    filter?: ModelSubscriptionKitFilterInput
+  ): Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onUpdateKit">>
+  > {
+    const statement = `subscription OnUpdateKit($filter: ModelSubscriptionKitFilterInput) {
+        onUpdateKit(filter: $filter) {
           __typename
           id
           kitType
-          userID
           kitBatchNb
           processStatus
           registrationDate
-          petName
+          dog {
+            __typename
+            id
+            kits {
+              __typename
+              nextToken
+            }
+            name
+            breed
+            gender
+            age
+            microchip
+            conditions
+            user {
+              __typename
+              id
+              firstname
+              lastname
+              phoneNb
+              street
+              city
+              postalCode
+              researchAuthorization
+              surveyAuthorization
+              createdAt
+              updatedAt
+            }
+            createdAt
+            updatedAt
+            userDogsId
+          }
           createdAt
           updatedAt
+          dogKitsId
         }
-      }`
-    )
-  ) as Observable<OnUpdateKitSubscription>;
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    return API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    ) as Observable<
+      SubscriptionResponse<Pick<__SubscriptionContainer, "onUpdateKit">>
+    >;
+  }
 
-  OnDeleteKitListener: Observable<OnDeleteKitSubscription> = API.graphql(
-    graphqlOperation(
-      `subscription OnDeleteKit {
-        onDeleteKit {
+  OnDeleteKitListener(
+    filter?: ModelSubscriptionKitFilterInput
+  ): Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onDeleteKit">>
+  > {
+    const statement = `subscription OnDeleteKit($filter: ModelSubscriptionKitFilterInput) {
+        onDeleteKit(filter: $filter) {
           __typename
           id
           kitType
-          userID
           kitBatchNb
           processStatus
           registrationDate
-          petName
+          dog {
+            __typename
+            id
+            kits {
+              __typename
+              nextToken
+            }
+            name
+            breed
+            gender
+            age
+            microchip
+            conditions
+            user {
+              __typename
+              id
+              firstname
+              lastname
+              phoneNb
+              street
+              city
+              postalCode
+              researchAuthorization
+              surveyAuthorization
+              createdAt
+              updatedAt
+            }
+            createdAt
+            updatedAt
+            userDogsId
+          }
           createdAt
           updatedAt
+          dogKitsId
         }
-      }`
-    )
-  ) as Observable<OnDeleteKitSubscription>;
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    return API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    ) as Observable<
+      SubscriptionResponse<Pick<__SubscriptionContainer, "onDeleteKit">>
+    >;
+  }
 }

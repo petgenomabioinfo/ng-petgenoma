@@ -1,25 +1,31 @@
 {
-  "dev": {
+  "pg": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-petgenomang-dev-224505-authRole",
-      "UnauthRoleArn": "arn:aws:iam::574918379033:role/amplify-petgenomang-dev-224505-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::574918379033:role/amplify-petgenomang-dev-224505-authRole",
-      "Region": "us-east-2",
-      "DeploymentBucketName": "amplify-petgenomang-dev-224505-deployment",
-      "UnauthRoleName": "amplify-petgenomang-dev-224505-unauthRole",
-      "StackName": "amplify-petgenomang-dev-224505",
-      "StackId": "arn:aws:cloudformation:us-east-2:574918379033:stack/amplify-petgenomang-dev-224505/80dc0ea0-fd14-11ea-95c6-02b28f38529c",
-      "AmplifyAppId": "d2due3s21am4b6"
+      "AuthRoleName": "amplify-ngpetgenomaaws-pg-125216-authRole",
+      "UnauthRoleArn": "arn:aws:iam::836927995616:role/amplify-ngpetgenomaaws-pg-125216-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::836927995616:role/amplify-ngpetgenomaaws-pg-125216-authRole",
+      "Region": "eu-west-2",
+      "DeploymentBucketName": "amplify-ngpetgenomaaws-pg-125216-deployment",
+      "UnauthRoleName": "amplify-ngpetgenomaaws-pg-125216-unauthRole",
+      "StackName": "amplify-ngpetgenomaaws-pg-125216",
+      "StackId": "arn:aws:cloudformation:eu-west-2:836927995616:stack/amplify-ngpetgenomaaws-pg-125216/8b727cc0-0133-11ee-9f96-06eaa8d52c8c",
+      "AmplifyAppId": "d2ipy6zzx4oeqi"
     },
     "categories": {
       "auth": {
-        "petgenomang94a7a4d2": {}
+        "ngpetgenomaaws746467c2": {}
       },
       "function": {
-        "S3Trigger41ffb741": {
-          "deploymentBucketName": "amplify-petgenomang-dev-224505-deployment",
-          "s3Key": "amplify-builds/S3Trigger41ffb741-69756b44646362735874-build.zip"
+        "S3Trigger87c555c4": {
+          "deploymentBucketName": "amplify-ngpetgenomaaws-pg-125216-deployment",
+          "s3Key": "amplify-builds/S3Trigger87c555c4-6f667241585669566543-build.zip"
         }
+      },
+      "storage": {
+        "pguserpool": {}
+      },
+      "api": {
+        "ngpetgenomaaws": {}
       }
     }
   }

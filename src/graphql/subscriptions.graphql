@@ -1,20 +1,27 @@
 # this is an auto generated file. This will be overwritten
-subscription OnCreateUser {
-  onCreateUser {
+subscription OnCreateUser($filter: ModelSubscriptionUserFilterInput) {
+  onCreateUser(filter: $filter) {
     id
-    username
+    firstname
+    lastname
     phoneNb
-    kits {
+    street
+    city
+    postalCode
+    researchAuthorization
+    surveyAuthorization
+    dogs {
       items {
         id
-        kitType
-        userID
-        kitBatchNb
-        processStatus
-        registrationDate
-        petName
+        name
+        breed
+        gender
+        age
+        microchip
+        conditions
         createdAt
         updatedAt
+        userDogsId
       }
       nextToken
     }
@@ -22,22 +29,29 @@ subscription OnCreateUser {
     updatedAt
   }
 }
-subscription OnUpdateUser {
-  onUpdateUser {
+subscription OnUpdateUser($filter: ModelSubscriptionUserFilterInput) {
+  onUpdateUser(filter: $filter) {
     id
-    username
+    firstname
+    lastname
     phoneNb
-    kits {
+    street
+    city
+    postalCode
+    researchAuthorization
+    surveyAuthorization
+    dogs {
       items {
         id
-        kitType
-        userID
-        kitBatchNb
-        processStatus
-        registrationDate
-        petName
+        name
+        breed
+        gender
+        age
+        microchip
+        conditions
         createdAt
         updatedAt
+        userDogsId
       }
       nextToken
     }
@@ -45,22 +59,29 @@ subscription OnUpdateUser {
     updatedAt
   }
 }
-subscription OnDeleteUser {
-  onDeleteUser {
+subscription OnDeleteUser($filter: ModelSubscriptionUserFilterInput) {
+  onDeleteUser(filter: $filter) {
     id
-    username
+    firstname
+    lastname
     phoneNb
-    kits {
+    street
+    city
+    postalCode
+    researchAuthorization
+    surveyAuthorization
+    dogs {
       items {
         id
-        kitType
-        userID
-        kitBatchNb
-        processStatus
-        registrationDate
-        petName
+        name
+        breed
+        gender
+        age
+        microchip
+        conditions
         createdAt
         updatedAt
+        userDogsId
       }
       nextToken
     }
@@ -68,42 +89,252 @@ subscription OnDeleteUser {
     updatedAt
   }
 }
-subscription OnCreateKit {
-  onCreateKit {
+subscription OnCreateDog($filter: ModelSubscriptionDogFilterInput) {
+  onCreateDog(filter: $filter) {
     id
-    kitType
-    userID
-    kitBatchNb
-    processStatus
-    registrationDate
-    petName
+    kits {
+      items {
+        id
+        kitType
+        kitBatchNb
+        processStatus
+        registrationDate
+        createdAt
+        updatedAt
+        dogKitsId
+      }
+      nextToken
+    }
+    name
+    breed
+    gender
+    age
+    microchip
+    conditions
+    user {
+      id
+      firstname
+      lastname
+      phoneNb
+      street
+      city
+      postalCode
+      researchAuthorization
+      surveyAuthorization
+      dogs {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
     createdAt
     updatedAt
+    userDogsId
   }
 }
-subscription OnUpdateKit {
-  onUpdateKit {
+subscription OnUpdateDog($filter: ModelSubscriptionDogFilterInput) {
+  onUpdateDog(filter: $filter) {
     id
-    kitType
-    userID
-    kitBatchNb
-    processStatus
-    registrationDate
-    petName
+    kits {
+      items {
+        id
+        kitType
+        kitBatchNb
+        processStatus
+        registrationDate
+        createdAt
+        updatedAt
+        dogKitsId
+      }
+      nextToken
+    }
+    name
+    breed
+    gender
+    age
+    microchip
+    conditions
+    user {
+      id
+      firstname
+      lastname
+      phoneNb
+      street
+      city
+      postalCode
+      researchAuthorization
+      surveyAuthorization
+      dogs {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
     createdAt
     updatedAt
+    userDogsId
   }
 }
-subscription OnDeleteKit {
-  onDeleteKit {
+subscription OnDeleteDog($filter: ModelSubscriptionDogFilterInput) {
+  onDeleteDog(filter: $filter) {
+    id
+    kits {
+      items {
+        id
+        kitType
+        kitBatchNb
+        processStatus
+        registrationDate
+        createdAt
+        updatedAt
+        dogKitsId
+      }
+      nextToken
+    }
+    name
+    breed
+    gender
+    age
+    microchip
+    conditions
+    user {
+      id
+      firstname
+      lastname
+      phoneNb
+      street
+      city
+      postalCode
+      researchAuthorization
+      surveyAuthorization
+      dogs {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+    userDogsId
+  }
+}
+subscription OnCreateKit($filter: ModelSubscriptionKitFilterInput) {
+  onCreateKit(filter: $filter) {
     id
     kitType
-    userID
     kitBatchNb
     processStatus
     registrationDate
-    petName
+    dog {
+      id
+      kits {
+        nextToken
+      }
+      name
+      breed
+      gender
+      age
+      microchip
+      conditions
+      user {
+        id
+        firstname
+        lastname
+        phoneNb
+        street
+        city
+        postalCode
+        researchAuthorization
+        surveyAuthorization
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+      userDogsId
+    }
     createdAt
     updatedAt
+    dogKitsId
+  }
+}
+subscription OnUpdateKit($filter: ModelSubscriptionKitFilterInput) {
+  onUpdateKit(filter: $filter) {
+    id
+    kitType
+    kitBatchNb
+    processStatus
+    registrationDate
+    dog {
+      id
+      kits {
+        nextToken
+      }
+      name
+      breed
+      gender
+      age
+      microchip
+      conditions
+      user {
+        id
+        firstname
+        lastname
+        phoneNb
+        street
+        city
+        postalCode
+        researchAuthorization
+        surveyAuthorization
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+      userDogsId
+    }
+    createdAt
+    updatedAt
+    dogKitsId
+  }
+}
+subscription OnDeleteKit($filter: ModelSubscriptionKitFilterInput) {
+  onDeleteKit(filter: $filter) {
+    id
+    kitType
+    kitBatchNb
+    processStatus
+    registrationDate
+    dog {
+      id
+      kits {
+        nextToken
+      }
+      name
+      breed
+      gender
+      age
+      microchip
+      conditions
+      user {
+        id
+        firstname
+        lastname
+        phoneNb
+        street
+        city
+        postalCode
+        researchAuthorization
+        surveyAuthorization
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+      userDogsId
+    }
+    createdAt
+    updatedAt
+    dogKitsId
   }
 }

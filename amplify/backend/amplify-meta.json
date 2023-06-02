@@ -1,62 +1,147 @@
 {
-    "providers": {
-        "awscloudformation": {
-            "AuthRoleName": "amplify-petgenomang-dev-224505-authRole",
-            "UnauthRoleArn": "arn:aws:iam::574918379033:role/amplify-petgenomang-dev-224505-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::574918379033:role/amplify-petgenomang-dev-224505-authRole",
-            "Region": "us-east-2",
-            "DeploymentBucketName": "amplify-petgenomang-dev-224505-deployment",
-            "UnauthRoleName": "amplify-petgenomang-dev-224505-unauthRole",
-            "StackName": "amplify-petgenomang-dev-224505",
-            "StackId": "arn:aws:cloudformation:us-east-2:574918379033:stack/amplify-petgenomang-dev-224505/80dc0ea0-fd14-11ea-95c6-02b28f38529c",
-            "AmplifyAppId": "d2due3s21am4b6"
-        }
-    },
-    "auth": {
-        "petgenomang94a7a4d2": {
-            "service": "Cognito",
-            "providerPlugin": "awscloudformation",
-            "dependsOn": [],
-            "output": {
-                "AppClientSecret": "h2fbiqdpf6dfhut6chn50m8lthc2q145eh4ev7k76ktate42i3v",
-                "UserPoolId": "us-east-2_tkumWyqDQ",
-                "AppClientIDWeb": "38oh0vkd23uncncipolh8f13cf",
-                "AppClientID": "63skusnrq68oc3sen5s00jn9hu",
-                "IdentityPoolId": "us-east-2:9288cd7b-0e0c-46d1-8352-1721f17cb8be",
-                "IdentityPoolName": "petgenomang94a7a4d2_identitypool_94a7a4d2__dev",
-                "UserPoolName": "petgenomang94a7a4d2_userpool_94a7a4d2"
-            },
-            "lastPushTimeStamp": "2020-09-27T13:36:32.236Z",
-            "providerMetadata": {
-                "s3TemplateURL": "https://s3.amazonaws.com/amplify-petgenomang-dev-224505-deployment/amplify-cfn-templates/auth/petgenomang94a7a4d2-cloudformation-template.yml",
-                "logicalId": "authpetgenomang94a7a4d2"
-            },
-            "lastPushDirHash": "ErXxPdA79wZv7CMBSug1R0cYX6U="
-        }
-    },
-    "api": {
-        "petgenomamgAPI": {
-            "service": "AppSync",
-            "providerPlugin": "awscloudformation",
-            "output": {
-                "authConfig": {
-                    "defaultAuthentication": {
-                        "authenticationType": "AMAZON_COGNITO_USER_POOLS",
-                        "userPoolConfig": {
-                            "userPoolId": "authpetgenomang94a7a4d2"
-                        }
-                    },
-                    "additionalAuthenticationProviders": []
-                },
-                "GraphQLAPIIdOutput": "c4ps7c2cwbfu7ovlm2afnhyi4m",
-                "GraphQLAPIEndpointOutput": "https://gju2mg2ntvashhf4jlptky47ou.appsync-api.us-east-2.amazonaws.com/graphql"
-            },
-            "lastPushTimeStamp": "2020-09-27T13:36:32.237Z",
-            "providerMetadata": {
-                "s3TemplateURL": "https://s3.amazonaws.com/amplify-petgenomang-dev-224505-deployment/amplify-cfn-templates/api/cloudformation-template.json",
-                "logicalId": "apipetgenomamgAPI"
-            },
-            "lastPushDirHash": "y3yixLn/vJ35IjVTbYS7qnl6VFs="
-        }
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-ngpetgenomaaws-pg-125216-authRole",
+      "UnauthRoleArn": "arn:aws:iam::836927995616:role/amplify-ngpetgenomaaws-pg-125216-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::836927995616:role/amplify-ngpetgenomaaws-pg-125216-authRole",
+      "Region": "eu-west-2",
+      "DeploymentBucketName": "amplify-ngpetgenomaaws-pg-125216-deployment",
+      "UnauthRoleName": "amplify-ngpetgenomaaws-pg-125216-unauthRole",
+      "StackName": "amplify-ngpetgenomaaws-pg-125216",
+      "StackId": "arn:aws:cloudformation:eu-west-2:836927995616:stack/amplify-ngpetgenomaaws-pg-125216/8b727cc0-0133-11ee-9f96-06eaa8d52c8c",
+      "AmplifyAppId": "d2ipy6zzx4oeqi"
     }
+  },
+  "auth": {
+    "ngpetgenomaaws746467c2": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "frontendAuthConfig": {
+        "socialProviders": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-ngpetgenomaaws-pg-125216-deployment/amplify-cfn-templates/auth/ngpetgenomaaws746467c2-cloudformation-template.json",
+        "logicalId": "authngpetgenomaaws746467c2"
+      },
+      "lastPushTimeStamp": "2023-06-02T11:50:20.408Z",
+      "output": {
+        "UserPoolId": "eu-west-2_iLI39s0OB",
+        "AppClientIDWeb": "mqtpv2o8ue9tr944cgfb6r5dg",
+        "AppClientID": "vdrbhdqcg5ug2hjbgej0prm3p",
+        "IdentityPoolId": "eu-west-2:bf9bad89-3bb0-4a1e-8ca3-a938dce9a7d0",
+        "UserPoolArn": "arn:aws:cognito-idp:eu-west-2:836927995616:userpool/eu-west-2_iLI39s0OB",
+        "IdentityPoolName": "ngpetgenomaaws746467c2_identitypool_746467c2__pg",
+        "UserPoolName": "ngpetgenomaaws746467c2_userpool_746467c2"
+      },
+      "lastPushDirHash": "+/nsWqJQThC5L3fqlVerKLDZge0="
+    }
+  },
+  "function": {
+    "S3Trigger87c555c4": {
+      "service": "Lambda",
+      "providerPlugin": "awscloudformation",
+      "build": true,
+      "lastBuildTimeStamp": "2023-06-02T11:31:49.732Z",
+      "lastBuildType": "PROD",
+      "lastPackageTimeStamp": "2023-06-02T11:31:49.765Z",
+      "distZipFilename": "S3Trigger87c555c4-6f667241585669566543-build.zip",
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-ngpetgenomaaws-pg-125216-deployment",
+        "s3Key": "amplify-builds/S3Trigger87c555c4-6f667241585669566543-build.zip"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-ngpetgenomaaws-pg-125216-deployment/amplify-cfn-templates/function/S3Trigger87c555c4-cloudformation-template.json",
+        "logicalId": "functionS3Trigger87c555c4"
+      },
+      "lastPushTimeStamp": "2023-06-02T11:50:20.411Z",
+      "output": {
+        "LambdaExecutionRoleArn": "arn:aws:iam::836927995616:role/S3Trigger87c555c4LambdaRole87c555c4-pg",
+        "Region": "eu-west-2",
+        "Arn": "arn:aws:lambda:eu-west-2:836927995616:function:S3Trigger87c555c4-pg",
+        "Name": "S3Trigger87c555c4-pg",
+        "LambdaExecutionRole": "S3Trigger87c555c4LambdaRole87c555c4-pg"
+      },
+      "lastPushDirHash": "WeVi2SlC9GcwuAUzWu0oNX6+I5o="
+    }
+  },
+  "storage": {
+    "pguserpool": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "S3Trigger87c555c4",
+          "attributes": [
+            "Name",
+            "Arn",
+            "LambdaExecutionRole"
+          ]
+        }
+      ],
+      "lastPushTimeStamp": "2023-06-02T11:50:20.412Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-ngpetgenomaaws-pg-125216-deployment/amplify-cfn-templates/storage/cloudformation-template.json",
+        "logicalId": "storagepguserpool"
+      },
+      "output": {
+        "BucketName": "ngpetgenomaaws04c39af5e7ab433e8ded87d9270a4818125216-pg",
+        "Region": "eu-west-2"
+      },
+      "lastPushDirHash": "/gOdLOFFui8TLT8aNMNdXdmE+Yg="
+    }
+  },
+  "api": {
+    "ngpetgenomaaws": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "ngpetgenomaaws746467c2"
+        }
+      ],
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+            "userPoolConfig": {
+              "userPoolId": "authngpetgenomaaws746467c2"
+            }
+          },
+          "additionalAuthenticationProviders": []
+        },
+        "GraphQLAPIIdOutput": "t2ycyzkjqbfxbdapbxmasskrhu",
+        "GraphQLAPIEndpointOutput": "https://qnh74jqblfhidmem36f72rzusa.appsync-api.eu-west-2.amazonaws.com/graphql"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-ngpetgenomaaws-pg-125216-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "logicalId": "apingpetgenomaaws"
+      },
+      "lastPushTimeStamp": "2023-06-02T12:00:55.379Z",
+      "lastPushDirHash": "bt3s5p6v5hz/5fqJ3I3vbHJCX9g="
+    }
+  }
 }

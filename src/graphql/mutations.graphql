@@ -5,19 +5,26 @@ mutation CreateUser(
 ) {
   createUser(input: $input, condition: $condition) {
     id
-    username
+    firstname
+    lastname
     phoneNb
-    kits {
+    street
+    city
+    postalCode
+    researchAuthorization
+    surveyAuthorization
+    dogs {
       items {
         id
-        kitType
-        userID
-        kitBatchNb
-        processStatus
-        registrationDate
-        petName
+        name
+        breed
+        gender
+        age
+        microchip
+        conditions
         createdAt
         updatedAt
+        userDogsId
       }
       nextToken
     }
@@ -31,19 +38,26 @@ mutation UpdateUser(
 ) {
   updateUser(input: $input, condition: $condition) {
     id
-    username
+    firstname
+    lastname
     phoneNb
-    kits {
+    street
+    city
+    postalCode
+    researchAuthorization
+    surveyAuthorization
+    dogs {
       items {
         id
-        kitType
-        userID
-        kitBatchNb
-        processStatus
-        registrationDate
-        petName
+        name
+        breed
+        gender
+        age
+        microchip
+        conditions
         createdAt
         updatedAt
+        userDogsId
       }
       nextToken
     }
@@ -57,24 +71,169 @@ mutation DeleteUser(
 ) {
   deleteUser(input: $input, condition: $condition) {
     id
-    username
+    firstname
+    lastname
     phoneNb
-    kits {
+    street
+    city
+    postalCode
+    researchAuthorization
+    surveyAuthorization
+    dogs {
       items {
         id
-        kitType
-        userID
-        kitBatchNb
-        processStatus
-        registrationDate
-        petName
+        name
+        breed
+        gender
+        age
+        microchip
+        conditions
         createdAt
         updatedAt
+        userDogsId
       }
       nextToken
     }
     createdAt
     updatedAt
+  }
+}
+mutation CreateDog(
+  $input: CreateDogInput!
+  $condition: ModelDogConditionInput
+) {
+  createDog(input: $input, condition: $condition) {
+    id
+    kits {
+      items {
+        id
+        kitType
+        kitBatchNb
+        processStatus
+        registrationDate
+        createdAt
+        updatedAt
+        dogKitsId
+      }
+      nextToken
+    }
+    name
+    breed
+    gender
+    age
+    microchip
+    conditions
+    user {
+      id
+      firstname
+      lastname
+      phoneNb
+      street
+      city
+      postalCode
+      researchAuthorization
+      surveyAuthorization
+      dogs {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+    userDogsId
+  }
+}
+mutation UpdateDog(
+  $input: UpdateDogInput!
+  $condition: ModelDogConditionInput
+) {
+  updateDog(input: $input, condition: $condition) {
+    id
+    kits {
+      items {
+        id
+        kitType
+        kitBatchNb
+        processStatus
+        registrationDate
+        createdAt
+        updatedAt
+        dogKitsId
+      }
+      nextToken
+    }
+    name
+    breed
+    gender
+    age
+    microchip
+    conditions
+    user {
+      id
+      firstname
+      lastname
+      phoneNb
+      street
+      city
+      postalCode
+      researchAuthorization
+      surveyAuthorization
+      dogs {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+    userDogsId
+  }
+}
+mutation DeleteDog(
+  $input: DeleteDogInput!
+  $condition: ModelDogConditionInput
+) {
+  deleteDog(input: $input, condition: $condition) {
+    id
+    kits {
+      items {
+        id
+        kitType
+        kitBatchNb
+        processStatus
+        registrationDate
+        createdAt
+        updatedAt
+        dogKitsId
+      }
+      nextToken
+    }
+    name
+    breed
+    gender
+    age
+    microchip
+    conditions
+    user {
+      id
+      firstname
+      lastname
+      phoneNb
+      street
+      city
+      postalCode
+      researchAuthorization
+      surveyAuthorization
+      dogs {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+    userDogsId
   }
 }
 mutation CreateKit(
@@ -84,13 +243,40 @@ mutation CreateKit(
   createKit(input: $input, condition: $condition) {
     id
     kitType
-    userID
     kitBatchNb
     processStatus
     registrationDate
-    petName
+    dog {
+      id
+      kits {
+        nextToken
+      }
+      name
+      breed
+      gender
+      age
+      microchip
+      conditions
+      user {
+        id
+        firstname
+        lastname
+        phoneNb
+        street
+        city
+        postalCode
+        researchAuthorization
+        surveyAuthorization
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+      userDogsId
+    }
     createdAt
     updatedAt
+    dogKitsId
   }
 }
 mutation UpdateKit(
@@ -100,13 +286,40 @@ mutation UpdateKit(
   updateKit(input: $input, condition: $condition) {
     id
     kitType
-    userID
     kitBatchNb
     processStatus
     registrationDate
-    petName
+    dog {
+      id
+      kits {
+        nextToken
+      }
+      name
+      breed
+      gender
+      age
+      microchip
+      conditions
+      user {
+        id
+        firstname
+        lastname
+        phoneNb
+        street
+        city
+        postalCode
+        researchAuthorization
+        surveyAuthorization
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+      userDogsId
+    }
     createdAt
     updatedAt
+    dogKitsId
   }
 }
 mutation DeleteKit(
@@ -116,12 +329,39 @@ mutation DeleteKit(
   deleteKit(input: $input, condition: $condition) {
     id
     kitType
-    userID
     kitBatchNb
     processStatus
     registrationDate
-    petName
+    dog {
+      id
+      kits {
+        nextToken
+      }
+      name
+      breed
+      gender
+      age
+      microchip
+      conditions
+      user {
+        id
+        firstname
+        lastname
+        phoneNb
+        street
+        city
+        postalCode
+        researchAuthorization
+        surveyAuthorization
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+      userDogsId
+    }
     createdAt
     updatedAt
+    dogKitsId
   }
 }
