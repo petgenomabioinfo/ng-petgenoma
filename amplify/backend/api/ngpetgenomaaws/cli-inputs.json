@@ -8,6 +8,13 @@
       "cognitoUserPoolId": "authngpetgenomaaws746467c2"
     },
     "conflictResolution": {},
-    "additionalAuthTypes": []
+    "additionalAuthTypes": [
+      {
+        "mode": "API_KEY",
+        "expirationTime": 365,
+        "apiKeyExpirationDate": "2024-06-01T14:50:51.493Z",
+        "keyDescription": "pgamplifyapi"
+      }
+    ]
   }
 }

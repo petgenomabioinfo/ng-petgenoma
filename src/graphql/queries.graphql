@@ -5,6 +5,7 @@ query GetUser($id: ID!) {
     firstname
     lastname
     phoneNb
+    email
     street
     city
     postalCode
@@ -25,6 +26,20 @@ query GetUser($id: ID!) {
       }
       nextToken
     }
+    kits {
+      items {
+        id
+        kitType
+        kitBatchNb
+        processStatus
+        registrationDate
+        createdAt
+        updatedAt
+        userKitsId
+        dogKitsId
+      }
+      nextToken
+    }
     createdAt
     updatedAt
   }
@@ -40,12 +55,16 @@ query ListUsers(
       firstname
       lastname
       phoneNb
+      email
       street
       city
       postalCode
       researchAuthorization
       surveyAuthorization
       dogs {
+        nextToken
+      }
+      kits {
         nextToken
       }
       createdAt
@@ -66,6 +85,7 @@ query GetDog($id: ID!) {
         registrationDate
         createdAt
         updatedAt
+        userKitsId
         dogKitsId
       }
       nextToken
@@ -81,12 +101,16 @@ query GetDog($id: ID!) {
       firstname
       lastname
       phoneNb
+      email
       street
       city
       postalCode
       researchAuthorization
       surveyAuthorization
       dogs {
+        nextToken
+      }
+      kits {
         nextToken
       }
       createdAt
@@ -115,6 +139,7 @@ query ListDogs($filter: ModelDogFilterInput, $limit: Int, $nextToken: String) {
         firstname
         lastname
         phoneNb
+        email
         street
         city
         postalCode
@@ -153,6 +178,7 @@ query GetKit($id: ID!) {
         firstname
         lastname
         phoneNb
+        email
         street
         city
         postalCode
@@ -165,8 +191,29 @@ query GetKit($id: ID!) {
       updatedAt
       userDogsId
     }
+    user {
+      id
+      firstname
+      lastname
+      phoneNb
+      email
+      street
+      city
+      postalCode
+      researchAuthorization
+      surveyAuthorization
+      dogs {
+        nextToken
+      }
+      kits {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
     createdAt
     updatedAt
+    userKitsId
     dogKitsId
   }
 }
@@ -190,8 +237,23 @@ query ListKits($filter: ModelKitFilterInput, $limit: Int, $nextToken: String) {
         updatedAt
         userDogsId
       }
+      user {
+        id
+        firstname
+        lastname
+        phoneNb
+        email
+        street
+        city
+        postalCode
+        researchAuthorization
+        surveyAuthorization
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
+      userKitsId
       dogKitsId
     }
     nextToken

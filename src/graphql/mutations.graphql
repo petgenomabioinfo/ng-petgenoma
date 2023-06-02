@@ -8,6 +8,7 @@ mutation CreateUser(
     firstname
     lastname
     phoneNb
+    email
     street
     city
     postalCode
@@ -25,6 +26,20 @@ mutation CreateUser(
         createdAt
         updatedAt
         userDogsId
+      }
+      nextToken
+    }
+    kits {
+      items {
+        id
+        kitType
+        kitBatchNb
+        processStatus
+        registrationDate
+        createdAt
+        updatedAt
+        userKitsId
+        dogKitsId
       }
       nextToken
     }
@@ -41,6 +56,7 @@ mutation UpdateUser(
     firstname
     lastname
     phoneNb
+    email
     street
     city
     postalCode
@@ -61,6 +77,20 @@ mutation UpdateUser(
       }
       nextToken
     }
+    kits {
+      items {
+        id
+        kitType
+        kitBatchNb
+        processStatus
+        registrationDate
+        createdAt
+        updatedAt
+        userKitsId
+        dogKitsId
+      }
+      nextToken
+    }
     createdAt
     updatedAt
   }
@@ -74,6 +104,7 @@ mutation DeleteUser(
     firstname
     lastname
     phoneNb
+    email
     street
     city
     postalCode
@@ -91,6 +122,20 @@ mutation DeleteUser(
         createdAt
         updatedAt
         userDogsId
+      }
+      nextToken
+    }
+    kits {
+      items {
+        id
+        kitType
+        kitBatchNb
+        processStatus
+        registrationDate
+        createdAt
+        updatedAt
+        userKitsId
+        dogKitsId
       }
       nextToken
     }
@@ -113,6 +158,7 @@ mutation CreateDog(
         registrationDate
         createdAt
         updatedAt
+        userKitsId
         dogKitsId
       }
       nextToken
@@ -128,12 +174,16 @@ mutation CreateDog(
       firstname
       lastname
       phoneNb
+      email
       street
       city
       postalCode
       researchAuthorization
       surveyAuthorization
       dogs {
+        nextToken
+      }
+      kits {
         nextToken
       }
       createdAt
@@ -159,6 +209,7 @@ mutation UpdateDog(
         registrationDate
         createdAt
         updatedAt
+        userKitsId
         dogKitsId
       }
       nextToken
@@ -174,12 +225,16 @@ mutation UpdateDog(
       firstname
       lastname
       phoneNb
+      email
       street
       city
       postalCode
       researchAuthorization
       surveyAuthorization
       dogs {
+        nextToken
+      }
+      kits {
         nextToken
       }
       createdAt
@@ -205,6 +260,7 @@ mutation DeleteDog(
         registrationDate
         createdAt
         updatedAt
+        userKitsId
         dogKitsId
       }
       nextToken
@@ -220,12 +276,16 @@ mutation DeleteDog(
       firstname
       lastname
       phoneNb
+      email
       street
       city
       postalCode
       researchAuthorization
       surveyAuthorization
       dogs {
+        nextToken
+      }
+      kits {
         nextToken
       }
       createdAt
@@ -262,6 +322,7 @@ mutation CreateKit(
         firstname
         lastname
         phoneNb
+        email
         street
         city
         postalCode
@@ -274,8 +335,29 @@ mutation CreateKit(
       updatedAt
       userDogsId
     }
+    user {
+      id
+      firstname
+      lastname
+      phoneNb
+      email
+      street
+      city
+      postalCode
+      researchAuthorization
+      surveyAuthorization
+      dogs {
+        nextToken
+      }
+      kits {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
     createdAt
     updatedAt
+    userKitsId
     dogKitsId
   }
 }
@@ -305,6 +387,7 @@ mutation UpdateKit(
         firstname
         lastname
         phoneNb
+        email
         street
         city
         postalCode
@@ -317,8 +400,29 @@ mutation UpdateKit(
       updatedAt
       userDogsId
     }
+    user {
+      id
+      firstname
+      lastname
+      phoneNb
+      email
+      street
+      city
+      postalCode
+      researchAuthorization
+      surveyAuthorization
+      dogs {
+        nextToken
+      }
+      kits {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
     createdAt
     updatedAt
+    userKitsId
     dogKitsId
   }
 }
@@ -348,6 +452,7 @@ mutation DeleteKit(
         firstname
         lastname
         phoneNb
+        email
         street
         city
         postalCode
@@ -360,8 +465,29 @@ mutation DeleteKit(
       updatedAt
       userDogsId
     }
+    user {
+      id
+      firstname
+      lastname
+      phoneNb
+      email
+      street
+      city
+      postalCode
+      researchAuthorization
+      surveyAuthorization
+      dogs {
+        nextToken
+      }
+      kits {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
     createdAt
     updatedAt
+    userKitsId
     dogKitsId
   }
 }

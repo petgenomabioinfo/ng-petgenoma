@@ -26,6 +26,7 @@ export type CreateUserInput = {
   firstname: string;
   lastname: string;
   phoneNb: string;
+  email: string;
   street: string;
   city: string;
   postalCode: string;
@@ -37,6 +38,7 @@ export type ModelUserConditionInput = {
   firstname?: ModelStringInput | null;
   lastname?: ModelStringInput | null;
   phoneNb?: ModelStringInput | null;
+  email?: ModelStringInput | null;
   street?: ModelStringInput | null;
   city?: ModelStringInput | null;
   postalCode?: ModelStringInput | null;
@@ -92,12 +94,14 @@ export type User = {
   firstname: string;
   lastname: string;
   phoneNb: string;
+  email: string;
   street: string;
   city: string;
   postalCode: string;
   researchAuthorization: string;
   surveyAuthorization: string;
   dogs?: ModelDogConnection | null;
+  kits?: ModelKitConnection | null;
   createdAt: string;
   updatedAt: string;
 };
@@ -138,8 +142,10 @@ export type Kit = {
   processStatus: string;
   registrationDate: string;
   dog?: Dog | null;
+  user?: User | null;
   createdAt: string;
   updatedAt: string;
+  userKitsId?: string | null;
   dogKitsId?: string | null;
 };
 
@@ -148,6 +154,7 @@ export type UpdateUserInput = {
   firstname?: string | null;
   lastname?: string | null;
   phoneNb?: string | null;
+  email?: string | null;
   street?: string | null;
   city?: string | null;
   postalCode?: string | null;
@@ -220,6 +227,7 @@ export type CreateKitInput = {
   kitBatchNb?: string | null;
   processStatus: string;
   registrationDate: string;
+  userKitsId?: string | null;
   dogKitsId?: string | null;
 };
 
@@ -231,6 +239,7 @@ export type ModelKitConditionInput = {
   and?: Array<ModelKitConditionInput | null> | null;
   or?: Array<ModelKitConditionInput | null> | null;
   not?: ModelKitConditionInput | null;
+  userKitsId?: ModelIDInput | null;
   dogKitsId?: ModelIDInput | null;
 };
 
@@ -240,6 +249,7 @@ export type UpdateKitInput = {
   kitBatchNb?: string | null;
   processStatus?: string | null;
   registrationDate?: string | null;
+  userKitsId?: string | null;
   dogKitsId?: string | null;
 };
 
@@ -252,6 +262,7 @@ export type ModelUserFilterInput = {
   firstname?: ModelStringInput | null;
   lastname?: ModelStringInput | null;
   phoneNb?: ModelStringInput | null;
+  email?: ModelStringInput | null;
   street?: ModelStringInput | null;
   city?: ModelStringInput | null;
   postalCode?: ModelStringInput | null;
@@ -291,6 +302,7 @@ export type ModelKitFilterInput = {
   and?: Array<ModelKitFilterInput | null> | null;
   or?: Array<ModelKitFilterInput | null> | null;
   not?: ModelKitFilterInput | null;
+  userKitsId?: ModelIDInput | null;
   dogKitsId?: ModelIDInput | null;
 };
 
@@ -299,6 +311,7 @@ export type ModelSubscriptionUserFilterInput = {
   firstname?: ModelSubscriptionStringInput | null;
   lastname?: ModelSubscriptionStringInput | null;
   phoneNb?: ModelSubscriptionStringInput | null;
+  email?: ModelSubscriptionStringInput | null;
   street?: ModelSubscriptionStringInput | null;
   city?: ModelSubscriptionStringInput | null;
   postalCode?: ModelSubscriptionStringInput | null;
@@ -366,6 +379,7 @@ export type CreateUserMutation = {
   firstname: string;
   lastname: string;
   phoneNb: string;
+  email: string;
   street: string;
   city: string;
   postalCode: string;
@@ -385,6 +399,22 @@ export type CreateUserMutation = {
       createdAt: string;
       updatedAt: string;
       userDogsId?: string | null;
+    } | null>;
+    nextToken?: string | null;
+  } | null;
+  kits?: {
+    __typename: "ModelKitConnection";
+    items: Array<{
+      __typename: "Kit";
+      id: string;
+      kitType: string;
+      kitBatchNb?: string | null;
+      processStatus: string;
+      registrationDate: string;
+      createdAt: string;
+      updatedAt: string;
+      userKitsId?: string | null;
+      dogKitsId?: string | null;
     } | null>;
     nextToken?: string | null;
   } | null;
@@ -398,6 +428,7 @@ export type UpdateUserMutation = {
   firstname: string;
   lastname: string;
   phoneNb: string;
+  email: string;
   street: string;
   city: string;
   postalCode: string;
@@ -420,6 +451,22 @@ export type UpdateUserMutation = {
     } | null>;
     nextToken?: string | null;
   } | null;
+  kits?: {
+    __typename: "ModelKitConnection";
+    items: Array<{
+      __typename: "Kit";
+      id: string;
+      kitType: string;
+      kitBatchNb?: string | null;
+      processStatus: string;
+      registrationDate: string;
+      createdAt: string;
+      updatedAt: string;
+      userKitsId?: string | null;
+      dogKitsId?: string | null;
+    } | null>;
+    nextToken?: string | null;
+  } | null;
   createdAt: string;
   updatedAt: string;
 };
@@ -430,6 +477,7 @@ export type DeleteUserMutation = {
   firstname: string;
   lastname: string;
   phoneNb: string;
+  email: string;
   street: string;
   city: string;
   postalCode: string;
@@ -449,6 +497,22 @@ export type DeleteUserMutation = {
       createdAt: string;
       updatedAt: string;
       userDogsId?: string | null;
+    } | null>;
+    nextToken?: string | null;
+  } | null;
+  kits?: {
+    __typename: "ModelKitConnection";
+    items: Array<{
+      __typename: "Kit";
+      id: string;
+      kitType: string;
+      kitBatchNb?: string | null;
+      processStatus: string;
+      registrationDate: string;
+      createdAt: string;
+      updatedAt: string;
+      userKitsId?: string | null;
+      dogKitsId?: string | null;
     } | null>;
     nextToken?: string | null;
   } | null;
@@ -470,6 +534,7 @@ export type CreateDogMutation = {
       registrationDate: string;
       createdAt: string;
       updatedAt: string;
+      userKitsId?: string | null;
       dogKitsId?: string | null;
     } | null>;
     nextToken?: string | null;
@@ -486,6 +551,7 @@ export type CreateDogMutation = {
     firstname: string;
     lastname: string;
     phoneNb: string;
+    email: string;
     street: string;
     city: string;
     postalCode: string;
@@ -493,6 +559,10 @@ export type CreateDogMutation = {
     surveyAuthorization: string;
     dogs?: {
       __typename: "ModelDogConnection";
+      nextToken?: string | null;
+    } | null;
+    kits?: {
+      __typename: "ModelKitConnection";
       nextToken?: string | null;
     } | null;
     createdAt: string;
@@ -517,6 +587,7 @@ export type UpdateDogMutation = {
       registrationDate: string;
       createdAt: string;
       updatedAt: string;
+      userKitsId?: string | null;
       dogKitsId?: string | null;
     } | null>;
     nextToken?: string | null;
@@ -533,6 +604,7 @@ export type UpdateDogMutation = {
     firstname: string;
     lastname: string;
     phoneNb: string;
+    email: string;
     street: string;
     city: string;
     postalCode: string;
@@ -540,6 +612,10 @@ export type UpdateDogMutation = {
     surveyAuthorization: string;
     dogs?: {
       __typename: "ModelDogConnection";
+      nextToken?: string | null;
+    } | null;
+    kits?: {
+      __typename: "ModelKitConnection";
       nextToken?: string | null;
     } | null;
     createdAt: string;
@@ -564,6 +640,7 @@ export type DeleteDogMutation = {
       registrationDate: string;
       createdAt: string;
       updatedAt: string;
+      userKitsId?: string | null;
       dogKitsId?: string | null;
     } | null>;
     nextToken?: string | null;
@@ -580,6 +657,7 @@ export type DeleteDogMutation = {
     firstname: string;
     lastname: string;
     phoneNb: string;
+    email: string;
     street: string;
     city: string;
     postalCode: string;
@@ -587,6 +665,10 @@ export type DeleteDogMutation = {
     surveyAuthorization: string;
     dogs?: {
       __typename: "ModelDogConnection";
+      nextToken?: string | null;
+    } | null;
+    kits?: {
+      __typename: "ModelKitConnection";
       nextToken?: string | null;
     } | null;
     createdAt: string;
@@ -623,6 +705,7 @@ export type CreateKitMutation = {
       firstname: string;
       lastname: string;
       phoneNb: string;
+      email: string;
       street: string;
       city: string;
       postalCode: string;
@@ -635,8 +718,32 @@ export type CreateKitMutation = {
     updatedAt: string;
     userDogsId?: string | null;
   } | null;
+  user?: {
+    __typename: "User";
+    id: string;
+    firstname: string;
+    lastname: string;
+    phoneNb: string;
+    email: string;
+    street: string;
+    city: string;
+    postalCode: string;
+    researchAuthorization: string;
+    surveyAuthorization: string;
+    dogs?: {
+      __typename: "ModelDogConnection";
+      nextToken?: string | null;
+    } | null;
+    kits?: {
+      __typename: "ModelKitConnection";
+      nextToken?: string | null;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+  } | null;
   createdAt: string;
   updatedAt: string;
+  userKitsId?: string | null;
   dogKitsId?: string | null;
 };
 
@@ -666,6 +773,7 @@ export type UpdateKitMutation = {
       firstname: string;
       lastname: string;
       phoneNb: string;
+      email: string;
       street: string;
       city: string;
       postalCode: string;
@@ -678,8 +786,32 @@ export type UpdateKitMutation = {
     updatedAt: string;
     userDogsId?: string | null;
   } | null;
+  user?: {
+    __typename: "User";
+    id: string;
+    firstname: string;
+    lastname: string;
+    phoneNb: string;
+    email: string;
+    street: string;
+    city: string;
+    postalCode: string;
+    researchAuthorization: string;
+    surveyAuthorization: string;
+    dogs?: {
+      __typename: "ModelDogConnection";
+      nextToken?: string | null;
+    } | null;
+    kits?: {
+      __typename: "ModelKitConnection";
+      nextToken?: string | null;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+  } | null;
   createdAt: string;
   updatedAt: string;
+  userKitsId?: string | null;
   dogKitsId?: string | null;
 };
 
@@ -709,6 +841,7 @@ export type DeleteKitMutation = {
       firstname: string;
       lastname: string;
       phoneNb: string;
+      email: string;
       street: string;
       city: string;
       postalCode: string;
@@ -721,8 +854,32 @@ export type DeleteKitMutation = {
     updatedAt: string;
     userDogsId?: string | null;
   } | null;
+  user?: {
+    __typename: "User";
+    id: string;
+    firstname: string;
+    lastname: string;
+    phoneNb: string;
+    email: string;
+    street: string;
+    city: string;
+    postalCode: string;
+    researchAuthorization: string;
+    surveyAuthorization: string;
+    dogs?: {
+      __typename: "ModelDogConnection";
+      nextToken?: string | null;
+    } | null;
+    kits?: {
+      __typename: "ModelKitConnection";
+      nextToken?: string | null;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+  } | null;
   createdAt: string;
   updatedAt: string;
+  userKitsId?: string | null;
   dogKitsId?: string | null;
 };
 
@@ -732,6 +889,7 @@ export type GetUserQuery = {
   firstname: string;
   lastname: string;
   phoneNb: string;
+  email: string;
   street: string;
   city: string;
   postalCode: string;
@@ -754,6 +912,22 @@ export type GetUserQuery = {
     } | null>;
     nextToken?: string | null;
   } | null;
+  kits?: {
+    __typename: "ModelKitConnection";
+    items: Array<{
+      __typename: "Kit";
+      id: string;
+      kitType: string;
+      kitBatchNb?: string | null;
+      processStatus: string;
+      registrationDate: string;
+      createdAt: string;
+      updatedAt: string;
+      userKitsId?: string | null;
+      dogKitsId?: string | null;
+    } | null>;
+    nextToken?: string | null;
+  } | null;
   createdAt: string;
   updatedAt: string;
 };
@@ -766,6 +940,7 @@ export type ListUsersQuery = {
     firstname: string;
     lastname: string;
     phoneNb: string;
+    email: string;
     street: string;
     city: string;
     postalCode: string;
@@ -773,6 +948,10 @@ export type ListUsersQuery = {
     surveyAuthorization: string;
     dogs?: {
       __typename: "ModelDogConnection";
+      nextToken?: string | null;
+    } | null;
+    kits?: {
+      __typename: "ModelKitConnection";
       nextToken?: string | null;
     } | null;
     createdAt: string;
@@ -795,6 +974,7 @@ export type GetDogQuery = {
       registrationDate: string;
       createdAt: string;
       updatedAt: string;
+      userKitsId?: string | null;
       dogKitsId?: string | null;
     } | null>;
     nextToken?: string | null;
@@ -811,6 +991,7 @@ export type GetDogQuery = {
     firstname: string;
     lastname: string;
     phoneNb: string;
+    email: string;
     street: string;
     city: string;
     postalCode: string;
@@ -818,6 +999,10 @@ export type GetDogQuery = {
     surveyAuthorization: string;
     dogs?: {
       __typename: "ModelDogConnection";
+      nextToken?: string | null;
+    } | null;
+    kits?: {
+      __typename: "ModelKitConnection";
       nextToken?: string | null;
     } | null;
     createdAt: string;
@@ -849,6 +1034,7 @@ export type ListDogsQuery = {
       firstname: string;
       lastname: string;
       phoneNb: string;
+      email: string;
       street: string;
       city: string;
       postalCode: string;
@@ -890,6 +1076,7 @@ export type GetKitQuery = {
       firstname: string;
       lastname: string;
       phoneNb: string;
+      email: string;
       street: string;
       city: string;
       postalCode: string;
@@ -902,8 +1089,32 @@ export type GetKitQuery = {
     updatedAt: string;
     userDogsId?: string | null;
   } | null;
+  user?: {
+    __typename: "User";
+    id: string;
+    firstname: string;
+    lastname: string;
+    phoneNb: string;
+    email: string;
+    street: string;
+    city: string;
+    postalCode: string;
+    researchAuthorization: string;
+    surveyAuthorization: string;
+    dogs?: {
+      __typename: "ModelDogConnection";
+      nextToken?: string | null;
+    } | null;
+    kits?: {
+      __typename: "ModelKitConnection";
+      nextToken?: string | null;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+  } | null;
   createdAt: string;
   updatedAt: string;
+  userKitsId?: string | null;
   dogKitsId?: string | null;
 };
 
@@ -929,8 +1140,24 @@ export type ListKitsQuery = {
       updatedAt: string;
       userDogsId?: string | null;
     } | null;
+    user?: {
+      __typename: "User";
+      id: string;
+      firstname: string;
+      lastname: string;
+      phoneNb: string;
+      email: string;
+      street: string;
+      city: string;
+      postalCode: string;
+      researchAuthorization: string;
+      surveyAuthorization: string;
+      createdAt: string;
+      updatedAt: string;
+    } | null;
     createdAt: string;
     updatedAt: string;
+    userKitsId?: string | null;
     dogKitsId?: string | null;
   } | null>;
   nextToken?: string | null;
@@ -942,6 +1169,7 @@ export type OnCreateUserSubscription = {
   firstname: string;
   lastname: string;
   phoneNb: string;
+  email: string;
   street: string;
   city: string;
   postalCode: string;
@@ -961,6 +1189,22 @@ export type OnCreateUserSubscription = {
       createdAt: string;
       updatedAt: string;
       userDogsId?: string | null;
+    } | null>;
+    nextToken?: string | null;
+  } | null;
+  kits?: {
+    __typename: "ModelKitConnection";
+    items: Array<{
+      __typename: "Kit";
+      id: string;
+      kitType: string;
+      kitBatchNb?: string | null;
+      processStatus: string;
+      registrationDate: string;
+      createdAt: string;
+      updatedAt: string;
+      userKitsId?: string | null;
+      dogKitsId?: string | null;
     } | null>;
     nextToken?: string | null;
   } | null;
@@ -974,6 +1218,7 @@ export type OnUpdateUserSubscription = {
   firstname: string;
   lastname: string;
   phoneNb: string;
+  email: string;
   street: string;
   city: string;
   postalCode: string;
@@ -996,6 +1241,22 @@ export type OnUpdateUserSubscription = {
     } | null>;
     nextToken?: string | null;
   } | null;
+  kits?: {
+    __typename: "ModelKitConnection";
+    items: Array<{
+      __typename: "Kit";
+      id: string;
+      kitType: string;
+      kitBatchNb?: string | null;
+      processStatus: string;
+      registrationDate: string;
+      createdAt: string;
+      updatedAt: string;
+      userKitsId?: string | null;
+      dogKitsId?: string | null;
+    } | null>;
+    nextToken?: string | null;
+  } | null;
   createdAt: string;
   updatedAt: string;
 };
@@ -1006,6 +1267,7 @@ export type OnDeleteUserSubscription = {
   firstname: string;
   lastname: string;
   phoneNb: string;
+  email: string;
   street: string;
   city: string;
   postalCode: string;
@@ -1025,6 +1287,22 @@ export type OnDeleteUserSubscription = {
       createdAt: string;
       updatedAt: string;
       userDogsId?: string | null;
+    } | null>;
+    nextToken?: string | null;
+  } | null;
+  kits?: {
+    __typename: "ModelKitConnection";
+    items: Array<{
+      __typename: "Kit";
+      id: string;
+      kitType: string;
+      kitBatchNb?: string | null;
+      processStatus: string;
+      registrationDate: string;
+      createdAt: string;
+      updatedAt: string;
+      userKitsId?: string | null;
+      dogKitsId?: string | null;
     } | null>;
     nextToken?: string | null;
   } | null;
@@ -1046,6 +1324,7 @@ export type OnCreateDogSubscription = {
       registrationDate: string;
       createdAt: string;
       updatedAt: string;
+      userKitsId?: string | null;
       dogKitsId?: string | null;
     } | null>;
     nextToken?: string | null;
@@ -1062,6 +1341,7 @@ export type OnCreateDogSubscription = {
     firstname: string;
     lastname: string;
     phoneNb: string;
+    email: string;
     street: string;
     city: string;
     postalCode: string;
@@ -1069,6 +1349,10 @@ export type OnCreateDogSubscription = {
     surveyAuthorization: string;
     dogs?: {
       __typename: "ModelDogConnection";
+      nextToken?: string | null;
+    } | null;
+    kits?: {
+      __typename: "ModelKitConnection";
       nextToken?: string | null;
     } | null;
     createdAt: string;
@@ -1093,6 +1377,7 @@ export type OnUpdateDogSubscription = {
       registrationDate: string;
       createdAt: string;
       updatedAt: string;
+      userKitsId?: string | null;
       dogKitsId?: string | null;
     } | null>;
     nextToken?: string | null;
@@ -1109,6 +1394,7 @@ export type OnUpdateDogSubscription = {
     firstname: string;
     lastname: string;
     phoneNb: string;
+    email: string;
     street: string;
     city: string;
     postalCode: string;
@@ -1116,6 +1402,10 @@ export type OnUpdateDogSubscription = {
     surveyAuthorization: string;
     dogs?: {
       __typename: "ModelDogConnection";
+      nextToken?: string | null;
+    } | null;
+    kits?: {
+      __typename: "ModelKitConnection";
       nextToken?: string | null;
     } | null;
     createdAt: string;
@@ -1140,6 +1430,7 @@ export type OnDeleteDogSubscription = {
       registrationDate: string;
       createdAt: string;
       updatedAt: string;
+      userKitsId?: string | null;
       dogKitsId?: string | null;
     } | null>;
     nextToken?: string | null;
@@ -1156,6 +1447,7 @@ export type OnDeleteDogSubscription = {
     firstname: string;
     lastname: string;
     phoneNb: string;
+    email: string;
     street: string;
     city: string;
     postalCode: string;
@@ -1163,6 +1455,10 @@ export type OnDeleteDogSubscription = {
     surveyAuthorization: string;
     dogs?: {
       __typename: "ModelDogConnection";
+      nextToken?: string | null;
+    } | null;
+    kits?: {
+      __typename: "ModelKitConnection";
       nextToken?: string | null;
     } | null;
     createdAt: string;
@@ -1199,6 +1495,7 @@ export type OnCreateKitSubscription = {
       firstname: string;
       lastname: string;
       phoneNb: string;
+      email: string;
       street: string;
       city: string;
       postalCode: string;
@@ -1211,8 +1508,32 @@ export type OnCreateKitSubscription = {
     updatedAt: string;
     userDogsId?: string | null;
   } | null;
+  user?: {
+    __typename: "User";
+    id: string;
+    firstname: string;
+    lastname: string;
+    phoneNb: string;
+    email: string;
+    street: string;
+    city: string;
+    postalCode: string;
+    researchAuthorization: string;
+    surveyAuthorization: string;
+    dogs?: {
+      __typename: "ModelDogConnection";
+      nextToken?: string | null;
+    } | null;
+    kits?: {
+      __typename: "ModelKitConnection";
+      nextToken?: string | null;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+  } | null;
   createdAt: string;
   updatedAt: string;
+  userKitsId?: string | null;
   dogKitsId?: string | null;
 };
 
@@ -1242,6 +1563,7 @@ export type OnUpdateKitSubscription = {
       firstname: string;
       lastname: string;
       phoneNb: string;
+      email: string;
       street: string;
       city: string;
       postalCode: string;
@@ -1254,8 +1576,32 @@ export type OnUpdateKitSubscription = {
     updatedAt: string;
     userDogsId?: string | null;
   } | null;
+  user?: {
+    __typename: "User";
+    id: string;
+    firstname: string;
+    lastname: string;
+    phoneNb: string;
+    email: string;
+    street: string;
+    city: string;
+    postalCode: string;
+    researchAuthorization: string;
+    surveyAuthorization: string;
+    dogs?: {
+      __typename: "ModelDogConnection";
+      nextToken?: string | null;
+    } | null;
+    kits?: {
+      __typename: "ModelKitConnection";
+      nextToken?: string | null;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+  } | null;
   createdAt: string;
   updatedAt: string;
+  userKitsId?: string | null;
   dogKitsId?: string | null;
 };
 
@@ -1285,6 +1631,7 @@ export type OnDeleteKitSubscription = {
       firstname: string;
       lastname: string;
       phoneNb: string;
+      email: string;
       street: string;
       city: string;
       postalCode: string;
@@ -1297,8 +1644,32 @@ export type OnDeleteKitSubscription = {
     updatedAt: string;
     userDogsId?: string | null;
   } | null;
+  user?: {
+    __typename: "User";
+    id: string;
+    firstname: string;
+    lastname: string;
+    phoneNb: string;
+    email: string;
+    street: string;
+    city: string;
+    postalCode: string;
+    researchAuthorization: string;
+    surveyAuthorization: string;
+    dogs?: {
+      __typename: "ModelDogConnection";
+      nextToken?: string | null;
+    } | null;
+    kits?: {
+      __typename: "ModelKitConnection";
+      nextToken?: string | null;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+  } | null;
   createdAt: string;
   updatedAt: string;
+  userKitsId?: string | null;
   dogKitsId?: string | null;
 };
 
@@ -1317,6 +1688,7 @@ export class APIService {
           firstname
           lastname
           phoneNb
+          email
           street
           city
           postalCode
@@ -1336,6 +1708,22 @@ export class APIService {
               createdAt
               updatedAt
               userDogsId
+            }
+            nextToken
+          }
+          kits {
+            __typename
+            items {
+              __typename
+              id
+              kitType
+              kitBatchNb
+              processStatus
+              registrationDate
+              createdAt
+              updatedAt
+              userKitsId
+              dogKitsId
             }
             nextToken
           }
@@ -1365,6 +1753,7 @@ export class APIService {
           firstname
           lastname
           phoneNb
+          email
           street
           city
           postalCode
@@ -1384,6 +1773,22 @@ export class APIService {
               createdAt
               updatedAt
               userDogsId
+            }
+            nextToken
+          }
+          kits {
+            __typename
+            items {
+              __typename
+              id
+              kitType
+              kitBatchNb
+              processStatus
+              registrationDate
+              createdAt
+              updatedAt
+              userKitsId
+              dogKitsId
             }
             nextToken
           }
@@ -1413,6 +1818,7 @@ export class APIService {
           firstname
           lastname
           phoneNb
+          email
           street
           city
           postalCode
@@ -1432,6 +1838,22 @@ export class APIService {
               createdAt
               updatedAt
               userDogsId
+            }
+            nextToken
+          }
+          kits {
+            __typename
+            items {
+              __typename
+              id
+              kitType
+              kitBatchNb
+              processStatus
+              registrationDate
+              createdAt
+              updatedAt
+              userKitsId
+              dogKitsId
             }
             nextToken
           }
@@ -1469,6 +1891,7 @@ export class APIService {
               registrationDate
               createdAt
               updatedAt
+              userKitsId
               dogKitsId
             }
             nextToken
@@ -1485,12 +1908,17 @@ export class APIService {
             firstname
             lastname
             phoneNb
+            email
             street
             city
             postalCode
             researchAuthorization
             surveyAuthorization
             dogs {
+              __typename
+              nextToken
+            }
+            kits {
               __typename
               nextToken
             }
@@ -1532,6 +1960,7 @@ export class APIService {
               registrationDate
               createdAt
               updatedAt
+              userKitsId
               dogKitsId
             }
             nextToken
@@ -1548,12 +1977,17 @@ export class APIService {
             firstname
             lastname
             phoneNb
+            email
             street
             city
             postalCode
             researchAuthorization
             surveyAuthorization
             dogs {
+              __typename
+              nextToken
+            }
+            kits {
               __typename
               nextToken
             }
@@ -1595,6 +2029,7 @@ export class APIService {
               registrationDate
               createdAt
               updatedAt
+              userKitsId
               dogKitsId
             }
             nextToken
@@ -1611,12 +2046,17 @@ export class APIService {
             firstname
             lastname
             phoneNb
+            email
             street
             city
             postalCode
             researchAuthorization
             surveyAuthorization
             dogs {
+              __typename
+              nextToken
+            }
+            kits {
               __typename
               nextToken
             }
@@ -1670,6 +2110,7 @@ export class APIService {
               firstname
               lastname
               phoneNb
+              email
               street
               city
               postalCode
@@ -1682,8 +2123,32 @@ export class APIService {
             updatedAt
             userDogsId
           }
+          user {
+            __typename
+            id
+            firstname
+            lastname
+            phoneNb
+            email
+            street
+            city
+            postalCode
+            researchAuthorization
+            surveyAuthorization
+            dogs {
+              __typename
+              nextToken
+            }
+            kits {
+              __typename
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
           createdAt
           updatedAt
+          userKitsId
           dogKitsId
         }
       }`;
@@ -1729,6 +2194,7 @@ export class APIService {
               firstname
               lastname
               phoneNb
+              email
               street
               city
               postalCode
@@ -1741,8 +2207,32 @@ export class APIService {
             updatedAt
             userDogsId
           }
+          user {
+            __typename
+            id
+            firstname
+            lastname
+            phoneNb
+            email
+            street
+            city
+            postalCode
+            researchAuthorization
+            surveyAuthorization
+            dogs {
+              __typename
+              nextToken
+            }
+            kits {
+              __typename
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
           createdAt
           updatedAt
+          userKitsId
           dogKitsId
         }
       }`;
@@ -1788,6 +2278,7 @@ export class APIService {
               firstname
               lastname
               phoneNb
+              email
               street
               city
               postalCode
@@ -1800,8 +2291,32 @@ export class APIService {
             updatedAt
             userDogsId
           }
+          user {
+            __typename
+            id
+            firstname
+            lastname
+            phoneNb
+            email
+            street
+            city
+            postalCode
+            researchAuthorization
+            surveyAuthorization
+            dogs {
+              __typename
+              nextToken
+            }
+            kits {
+              __typename
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
           createdAt
           updatedAt
+          userKitsId
           dogKitsId
         }
       }`;
@@ -1824,6 +2339,7 @@ export class APIService {
           firstname
           lastname
           phoneNb
+          email
           street
           city
           postalCode
@@ -1843,6 +2359,22 @@ export class APIService {
               createdAt
               updatedAt
               userDogsId
+            }
+            nextToken
+          }
+          kits {
+            __typename
+            items {
+              __typename
+              id
+              kitType
+              kitBatchNb
+              processStatus
+              registrationDate
+              createdAt
+              updatedAt
+              userKitsId
+              dogKitsId
             }
             nextToken
           }
@@ -1872,12 +2404,17 @@ export class APIService {
             firstname
             lastname
             phoneNb
+            email
             street
             city
             postalCode
             researchAuthorization
             surveyAuthorization
             dogs {
+              __typename
+              nextToken
+            }
+            kits {
               __typename
               nextToken
             }
@@ -1918,6 +2455,7 @@ export class APIService {
               registrationDate
               createdAt
               updatedAt
+              userKitsId
               dogKitsId
             }
             nextToken
@@ -1934,12 +2472,17 @@ export class APIService {
             firstname
             lastname
             phoneNb
+            email
             street
             city
             postalCode
             researchAuthorization
             surveyAuthorization
             dogs {
+              __typename
+              nextToken
+            }
+            kits {
               __typename
               nextToken
             }
@@ -1986,6 +2529,7 @@ export class APIService {
               firstname
               lastname
               phoneNb
+              email
               street
               city
               postalCode
@@ -2044,6 +2588,7 @@ export class APIService {
               firstname
               lastname
               phoneNb
+              email
               street
               city
               postalCode
@@ -2056,8 +2601,32 @@ export class APIService {
             updatedAt
             userDogsId
           }
+          user {
+            __typename
+            id
+            firstname
+            lastname
+            phoneNb
+            email
+            street
+            city
+            postalCode
+            researchAuthorization
+            surveyAuthorization
+            dogs {
+              __typename
+              nextToken
+            }
+            kits {
+              __typename
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
           createdAt
           updatedAt
+          userKitsId
           dogKitsId
         }
       }`;
@@ -2097,8 +2666,24 @@ export class APIService {
               updatedAt
               userDogsId
             }
+            user {
+              __typename
+              id
+              firstname
+              lastname
+              phoneNb
+              email
+              street
+              city
+              postalCode
+              researchAuthorization
+              surveyAuthorization
+              createdAt
+              updatedAt
+            }
             createdAt
             updatedAt
+            userKitsId
             dogKitsId
           }
           nextToken
@@ -2131,6 +2716,7 @@ export class APIService {
           firstname
           lastname
           phoneNb
+          email
           street
           city
           postalCode
@@ -2150,6 +2736,22 @@ export class APIService {
               createdAt
               updatedAt
               userDogsId
+            }
+            nextToken
+          }
+          kits {
+            __typename
+            items {
+              __typename
+              id
+              kitType
+              kitBatchNb
+              processStatus
+              registrationDate
+              createdAt
+              updatedAt
+              userKitsId
+              dogKitsId
             }
             nextToken
           }
@@ -2180,6 +2782,7 @@ export class APIService {
           firstname
           lastname
           phoneNb
+          email
           street
           city
           postalCode
@@ -2199,6 +2802,22 @@ export class APIService {
               createdAt
               updatedAt
               userDogsId
+            }
+            nextToken
+          }
+          kits {
+            __typename
+            items {
+              __typename
+              id
+              kitType
+              kitBatchNb
+              processStatus
+              registrationDate
+              createdAt
+              updatedAt
+              userKitsId
+              dogKitsId
             }
             nextToken
           }
@@ -2229,6 +2848,7 @@ export class APIService {
           firstname
           lastname
           phoneNb
+          email
           street
           city
           postalCode
@@ -2248,6 +2868,22 @@ export class APIService {
               createdAt
               updatedAt
               userDogsId
+            }
+            nextToken
+          }
+          kits {
+            __typename
+            items {
+              __typename
+              id
+              kitType
+              kitBatchNb
+              processStatus
+              registrationDate
+              createdAt
+              updatedAt
+              userKitsId
+              dogKitsId
             }
             nextToken
           }
@@ -2286,6 +2922,7 @@ export class APIService {
               registrationDate
               createdAt
               updatedAt
+              userKitsId
               dogKitsId
             }
             nextToken
@@ -2302,12 +2939,17 @@ export class APIService {
             firstname
             lastname
             phoneNb
+            email
             street
             city
             postalCode
             researchAuthorization
             surveyAuthorization
             dogs {
+              __typename
+              nextToken
+            }
+            kits {
               __typename
               nextToken
             }
@@ -2350,6 +2992,7 @@ export class APIService {
               registrationDate
               createdAt
               updatedAt
+              userKitsId
               dogKitsId
             }
             nextToken
@@ -2366,12 +3009,17 @@ export class APIService {
             firstname
             lastname
             phoneNb
+            email
             street
             city
             postalCode
             researchAuthorization
             surveyAuthorization
             dogs {
+              __typename
+              nextToken
+            }
+            kits {
               __typename
               nextToken
             }
@@ -2414,6 +3062,7 @@ export class APIService {
               registrationDate
               createdAt
               updatedAt
+              userKitsId
               dogKitsId
             }
             nextToken
@@ -2430,12 +3079,17 @@ export class APIService {
             firstname
             lastname
             phoneNb
+            email
             street
             city
             postalCode
             researchAuthorization
             surveyAuthorization
             dogs {
+              __typename
+              nextToken
+            }
+            kits {
               __typename
               nextToken
             }
@@ -2490,6 +3144,7 @@ export class APIService {
               firstname
               lastname
               phoneNb
+              email
               street
               city
               postalCode
@@ -2502,8 +3157,32 @@ export class APIService {
             updatedAt
             userDogsId
           }
+          user {
+            __typename
+            id
+            firstname
+            lastname
+            phoneNb
+            email
+            street
+            city
+            postalCode
+            researchAuthorization
+            surveyAuthorization
+            dogs {
+              __typename
+              nextToken
+            }
+            kits {
+              __typename
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
           createdAt
           updatedAt
+          userKitsId
           dogKitsId
         }
       }`;
@@ -2550,6 +3229,7 @@ export class APIService {
               firstname
               lastname
               phoneNb
+              email
               street
               city
               postalCode
@@ -2562,8 +3242,32 @@ export class APIService {
             updatedAt
             userDogsId
           }
+          user {
+            __typename
+            id
+            firstname
+            lastname
+            phoneNb
+            email
+            street
+            city
+            postalCode
+            researchAuthorization
+            surveyAuthorization
+            dogs {
+              __typename
+              nextToken
+            }
+            kits {
+              __typename
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
           createdAt
           updatedAt
+          userKitsId
           dogKitsId
         }
       }`;
@@ -2610,6 +3314,7 @@ export class APIService {
               firstname
               lastname
               phoneNb
+              email
               street
               city
               postalCode
@@ -2622,8 +3327,32 @@ export class APIService {
             updatedAt
             userDogsId
           }
+          user {
+            __typename
+            id
+            firstname
+            lastname
+            phoneNb
+            email
+            street
+            city
+            postalCode
+            researchAuthorization
+            surveyAuthorization
+            dogs {
+              __typename
+              nextToken
+            }
+            kits {
+              __typename
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
           createdAt
           updatedAt
+          userKitsId
           dogKitsId
         }
       }`;
