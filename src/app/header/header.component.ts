@@ -2,7 +2,6 @@ import { TranslateService } from '@ngx-translate/core';
 import { Component, ChangeDetectorRef, OnInit } from '@angular/core';
 import { AuthenticatorService } from '@aws-amplify/ui-angular';
 
-
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -29,5 +28,6 @@ export class HeaderComponent implements OnInit {
   ngOnDestroy() {
     //return onAuthUIStateChange;
   }
+
 
 }

@@ -1,7 +1,7 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "identityPoolName": "ngpetgenomaaws746467c2_identitypool_746467c2",
+    "identityPoolName": "ngpetgenomaaws51ce0bfe_identitypool_51ce0bfe",
     "allowUnauthenticatedIdentities": false,
     "resourceNameTruncated": "ngpetg746467c2",
     "userPoolName": "ngpetgenomaaws746467c2_userpool_746467c2",
@@ -36,7 +36,7 @@
     "sharedId": "746467c2",
     "resourceName": "ngpetgenomaaws746467c2",
     "authSelections": "identityPoolAndUserPool",
-    "useDefault": "default",
+    "useDefault": "manual",
     "usernameAttributes": [
       "email"
     ],
@@ -44,6 +44,29 @@
     "userPoolGroupList": [],
     "serviceName": "Cognito",
     "usernameCaseSensitive": false,
-    "useEnabledMfas": true
+    "useEnabledMfas": true,
+    "authRoleArn": {
+      "Fn::GetAtt": [
+        "AuthRole",
+        "Arn"
+      ]
+    },
+    "unauthRoleArn": {
+      "Fn::GetAtt": [
+        "UnauthRole",
+        "Arn"
+      ]
+    },
+    "breakCircularDependency": true,
+    "dependsOn": [],
+    "userPoolGroups": false,
+    "adminQueries": false,
+    "hostedUI": false,
+    "parentStack": {
+      "Ref": "AWS::StackId"
+    },
+    "permissions": [],
+    "authProviders": [],
+    "thirdPartyAuth": false
   }
 }

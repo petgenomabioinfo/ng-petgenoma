@@ -70,7 +70,6 @@ export class HomeComponent {
 
 		await this.api.GetUser(user.username).then((res) => {
 			this.isUserLoaded = true;
-			console.log(res);
 			if (res) {
 				const kits = this.addReportFile(from(res.kits.items));
 				this.connectedUserData = res;
@@ -79,8 +78,18 @@ export class HomeComponent {
 			} else {
 				const userForUpdate = {
 					id: this.connectedUser.username,
-					phoneNb: '',
-					username: this.connectedUser.attributes.email,
+					// phoneNb: 'test',
+					// firstname: '',
+					// lastname: '',
+					email: this.connectedUser.attributes.email,
+					// street: '',
+					// city: '',
+					// postalCode: '',
+					// researchAuthorization: '',
+					// surveyAuthorization: '',
+					// dogs: [],
+					// kits: [],
+					//username: this.connectedUser.attributes.email,
 				};
 				this.api.CreateUser(userForUpdate).then(
 					res => {

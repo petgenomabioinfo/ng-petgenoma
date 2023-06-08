@@ -23,15 +23,15 @@ export type __SubscriptionContainer = {
 
 export type CreateUserInput = {
   id?: string | null;
-  firstname: string;
-  lastname: string;
-  phoneNb: string;
+  firstname?: string | null;
+  lastname?: string | null;
+  phoneNb?: string | null;
   email: string;
-  street: string;
-  city: string;
-  postalCode: string;
-  researchAuthorization: string;
-  surveyAuthorization: string;
+  street?: string | null;
+  city?: string | null;
+  postalCode?: string | null;
+  researchAuthorization?: string | null;
+  surveyAuthorization?: string | null;
 };
 
 export type ModelUserConditionInput = {
@@ -91,15 +91,15 @@ export type ModelSizeInput = {
 export type User = {
   __typename: "User";
   id: string;
-  firstname: string;
-  lastname: string;
-  phoneNb: string;
+  firstname?: string | null;
+  lastname?: string | null;
+  phoneNb?: string | null;
   email: string;
-  street: string;
-  city: string;
-  postalCode: string;
-  researchAuthorization: string;
-  surveyAuthorization: string;
+  street?: string | null;
+  city?: string | null;
+  postalCode?: string | null;
+  researchAuthorization?: string | null;
+  surveyAuthorization?: string | null;
   dogs?: ModelDogConnection | null;
   kits?: ModelKitConnection | null;
   createdAt: string;
@@ -117,12 +117,12 @@ export type Dog = {
   id: string;
   kits?: ModelKitConnection | null;
   name: string;
-  breed: string;
-  gender: string;
-  age: string;
-  microchip: string;
-  conditions: string;
-  user?: User | null;
+  breed?: string | null;
+  gender?: string | null;
+  age?: string | null;
+  microchip?: string | null;
+  conditions?: string | null;
+  user: User;
   createdAt: string;
   updatedAt: string;
   userDogsId?: string | null;
@@ -139,10 +139,10 @@ export type Kit = {
   id: string;
   kitType: string;
   kitBatchNb?: string | null;
-  processStatus: string;
+  processStatus?: string | null;
   registrationDate: string;
-  dog?: Dog | null;
-  user?: User | null;
+  dog: Dog;
+  user: User;
   createdAt: string;
   updatedAt: string;
   userKitsId?: string | null;
@@ -169,11 +169,11 @@ export type DeleteUserInput = {
 export type CreateDogInput = {
   id?: string | null;
   name: string;
-  breed: string;
-  gender: string;
-  age: string;
-  microchip: string;
-  conditions: string;
+  breed?: string | null;
+  gender?: string | null;
+  age?: string | null;
+  microchip?: string | null;
+  conditions?: string | null;
   userDogsId?: string | null;
 };
 
@@ -225,7 +225,7 @@ export type CreateKitInput = {
   id?: string | null;
   kitType: string;
   kitBatchNb?: string | null;
-  processStatus: string;
+  processStatus?: string | null;
   registrationDate: string;
   userKitsId?: string | null;
   dogKitsId?: string | null;
@@ -376,26 +376,26 @@ export type ModelSubscriptionKitFilterInput = {
 export type CreateUserMutation = {
   __typename: "User";
   id: string;
-  firstname: string;
-  lastname: string;
-  phoneNb: string;
+  firstname?: string | null;
+  lastname?: string | null;
+  phoneNb?: string | null;
   email: string;
-  street: string;
-  city: string;
-  postalCode: string;
-  researchAuthorization: string;
-  surveyAuthorization: string;
+  street?: string | null;
+  city?: string | null;
+  postalCode?: string | null;
+  researchAuthorization?: string | null;
+  surveyAuthorization?: string | null;
   dogs?: {
     __typename: "ModelDogConnection";
     items: Array<{
       __typename: "Dog";
       id: string;
       name: string;
-      breed: string;
-      gender: string;
-      age: string;
-      microchip: string;
-      conditions: string;
+      breed?: string | null;
+      gender?: string | null;
+      age?: string | null;
+      microchip?: string | null;
+      conditions?: string | null;
       createdAt: string;
       updatedAt: string;
       userDogsId?: string | null;
@@ -409,7 +409,7 @@ export type CreateUserMutation = {
       id: string;
       kitType: string;
       kitBatchNb?: string | null;
-      processStatus: string;
+      processStatus?: string | null;
       registrationDate: string;
       createdAt: string;
       updatedAt: string;
@@ -425,26 +425,26 @@ export type CreateUserMutation = {
 export type UpdateUserMutation = {
   __typename: "User";
   id: string;
-  firstname: string;
-  lastname: string;
-  phoneNb: string;
+  firstname?: string | null;
+  lastname?: string | null;
+  phoneNb?: string | null;
   email: string;
-  street: string;
-  city: string;
-  postalCode: string;
-  researchAuthorization: string;
-  surveyAuthorization: string;
+  street?: string | null;
+  city?: string | null;
+  postalCode?: string | null;
+  researchAuthorization?: string | null;
+  surveyAuthorization?: string | null;
   dogs?: {
     __typename: "ModelDogConnection";
     items: Array<{
       __typename: "Dog";
       id: string;
       name: string;
-      breed: string;
-      gender: string;
-      age: string;
-      microchip: string;
-      conditions: string;
+      breed?: string | null;
+      gender?: string | null;
+      age?: string | null;
+      microchip?: string | null;
+      conditions?: string | null;
       createdAt: string;
       updatedAt: string;
       userDogsId?: string | null;
@@ -458,7 +458,7 @@ export type UpdateUserMutation = {
       id: string;
       kitType: string;
       kitBatchNb?: string | null;
-      processStatus: string;
+      processStatus?: string | null;
       registrationDate: string;
       createdAt: string;
       updatedAt: string;
@@ -474,26 +474,26 @@ export type UpdateUserMutation = {
 export type DeleteUserMutation = {
   __typename: "User";
   id: string;
-  firstname: string;
-  lastname: string;
-  phoneNb: string;
+  firstname?: string | null;
+  lastname?: string | null;
+  phoneNb?: string | null;
   email: string;
-  street: string;
-  city: string;
-  postalCode: string;
-  researchAuthorization: string;
-  surveyAuthorization: string;
+  street?: string | null;
+  city?: string | null;
+  postalCode?: string | null;
+  researchAuthorization?: string | null;
+  surveyAuthorization?: string | null;
   dogs?: {
     __typename: "ModelDogConnection";
     items: Array<{
       __typename: "Dog";
       id: string;
       name: string;
-      breed: string;
-      gender: string;
-      age: string;
-      microchip: string;
-      conditions: string;
+      breed?: string | null;
+      gender?: string | null;
+      age?: string | null;
+      microchip?: string | null;
+      conditions?: string | null;
       createdAt: string;
       updatedAt: string;
       userDogsId?: string | null;
@@ -507,7 +507,7 @@ export type DeleteUserMutation = {
       id: string;
       kitType: string;
       kitBatchNb?: string | null;
-      processStatus: string;
+      processStatus?: string | null;
       registrationDate: string;
       createdAt: string;
       updatedAt: string;
@@ -530,7 +530,7 @@ export type CreateDogMutation = {
       id: string;
       kitType: string;
       kitBatchNb?: string | null;
-      processStatus: string;
+      processStatus?: string | null;
       registrationDate: string;
       createdAt: string;
       updatedAt: string;
@@ -540,23 +540,23 @@ export type CreateDogMutation = {
     nextToken?: string | null;
   } | null;
   name: string;
-  breed: string;
-  gender: string;
-  age: string;
-  microchip: string;
-  conditions: string;
-  user?: {
+  breed?: string | null;
+  gender?: string | null;
+  age?: string | null;
+  microchip?: string | null;
+  conditions?: string | null;
+  user: {
     __typename: "User";
     id: string;
-    firstname: string;
-    lastname: string;
-    phoneNb: string;
+    firstname?: string | null;
+    lastname?: string | null;
+    phoneNb?: string | null;
     email: string;
-    street: string;
-    city: string;
-    postalCode: string;
-    researchAuthorization: string;
-    surveyAuthorization: string;
+    street?: string | null;
+    city?: string | null;
+    postalCode?: string | null;
+    researchAuthorization?: string | null;
+    surveyAuthorization?: string | null;
     dogs?: {
       __typename: "ModelDogConnection";
       nextToken?: string | null;
@@ -567,7 +567,7 @@ export type CreateDogMutation = {
     } | null;
     createdAt: string;
     updatedAt: string;
-  } | null;
+  };
   createdAt: string;
   updatedAt: string;
   userDogsId?: string | null;
@@ -583,7 +583,7 @@ export type UpdateDogMutation = {
       id: string;
       kitType: string;
       kitBatchNb?: string | null;
-      processStatus: string;
+      processStatus?: string | null;
       registrationDate: string;
       createdAt: string;
       updatedAt: string;
@@ -593,23 +593,23 @@ export type UpdateDogMutation = {
     nextToken?: string | null;
   } | null;
   name: string;
-  breed: string;
-  gender: string;
-  age: string;
-  microchip: string;
-  conditions: string;
-  user?: {
+  breed?: string | null;
+  gender?: string | null;
+  age?: string | null;
+  microchip?: string | null;
+  conditions?: string | null;
+  user: {
     __typename: "User";
     id: string;
-    firstname: string;
-    lastname: string;
-    phoneNb: string;
+    firstname?: string | null;
+    lastname?: string | null;
+    phoneNb?: string | null;
     email: string;
-    street: string;
-    city: string;
-    postalCode: string;
-    researchAuthorization: string;
-    surveyAuthorization: string;
+    street?: string | null;
+    city?: string | null;
+    postalCode?: string | null;
+    researchAuthorization?: string | null;
+    surveyAuthorization?: string | null;
     dogs?: {
       __typename: "ModelDogConnection";
       nextToken?: string | null;
@@ -620,7 +620,7 @@ export type UpdateDogMutation = {
     } | null;
     createdAt: string;
     updatedAt: string;
-  } | null;
+  };
   createdAt: string;
   updatedAt: string;
   userDogsId?: string | null;
@@ -636,7 +636,7 @@ export type DeleteDogMutation = {
       id: string;
       kitType: string;
       kitBatchNb?: string | null;
-      processStatus: string;
+      processStatus?: string | null;
       registrationDate: string;
       createdAt: string;
       updatedAt: string;
@@ -646,23 +646,23 @@ export type DeleteDogMutation = {
     nextToken?: string | null;
   } | null;
   name: string;
-  breed: string;
-  gender: string;
-  age: string;
-  microchip: string;
-  conditions: string;
-  user?: {
+  breed?: string | null;
+  gender?: string | null;
+  age?: string | null;
+  microchip?: string | null;
+  conditions?: string | null;
+  user: {
     __typename: "User";
     id: string;
-    firstname: string;
-    lastname: string;
-    phoneNb: string;
+    firstname?: string | null;
+    lastname?: string | null;
+    phoneNb?: string | null;
     email: string;
-    street: string;
-    city: string;
-    postalCode: string;
-    researchAuthorization: string;
-    surveyAuthorization: string;
+    street?: string | null;
+    city?: string | null;
+    postalCode?: string | null;
+    researchAuthorization?: string | null;
+    surveyAuthorization?: string | null;
     dogs?: {
       __typename: "ModelDogConnection";
       nextToken?: string | null;
@@ -673,7 +673,7 @@ export type DeleteDogMutation = {
     } | null;
     createdAt: string;
     updatedAt: string;
-  } | null;
+  };
   createdAt: string;
   updatedAt: string;
   userDogsId?: string | null;
@@ -684,9 +684,9 @@ export type CreateKitMutation = {
   id: string;
   kitType: string;
   kitBatchNb?: string | null;
-  processStatus: string;
+  processStatus?: string | null;
   registrationDate: string;
-  dog?: {
+  dog: {
     __typename: "Dog";
     id: string;
     kits?: {
@@ -694,42 +694,42 @@ export type CreateKitMutation = {
       nextToken?: string | null;
     } | null;
     name: string;
-    breed: string;
-    gender: string;
-    age: string;
-    microchip: string;
-    conditions: string;
-    user?: {
+    breed?: string | null;
+    gender?: string | null;
+    age?: string | null;
+    microchip?: string | null;
+    conditions?: string | null;
+    user: {
       __typename: "User";
       id: string;
-      firstname: string;
-      lastname: string;
-      phoneNb: string;
+      firstname?: string | null;
+      lastname?: string | null;
+      phoneNb?: string | null;
       email: string;
-      street: string;
-      city: string;
-      postalCode: string;
-      researchAuthorization: string;
-      surveyAuthorization: string;
+      street?: string | null;
+      city?: string | null;
+      postalCode?: string | null;
+      researchAuthorization?: string | null;
+      surveyAuthorization?: string | null;
       createdAt: string;
       updatedAt: string;
-    } | null;
+    };
     createdAt: string;
     updatedAt: string;
     userDogsId?: string | null;
-  } | null;
-  user?: {
+  };
+  user: {
     __typename: "User";
     id: string;
-    firstname: string;
-    lastname: string;
-    phoneNb: string;
+    firstname?: string | null;
+    lastname?: string | null;
+    phoneNb?: string | null;
     email: string;
-    street: string;
-    city: string;
-    postalCode: string;
-    researchAuthorization: string;
-    surveyAuthorization: string;
+    street?: string | null;
+    city?: string | null;
+    postalCode?: string | null;
+    researchAuthorization?: string | null;
+    surveyAuthorization?: string | null;
     dogs?: {
       __typename: "ModelDogConnection";
       nextToken?: string | null;
@@ -740,7 +740,7 @@ export type CreateKitMutation = {
     } | null;
     createdAt: string;
     updatedAt: string;
-  } | null;
+  };
   createdAt: string;
   updatedAt: string;
   userKitsId?: string | null;
@@ -752,9 +752,9 @@ export type UpdateKitMutation = {
   id: string;
   kitType: string;
   kitBatchNb?: string | null;
-  processStatus: string;
+  processStatus?: string | null;
   registrationDate: string;
-  dog?: {
+  dog: {
     __typename: "Dog";
     id: string;
     kits?: {
@@ -762,42 +762,42 @@ export type UpdateKitMutation = {
       nextToken?: string | null;
     } | null;
     name: string;
-    breed: string;
-    gender: string;
-    age: string;
-    microchip: string;
-    conditions: string;
-    user?: {
+    breed?: string | null;
+    gender?: string | null;
+    age?: string | null;
+    microchip?: string | null;
+    conditions?: string | null;
+    user: {
       __typename: "User";
       id: string;
-      firstname: string;
-      lastname: string;
-      phoneNb: string;
+      firstname?: string | null;
+      lastname?: string | null;
+      phoneNb?: string | null;
       email: string;
-      street: string;
-      city: string;
-      postalCode: string;
-      researchAuthorization: string;
-      surveyAuthorization: string;
+      street?: string | null;
+      city?: string | null;
+      postalCode?: string | null;
+      researchAuthorization?: string | null;
+      surveyAuthorization?: string | null;
       createdAt: string;
       updatedAt: string;
-    } | null;
+    };
     createdAt: string;
     updatedAt: string;
     userDogsId?: string | null;
-  } | null;
-  user?: {
+  };
+  user: {
     __typename: "User";
     id: string;
-    firstname: string;
-    lastname: string;
-    phoneNb: string;
+    firstname?: string | null;
+    lastname?: string | null;
+    phoneNb?: string | null;
     email: string;
-    street: string;
-    city: string;
-    postalCode: string;
-    researchAuthorization: string;
-    surveyAuthorization: string;
+    street?: string | null;
+    city?: string | null;
+    postalCode?: string | null;
+    researchAuthorization?: string | null;
+    surveyAuthorization?: string | null;
     dogs?: {
       __typename: "ModelDogConnection";
       nextToken?: string | null;
@@ -808,7 +808,7 @@ export type UpdateKitMutation = {
     } | null;
     createdAt: string;
     updatedAt: string;
-  } | null;
+  };
   createdAt: string;
   updatedAt: string;
   userKitsId?: string | null;
@@ -820,9 +820,9 @@ export type DeleteKitMutation = {
   id: string;
   kitType: string;
   kitBatchNb?: string | null;
-  processStatus: string;
+  processStatus?: string | null;
   registrationDate: string;
-  dog?: {
+  dog: {
     __typename: "Dog";
     id: string;
     kits?: {
@@ -830,42 +830,42 @@ export type DeleteKitMutation = {
       nextToken?: string | null;
     } | null;
     name: string;
-    breed: string;
-    gender: string;
-    age: string;
-    microchip: string;
-    conditions: string;
-    user?: {
+    breed?: string | null;
+    gender?: string | null;
+    age?: string | null;
+    microchip?: string | null;
+    conditions?: string | null;
+    user: {
       __typename: "User";
       id: string;
-      firstname: string;
-      lastname: string;
-      phoneNb: string;
+      firstname?: string | null;
+      lastname?: string | null;
+      phoneNb?: string | null;
       email: string;
-      street: string;
-      city: string;
-      postalCode: string;
-      researchAuthorization: string;
-      surveyAuthorization: string;
+      street?: string | null;
+      city?: string | null;
+      postalCode?: string | null;
+      researchAuthorization?: string | null;
+      surveyAuthorization?: string | null;
       createdAt: string;
       updatedAt: string;
-    } | null;
+    };
     createdAt: string;
     updatedAt: string;
     userDogsId?: string | null;
-  } | null;
-  user?: {
+  };
+  user: {
     __typename: "User";
     id: string;
-    firstname: string;
-    lastname: string;
-    phoneNb: string;
+    firstname?: string | null;
+    lastname?: string | null;
+    phoneNb?: string | null;
     email: string;
-    street: string;
-    city: string;
-    postalCode: string;
-    researchAuthorization: string;
-    surveyAuthorization: string;
+    street?: string | null;
+    city?: string | null;
+    postalCode?: string | null;
+    researchAuthorization?: string | null;
+    surveyAuthorization?: string | null;
     dogs?: {
       __typename: "ModelDogConnection";
       nextToken?: string | null;
@@ -876,7 +876,7 @@ export type DeleteKitMutation = {
     } | null;
     createdAt: string;
     updatedAt: string;
-  } | null;
+  };
   createdAt: string;
   updatedAt: string;
   userKitsId?: string | null;
@@ -886,26 +886,26 @@ export type DeleteKitMutation = {
 export type GetUserQuery = {
   __typename: "User";
   id: string;
-  firstname: string;
-  lastname: string;
-  phoneNb: string;
+  firstname?: string | null;
+  lastname?: string | null;
+  phoneNb?: string | null;
   email: string;
-  street: string;
-  city: string;
-  postalCode: string;
-  researchAuthorization: string;
-  surveyAuthorization: string;
+  street?: string | null;
+  city?: string | null;
+  postalCode?: string | null;
+  researchAuthorization?: string | null;
+  surveyAuthorization?: string | null;
   dogs?: {
     __typename: "ModelDogConnection";
     items: Array<{
       __typename: "Dog";
       id: string;
       name: string;
-      breed: string;
-      gender: string;
-      age: string;
-      microchip: string;
-      conditions: string;
+      breed?: string | null;
+      gender?: string | null;
+      age?: string | null;
+      microchip?: string | null;
+      conditions?: string | null;
       createdAt: string;
       updatedAt: string;
       userDogsId?: string | null;
@@ -919,7 +919,7 @@ export type GetUserQuery = {
       id: string;
       kitType: string;
       kitBatchNb?: string | null;
-      processStatus: string;
+      processStatus?: string | null;
       registrationDate: string;
       createdAt: string;
       updatedAt: string;
@@ -937,15 +937,15 @@ export type ListUsersQuery = {
   items: Array<{
     __typename: "User";
     id: string;
-    firstname: string;
-    lastname: string;
-    phoneNb: string;
+    firstname?: string | null;
+    lastname?: string | null;
+    phoneNb?: string | null;
     email: string;
-    street: string;
-    city: string;
-    postalCode: string;
-    researchAuthorization: string;
-    surveyAuthorization: string;
+    street?: string | null;
+    city?: string | null;
+    postalCode?: string | null;
+    researchAuthorization?: string | null;
+    surveyAuthorization?: string | null;
     dogs?: {
       __typename: "ModelDogConnection";
       nextToken?: string | null;
@@ -970,7 +970,7 @@ export type GetDogQuery = {
       id: string;
       kitType: string;
       kitBatchNb?: string | null;
-      processStatus: string;
+      processStatus?: string | null;
       registrationDate: string;
       createdAt: string;
       updatedAt: string;
@@ -980,23 +980,23 @@ export type GetDogQuery = {
     nextToken?: string | null;
   } | null;
   name: string;
-  breed: string;
-  gender: string;
-  age: string;
-  microchip: string;
-  conditions: string;
-  user?: {
+  breed?: string | null;
+  gender?: string | null;
+  age?: string | null;
+  microchip?: string | null;
+  conditions?: string | null;
+  user: {
     __typename: "User";
     id: string;
-    firstname: string;
-    lastname: string;
-    phoneNb: string;
+    firstname?: string | null;
+    lastname?: string | null;
+    phoneNb?: string | null;
     email: string;
-    street: string;
-    city: string;
-    postalCode: string;
-    researchAuthorization: string;
-    surveyAuthorization: string;
+    street?: string | null;
+    city?: string | null;
+    postalCode?: string | null;
+    researchAuthorization?: string | null;
+    surveyAuthorization?: string | null;
     dogs?: {
       __typename: "ModelDogConnection";
       nextToken?: string | null;
@@ -1007,7 +1007,7 @@ export type GetDogQuery = {
     } | null;
     createdAt: string;
     updatedAt: string;
-  } | null;
+  };
   createdAt: string;
   updatedAt: string;
   userDogsId?: string | null;
@@ -1023,26 +1023,26 @@ export type ListDogsQuery = {
       nextToken?: string | null;
     } | null;
     name: string;
-    breed: string;
-    gender: string;
-    age: string;
-    microchip: string;
-    conditions: string;
-    user?: {
+    breed?: string | null;
+    gender?: string | null;
+    age?: string | null;
+    microchip?: string | null;
+    conditions?: string | null;
+    user: {
       __typename: "User";
       id: string;
-      firstname: string;
-      lastname: string;
-      phoneNb: string;
+      firstname?: string | null;
+      lastname?: string | null;
+      phoneNb?: string | null;
       email: string;
-      street: string;
-      city: string;
-      postalCode: string;
-      researchAuthorization: string;
-      surveyAuthorization: string;
+      street?: string | null;
+      city?: string | null;
+      postalCode?: string | null;
+      researchAuthorization?: string | null;
+      surveyAuthorization?: string | null;
       createdAt: string;
       updatedAt: string;
-    } | null;
+    };
     createdAt: string;
     updatedAt: string;
     userDogsId?: string | null;
@@ -1055,9 +1055,9 @@ export type GetKitQuery = {
   id: string;
   kitType: string;
   kitBatchNb?: string | null;
-  processStatus: string;
+  processStatus?: string | null;
   registrationDate: string;
-  dog?: {
+  dog: {
     __typename: "Dog";
     id: string;
     kits?: {
@@ -1065,42 +1065,42 @@ export type GetKitQuery = {
       nextToken?: string | null;
     } | null;
     name: string;
-    breed: string;
-    gender: string;
-    age: string;
-    microchip: string;
-    conditions: string;
-    user?: {
+    breed?: string | null;
+    gender?: string | null;
+    age?: string | null;
+    microchip?: string | null;
+    conditions?: string | null;
+    user: {
       __typename: "User";
       id: string;
-      firstname: string;
-      lastname: string;
-      phoneNb: string;
+      firstname?: string | null;
+      lastname?: string | null;
+      phoneNb?: string | null;
       email: string;
-      street: string;
-      city: string;
-      postalCode: string;
-      researchAuthorization: string;
-      surveyAuthorization: string;
+      street?: string | null;
+      city?: string | null;
+      postalCode?: string | null;
+      researchAuthorization?: string | null;
+      surveyAuthorization?: string | null;
       createdAt: string;
       updatedAt: string;
-    } | null;
+    };
     createdAt: string;
     updatedAt: string;
     userDogsId?: string | null;
-  } | null;
-  user?: {
+  };
+  user: {
     __typename: "User";
     id: string;
-    firstname: string;
-    lastname: string;
-    phoneNb: string;
+    firstname?: string | null;
+    lastname?: string | null;
+    phoneNb?: string | null;
     email: string;
-    street: string;
-    city: string;
-    postalCode: string;
-    researchAuthorization: string;
-    surveyAuthorization: string;
+    street?: string | null;
+    city?: string | null;
+    postalCode?: string | null;
+    researchAuthorization?: string | null;
+    surveyAuthorization?: string | null;
     dogs?: {
       __typename: "ModelDogConnection";
       nextToken?: string | null;
@@ -1111,7 +1111,7 @@ export type GetKitQuery = {
     } | null;
     createdAt: string;
     updatedAt: string;
-  } | null;
+  };
   createdAt: string;
   updatedAt: string;
   userKitsId?: string | null;
@@ -1125,36 +1125,36 @@ export type ListKitsQuery = {
     id: string;
     kitType: string;
     kitBatchNb?: string | null;
-    processStatus: string;
+    processStatus?: string | null;
     registrationDate: string;
-    dog?: {
+    dog: {
       __typename: "Dog";
       id: string;
       name: string;
-      breed: string;
-      gender: string;
-      age: string;
-      microchip: string;
-      conditions: string;
+      breed?: string | null;
+      gender?: string | null;
+      age?: string | null;
+      microchip?: string | null;
+      conditions?: string | null;
       createdAt: string;
       updatedAt: string;
       userDogsId?: string | null;
-    } | null;
-    user?: {
+    };
+    user: {
       __typename: "User";
       id: string;
-      firstname: string;
-      lastname: string;
-      phoneNb: string;
+      firstname?: string | null;
+      lastname?: string | null;
+      phoneNb?: string | null;
       email: string;
-      street: string;
-      city: string;
-      postalCode: string;
-      researchAuthorization: string;
-      surveyAuthorization: string;
+      street?: string | null;
+      city?: string | null;
+      postalCode?: string | null;
+      researchAuthorization?: string | null;
+      surveyAuthorization?: string | null;
       createdAt: string;
       updatedAt: string;
-    } | null;
+    };
     createdAt: string;
     updatedAt: string;
     userKitsId?: string | null;
@@ -1166,26 +1166,26 @@ export type ListKitsQuery = {
 export type OnCreateUserSubscription = {
   __typename: "User";
   id: string;
-  firstname: string;
-  lastname: string;
-  phoneNb: string;
+  firstname?: string | null;
+  lastname?: string | null;
+  phoneNb?: string | null;
   email: string;
-  street: string;
-  city: string;
-  postalCode: string;
-  researchAuthorization: string;
-  surveyAuthorization: string;
+  street?: string | null;
+  city?: string | null;
+  postalCode?: string | null;
+  researchAuthorization?: string | null;
+  surveyAuthorization?: string | null;
   dogs?: {
     __typename: "ModelDogConnection";
     items: Array<{
       __typename: "Dog";
       id: string;
       name: string;
-      breed: string;
-      gender: string;
-      age: string;
-      microchip: string;
-      conditions: string;
+      breed?: string | null;
+      gender?: string | null;
+      age?: string | null;
+      microchip?: string | null;
+      conditions?: string | null;
       createdAt: string;
       updatedAt: string;
       userDogsId?: string | null;
@@ -1199,7 +1199,7 @@ export type OnCreateUserSubscription = {
       id: string;
       kitType: string;
       kitBatchNb?: string | null;
-      processStatus: string;
+      processStatus?: string | null;
       registrationDate: string;
       createdAt: string;
       updatedAt: string;
@@ -1215,26 +1215,26 @@ export type OnCreateUserSubscription = {
 export type OnUpdateUserSubscription = {
   __typename: "User";
   id: string;
-  firstname: string;
-  lastname: string;
-  phoneNb: string;
+  firstname?: string | null;
+  lastname?: string | null;
+  phoneNb?: string | null;
   email: string;
-  street: string;
-  city: string;
-  postalCode: string;
-  researchAuthorization: string;
-  surveyAuthorization: string;
+  street?: string | null;
+  city?: string | null;
+  postalCode?: string | null;
+  researchAuthorization?: string | null;
+  surveyAuthorization?: string | null;
   dogs?: {
     __typename: "ModelDogConnection";
     items: Array<{
       __typename: "Dog";
       id: string;
       name: string;
-      breed: string;
-      gender: string;
-      age: string;
-      microchip: string;
-      conditions: string;
+      breed?: string | null;
+      gender?: string | null;
+      age?: string | null;
+      microchip?: string | null;
+      conditions?: string | null;
       createdAt: string;
       updatedAt: string;
       userDogsId?: string | null;
@@ -1248,7 +1248,7 @@ export type OnUpdateUserSubscription = {
       id: string;
       kitType: string;
       kitBatchNb?: string | null;
-      processStatus: string;
+      processStatus?: string | null;
       registrationDate: string;
       createdAt: string;
       updatedAt: string;
@@ -1264,26 +1264,26 @@ export type OnUpdateUserSubscription = {
 export type OnDeleteUserSubscription = {
   __typename: "User";
   id: string;
-  firstname: string;
-  lastname: string;
-  phoneNb: string;
+  firstname?: string | null;
+  lastname?: string | null;
+  phoneNb?: string | null;
   email: string;
-  street: string;
-  city: string;
-  postalCode: string;
-  researchAuthorization: string;
-  surveyAuthorization: string;
+  street?: string | null;
+  city?: string | null;
+  postalCode?: string | null;
+  researchAuthorization?: string | null;
+  surveyAuthorization?: string | null;
   dogs?: {
     __typename: "ModelDogConnection";
     items: Array<{
       __typename: "Dog";
       id: string;
       name: string;
-      breed: string;
-      gender: string;
-      age: string;
-      microchip: string;
-      conditions: string;
+      breed?: string | null;
+      gender?: string | null;
+      age?: string | null;
+      microchip?: string | null;
+      conditions?: string | null;
       createdAt: string;
       updatedAt: string;
       userDogsId?: string | null;
@@ -1297,7 +1297,7 @@ export type OnDeleteUserSubscription = {
       id: string;
       kitType: string;
       kitBatchNb?: string | null;
-      processStatus: string;
+      processStatus?: string | null;
       registrationDate: string;
       createdAt: string;
       updatedAt: string;
@@ -1320,7 +1320,7 @@ export type OnCreateDogSubscription = {
       id: string;
       kitType: string;
       kitBatchNb?: string | null;
-      processStatus: string;
+      processStatus?: string | null;
       registrationDate: string;
       createdAt: string;
       updatedAt: string;
@@ -1330,23 +1330,23 @@ export type OnCreateDogSubscription = {
     nextToken?: string | null;
   } | null;
   name: string;
-  breed: string;
-  gender: string;
-  age: string;
-  microchip: string;
-  conditions: string;
-  user?: {
+  breed?: string | null;
+  gender?: string | null;
+  age?: string | null;
+  microchip?: string | null;
+  conditions?: string | null;
+  user: {
     __typename: "User";
     id: string;
-    firstname: string;
-    lastname: string;
-    phoneNb: string;
+    firstname?: string | null;
+    lastname?: string | null;
+    phoneNb?: string | null;
     email: string;
-    street: string;
-    city: string;
-    postalCode: string;
-    researchAuthorization: string;
-    surveyAuthorization: string;
+    street?: string | null;
+    city?: string | null;
+    postalCode?: string | null;
+    researchAuthorization?: string | null;
+    surveyAuthorization?: string | null;
     dogs?: {
       __typename: "ModelDogConnection";
       nextToken?: string | null;
@@ -1357,7 +1357,7 @@ export type OnCreateDogSubscription = {
     } | null;
     createdAt: string;
     updatedAt: string;
-  } | null;
+  };
   createdAt: string;
   updatedAt: string;
   userDogsId?: string | null;
@@ -1373,7 +1373,7 @@ export type OnUpdateDogSubscription = {
       id: string;
       kitType: string;
       kitBatchNb?: string | null;
-      processStatus: string;
+      processStatus?: string | null;
       registrationDate: string;
       createdAt: string;
       updatedAt: string;
@@ -1383,23 +1383,23 @@ export type OnUpdateDogSubscription = {
     nextToken?: string | null;
   } | null;
   name: string;
-  breed: string;
-  gender: string;
-  age: string;
-  microchip: string;
-  conditions: string;
-  user?: {
+  breed?: string | null;
+  gender?: string | null;
+  age?: string | null;
+  microchip?: string | null;
+  conditions?: string | null;
+  user: {
     __typename: "User";
     id: string;
-    firstname: string;
-    lastname: string;
-    phoneNb: string;
+    firstname?: string | null;
+    lastname?: string | null;
+    phoneNb?: string | null;
     email: string;
-    street: string;
-    city: string;
-    postalCode: string;
-    researchAuthorization: string;
-    surveyAuthorization: string;
+    street?: string | null;
+    city?: string | null;
+    postalCode?: string | null;
+    researchAuthorization?: string | null;
+    surveyAuthorization?: string | null;
     dogs?: {
       __typename: "ModelDogConnection";
       nextToken?: string | null;
@@ -1410,7 +1410,7 @@ export type OnUpdateDogSubscription = {
     } | null;
     createdAt: string;
     updatedAt: string;
-  } | null;
+  };
   createdAt: string;
   updatedAt: string;
   userDogsId?: string | null;
@@ -1426,7 +1426,7 @@ export type OnDeleteDogSubscription = {
       id: string;
       kitType: string;
       kitBatchNb?: string | null;
-      processStatus: string;
+      processStatus?: string | null;
       registrationDate: string;
       createdAt: string;
       updatedAt: string;
@@ -1436,23 +1436,23 @@ export type OnDeleteDogSubscription = {
     nextToken?: string | null;
   } | null;
   name: string;
-  breed: string;
-  gender: string;
-  age: string;
-  microchip: string;
-  conditions: string;
-  user?: {
+  breed?: string | null;
+  gender?: string | null;
+  age?: string | null;
+  microchip?: string | null;
+  conditions?: string | null;
+  user: {
     __typename: "User";
     id: string;
-    firstname: string;
-    lastname: string;
-    phoneNb: string;
+    firstname?: string | null;
+    lastname?: string | null;
+    phoneNb?: string | null;
     email: string;
-    street: string;
-    city: string;
-    postalCode: string;
-    researchAuthorization: string;
-    surveyAuthorization: string;
+    street?: string | null;
+    city?: string | null;
+    postalCode?: string | null;
+    researchAuthorization?: string | null;
+    surveyAuthorization?: string | null;
     dogs?: {
       __typename: "ModelDogConnection";
       nextToken?: string | null;
@@ -1463,7 +1463,7 @@ export type OnDeleteDogSubscription = {
     } | null;
     createdAt: string;
     updatedAt: string;
-  } | null;
+  };
   createdAt: string;
   updatedAt: string;
   userDogsId?: string | null;
@@ -1474,9 +1474,9 @@ export type OnCreateKitSubscription = {
   id: string;
   kitType: string;
   kitBatchNb?: string | null;
-  processStatus: string;
+  processStatus?: string | null;
   registrationDate: string;
-  dog?: {
+  dog: {
     __typename: "Dog";
     id: string;
     kits?: {
@@ -1484,42 +1484,42 @@ export type OnCreateKitSubscription = {
       nextToken?: string | null;
     } | null;
     name: string;
-    breed: string;
-    gender: string;
-    age: string;
-    microchip: string;
-    conditions: string;
-    user?: {
+    breed?: string | null;
+    gender?: string | null;
+    age?: string | null;
+    microchip?: string | null;
+    conditions?: string | null;
+    user: {
       __typename: "User";
       id: string;
-      firstname: string;
-      lastname: string;
-      phoneNb: string;
+      firstname?: string | null;
+      lastname?: string | null;
+      phoneNb?: string | null;
       email: string;
-      street: string;
-      city: string;
-      postalCode: string;
-      researchAuthorization: string;
-      surveyAuthorization: string;
+      street?: string | null;
+      city?: string | null;
+      postalCode?: string | null;
+      researchAuthorization?: string | null;
+      surveyAuthorization?: string | null;
       createdAt: string;
       updatedAt: string;
-    } | null;
+    };
     createdAt: string;
     updatedAt: string;
     userDogsId?: string | null;
-  } | null;
-  user?: {
+  };
+  user: {
     __typename: "User";
     id: string;
-    firstname: string;
-    lastname: string;
-    phoneNb: string;
+    firstname?: string | null;
+    lastname?: string | null;
+    phoneNb?: string | null;
     email: string;
-    street: string;
-    city: string;
-    postalCode: string;
-    researchAuthorization: string;
-    surveyAuthorization: string;
+    street?: string | null;
+    city?: string | null;
+    postalCode?: string | null;
+    researchAuthorization?: string | null;
+    surveyAuthorization?: string | null;
     dogs?: {
       __typename: "ModelDogConnection";
       nextToken?: string | null;
@@ -1530,7 +1530,7 @@ export type OnCreateKitSubscription = {
     } | null;
     createdAt: string;
     updatedAt: string;
-  } | null;
+  };
   createdAt: string;
   updatedAt: string;
   userKitsId?: string | null;
@@ -1542,9 +1542,9 @@ export type OnUpdateKitSubscription = {
   id: string;
   kitType: string;
   kitBatchNb?: string | null;
-  processStatus: string;
+  processStatus?: string | null;
   registrationDate: string;
-  dog?: {
+  dog: {
     __typename: "Dog";
     id: string;
     kits?: {
@@ -1552,42 +1552,42 @@ export type OnUpdateKitSubscription = {
       nextToken?: string | null;
     } | null;
     name: string;
-    breed: string;
-    gender: string;
-    age: string;
-    microchip: string;
-    conditions: string;
-    user?: {
+    breed?: string | null;
+    gender?: string | null;
+    age?: string | null;
+    microchip?: string | null;
+    conditions?: string | null;
+    user: {
       __typename: "User";
       id: string;
-      firstname: string;
-      lastname: string;
-      phoneNb: string;
+      firstname?: string | null;
+      lastname?: string | null;
+      phoneNb?: string | null;
       email: string;
-      street: string;
-      city: string;
-      postalCode: string;
-      researchAuthorization: string;
-      surveyAuthorization: string;
+      street?: string | null;
+      city?: string | null;
+      postalCode?: string | null;
+      researchAuthorization?: string | null;
+      surveyAuthorization?: string | null;
       createdAt: string;
       updatedAt: string;
-    } | null;
+    };
     createdAt: string;
     updatedAt: string;
     userDogsId?: string | null;
-  } | null;
-  user?: {
+  };
+  user: {
     __typename: "User";
     id: string;
-    firstname: string;
-    lastname: string;
-    phoneNb: string;
+    firstname?: string | null;
+    lastname?: string | null;
+    phoneNb?: string | null;
     email: string;
-    street: string;
-    city: string;
-    postalCode: string;
-    researchAuthorization: string;
-    surveyAuthorization: string;
+    street?: string | null;
+    city?: string | null;
+    postalCode?: string | null;
+    researchAuthorization?: string | null;
+    surveyAuthorization?: string | null;
     dogs?: {
       __typename: "ModelDogConnection";
       nextToken?: string | null;
@@ -1598,7 +1598,7 @@ export type OnUpdateKitSubscription = {
     } | null;
     createdAt: string;
     updatedAt: string;
-  } | null;
+  };
   createdAt: string;
   updatedAt: string;
   userKitsId?: string | null;
@@ -1610,9 +1610,9 @@ export type OnDeleteKitSubscription = {
   id: string;
   kitType: string;
   kitBatchNb?: string | null;
-  processStatus: string;
+  processStatus?: string | null;
   registrationDate: string;
-  dog?: {
+  dog: {
     __typename: "Dog";
     id: string;
     kits?: {
@@ -1620,42 +1620,42 @@ export type OnDeleteKitSubscription = {
       nextToken?: string | null;
     } | null;
     name: string;
-    breed: string;
-    gender: string;
-    age: string;
-    microchip: string;
-    conditions: string;
-    user?: {
+    breed?: string | null;
+    gender?: string | null;
+    age?: string | null;
+    microchip?: string | null;
+    conditions?: string | null;
+    user: {
       __typename: "User";
       id: string;
-      firstname: string;
-      lastname: string;
-      phoneNb: string;
+      firstname?: string | null;
+      lastname?: string | null;
+      phoneNb?: string | null;
       email: string;
-      street: string;
-      city: string;
-      postalCode: string;
-      researchAuthorization: string;
-      surveyAuthorization: string;
+      street?: string | null;
+      city?: string | null;
+      postalCode?: string | null;
+      researchAuthorization?: string | null;
+      surveyAuthorization?: string | null;
       createdAt: string;
       updatedAt: string;
-    } | null;
+    };
     createdAt: string;
     updatedAt: string;
     userDogsId?: string | null;
-  } | null;
-  user?: {
+  };
+  user: {
     __typename: "User";
     id: string;
-    firstname: string;
-    lastname: string;
-    phoneNb: string;
+    firstname?: string | null;
+    lastname?: string | null;
+    phoneNb?: string | null;
     email: string;
-    street: string;
-    city: string;
-    postalCode: string;
-    researchAuthorization: string;
-    surveyAuthorization: string;
+    street?: string | null;
+    city?: string | null;
+    postalCode?: string | null;
+    researchAuthorization?: string | null;
+    surveyAuthorization?: string | null;
     dogs?: {
       __typename: "ModelDogConnection";
       nextToken?: string | null;
@@ -1666,7 +1666,7 @@ export type OnDeleteKitSubscription = {
     } | null;
     createdAt: string;
     updatedAt: string;
-  } | null;
+  };
   createdAt: string;
   updatedAt: string;
   userKitsId?: string | null;

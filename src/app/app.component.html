@@ -2,7 +2,7 @@
 	<app-header></app-header>
 	<app-nav *ngIf="authenticator.authStatus === 'authenticated'"></app-nav>
 	<div class="row d-flex justify-content-center">
-		<div class="en-sign col-md-3" *ngIf="authenticator.authStatus !== 'authenticated'">
+		<div class="en-sign col-lg-3 col-md-12 col-sm-12" *ngIf="authenticator.authStatus !== 'authenticated'">
 			<p>
 				<em>If you already have an account, please sign-in.<br />
 					If you don't have an account, please "Create account".<br />
@@ -14,15 +14,16 @@
 					Une fois votre compte créé, vous recevrez un e-mail avec votre code d'activation.</em>
 			</p>
 		</div>
-		<div>
-			<amplify-authenticator style="text-align:center;">
+		<div class="col-lg-5 col-md-12 col-sm-12">
+			<amplify-authenticator initialState="signIn" [loginMechanisms]="['email']" style="text-align:center;"
+				class="noSignIn">
 				<!-- <amplify-sign-up [formFields]="formFields" slot="sign-up"></amplify-sign-up> -->
-				<div class="container">
+				<div class="container" *ngIf="authenticator.authStatus === 'authenticated'">
 					<router-outlet></router-outlet>
 				</div>
 			</amplify-authenticator>
 		</div>
-		<div class="es-sign col-md-3" *ngIf="authenticator.authStatus !== 'authenticated'">
+		<div class="es-sign col-lg-3 col-md-12 col-sm-12" *ngIf="authenticator.authStatus !== 'authenticated'">
 			<p>
 				<em>Si ya tiene una cuenta, por favor regístrese.<br />
 					Si no tiene una cuenta, por favor "Cree una cuenta".<br />

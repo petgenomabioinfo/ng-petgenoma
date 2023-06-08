@@ -4,15 +4,15 @@
 
 type User @model @auth(rules: [{ allow: private }]){
   id: ID!
-  firstname: String!
-  lastname: String!
-  phoneNb: String!
+  firstname: String
+  lastname: String
+  phoneNb: String
   email: String!
-  street: String!
-  city: String!
-  postalCode: String!
-  researchAuthorization: String!
-  surveyAuthorization: String!
+  street: String
+  city: String
+  postalCode: String
+  researchAuthorization: String
+  surveyAuthorization: String
   dogs: [Dog] @hasMany
   kits: [Kit] @hasMany
 }
@@ -21,21 +21,21 @@ type Dog @model @auth(rules: [{ allow: private }]){
   id: ID!
   kits: [Kit] @hasMany
   name: String!
-  breed: String!
-  gender: String!
-  age: String!
-  microchip: String!
-  conditions: String!
-  user: User @belongsTo
+  breed: String
+  gender: String
+  age: String
+  microchip: String
+  conditions: String
+  user: User! @belongsTo
 }
 
 type Kit @model @auth(rules: [{ allow: private }]){
   id: ID!
   kitType: String!
   kitBatchNb: String
-  processStatus: String!
+  processStatus: String
   registrationDate: String!
-  dog: Dog @belongsTo
-  user: User @belongsTo
+  dog: Dog! @belongsTo
+  user: User! @belongsTo
 }
 

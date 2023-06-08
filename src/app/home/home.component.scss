@@ -18,27 +18,31 @@
 	right: 0;
 	left: 0;
 	margin-left: auto;
-	margin-right:auto;
+	margin-right: auto;
 	width: 50%;
 	text-align: center;
 	margin-top: 25px;
 	margin-bottom: 50px;
 }
 
-.home-button{
+.home-button {
 	text-align: center;
 	margin-left: auto;
 	margin-right: auto;
 	width: 400px;
 	height: 100px;
-	text-align: center;
 	align-items: center !important;
 	justify-content: center;
+	align-content: center;
 }
 
 .button-card {
 	width: 100%;
 	text-align: center;
+}
+
+.btn-wrapping {
+	flex-wrap: nowrap !important;
 }
 
 .card {
@@ -55,6 +59,9 @@
 .register-button {
 	background-color: #e6335c;
 	color: white;
+	text-align: center;
+	align-items: center !important;
+	justify-content: center;
 }
 
 .other-button {
