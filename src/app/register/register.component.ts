@@ -87,7 +87,11 @@ export class RegisterComponent implements OnInit {
 	}
 
 	addkitclick(){
-		this.addkit = true;
+		if (this.dogs.length > 0) {
+			this.addkit = true;
+		} else {
+			this.toastr.error('You need to register a dog first', 'Error' , {positionClass: 'toast-bottom-right'});
+		}
 	}
 	
 	saveKit() {

@@ -6,42 +6,42 @@
   <mdb-tab [title]="translateText('register.userinfo')">
 	<form #registerUserForm="ngForm" (ngSubmit)="saveUser()">
 		<div class="form-row registerKit">
-			<label class="col-md-5 col-sm-12 registerKit" for="firstname">{{'register.firstname' | translate}}</label>
+			<label class="col-sm-12 registerKit" for="firstname">{{'register.firstname' | translate}}</label>
 			<input type="text" class="col-md-5 col-sm-12 form-control registerKit" id="firstname"
 				aria-describedby="kitIdHelp" placeholder="" [(ngModel)]="user.firstname" name="firstname" required>
 		</div>
 		<div class="form-row registerKit">
-			<label class="col-md-5 col-sm-12 registerKit" for="lastname">{{'register.lastname' | translate}}</label>
+			<label class="col-sm-12 registerKit" for="lastname">{{'register.lastname' | translate}}</label>
 			<input type="text" class="col-md-5 col-sm-12 form-control registerKit" id="lastname"
 				aria-describedby="kitIdHelp" placeholder="" [(ngModel)]="user.lastname" name="lastname" required>
 		</div>
 		<div class="form-row registerKit">
-			<label class="col-md-5 col-sm-12 registerKit" for="street">{{'register.street' | translate}}</label>
+			<label class="col-sm-12 registerKit" for="street">{{'register.street' | translate}}</label>
 			<input type="text" class="col-md-5 col-sm-12 form-control registerKit" id="street" aria-describedby="kitIdHelp"
 				placeholder="" [(ngModel)]="user.street" name="street" required>
 		</div>
 		<div class="form-row registerKit">
-			<label class="col-md-5 col-sm-12 registerKit" for="city">{{'register.city' | translate}}</label>
+			<label class="col-sm-12 registerKit" for="city">{{'register.city' | translate}}</label>
 			<input type="text" class="col-md-5 col-sm-12 form-control registerKit" id="city" aria-describedby="kitIdHelp"
 				placeholder="" [(ngModel)]="user.city" name="city" required>
 		</div>
 		<div class="form-row registerKit">
-			<label class="col-md-5 col-sm-12 registerKit" for="postalCode">{{'register.postalcode' | translate}}</label>
+			<label class="col-sm-12 registerKit" for="postalCode">{{'register.postalcode' | translate}}</label>
 			<input type="text" class="col-md-5 col-sm-12 form-control registerKit" id="postalCode"
 				aria-describedby="kitIdHelp" placeholder="" [(ngModel)]="user.postalCode" name="postalCode" required>
 		</div>
 		<div class="form-row registerKit">
-			<label class="col-md-5 col-sm-12 registerKit" for="country">{{'register.country' | translate}}</label>
+			<label class="col-sm-12 registerKit" for="country">{{'register.country' | translate}}</label>
 			<input type="text" class="col-md-5 col-sm-12 form-control registerKit" id="country" aria-describedby="kitIdHelp"
 				placeholder="" [(ngModel)]="user.country" name="country" required>
 		</div>
 		<div class="form-row registerKit">
-			<label class="col-md-5 col-sm-12 registerKit" for="phoneNb">{{'register.telephone' | translate}}</label>
+			<label class="col-sm-12 registerKit" for="phoneNb">{{'register.telephone' | translate}}</label>
 			<input type="text" class="col-md-5 col-sm-12 form-control registerKit" id="phoneNb" aria-describedby="kitIdHelp"
 				placeholder="" [(ngModel)]="user.phoneNb" name="phoneNb" required>
 		</div>
 		<div class="form-row registerKit">
-			<label class="col-md-5 col-sm-12 registerKit" for="email">{{'register.email' | translate}}</label>
+			<label class="col-sm-12 registerKit" for="email">{{'register.email' | translate}}</label>
 			<input type="text" class="col-md-5 col-sm-12 form-control registerKit" id="email" aria-describedby="kitIdHelp"
 				placeholder="" [(ngModel)]="user.email" name="email" required>
 		</div>
@@ -53,67 +53,71 @@
   </mdb-tab>
 
   <mdb-tab [title]="translateText('register.doginfo')">
-	<table class="table table-striped table-hover table-sm table-responsive-sm table-add">
-		<thead class="thead-light">
-		  <tr>
-			<th>{{'register.dog.name' | translate}}</th>
-			<th>{{'register.dog.breed' | translate}}</th>
-			<th>{{'register.dog.gender' | translate}}</th>
-			<th>{{'register.dog.age' | translate}}</th>
-			<th>{{'register.dog.microchip' | translate}}</th>
-			<th>{{'register.dog.conditions' | translate}}</th>
-		  </tr>
-		</thead>
-		<tbody>
-		  <tr *ngFor="let dog of dogs">
-			<td>{{ dog.name }}</td>
-			<td>{{ dog.breed }}</td>
-			<td>{{ dog.gender }}</td>
-			<td>{{ dog.age }}</td>
-			<td>{{ dog.microchip }}</td>
-			<td>{{ dog.conditions }}</td>
-		  </tr>
-		</tbody>
-	</table>
-
+	<div *ngIf="dogs.length>0; noDog">
+		<table class="table table-striped table-hover table-sm table-responsive-sm table-add">
+			<thead class="thead-light">
+			<tr>
+				<th>{{'register.dog.name' | translate}}</th>
+				<th>{{'register.dog.breed' | translate}}</th>
+				<th>{{'register.dog.gender' | translate}}</th>
+				<th>{{'register.dog.age' | translate}}</th>
+				<th>{{'register.dog.microchip' | translate}}</th>
+				<th>{{'register.dog.conditions' | translate}}</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr *ngFor="let dog of dogs">
+				<td>{{ dog.name }}</td>
+				<td>{{ dog.breed }}</td>
+				<td>{{ dog.gender }}</td>
+				<td>{{ dog.age }}</td>
+				<td>{{ dog.microchip }}</td>
+				<td>{{ dog.conditions }}</td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+	<div #noDog>
+		<p [translate]="'register.nodog'"></p>
+	</div>
 	<button type="button" class="btn btn-warning btn-add" [translate]="'register.adddog.button'" (click)="adddogclick();" *ngIf="!adddog"></button>
 
 	<form #registerDogForm="ngForm" (ngSubmit)="saveDog()" *ngIf="adddog">
 	<div class="form-row registerKit">
-		<label class="col-md-5 col-sm-12 registerKit" for="name">{{'register.dog.name' | translate}}</label>
+		<label class="col-sm-12 registerKit" for="name">{{'register.dog.name' | translate}}</label>
 		<input type="text" class="col-md-5 col-sm-12 form-control registerKit" id="name" aria-describedby="kitIdHelp"
 			placeholder="" [(ngModel)]="dog.name" name="name" required>
 		<!-- [pattern]="kitNamePattern" #kitIdName="ngModel"> -->
 	</div>
 	<div class="form-row registerKit">
-		<label class="col-md-5 col-sm-12 registerKit" for="breed">{{'register.dog.breed' | translate}}</label>
+		<label class="col-sm-12 registerKit" for="breed">{{'register.dog.breed' | translate}}</label>
 		<input type="text" class="col-md-5 col-sm-12 form-control registerKit" id="breed" aria-describedby="kitIdHelp"
 			placeholder="" [(ngModel)]="dog.breed" name="breed" required>
 		<!-- [pattern]="kitNamePattern" #kitIdName="ngModel"> -->
 	</div>
 	<div class="form-row registerKit">
-		<label class="col-md-5 col-sm-12 registerKit" for="gender">{{'register.dog.gender' | translate}}</label>
+		<label class="col-sm-12 registerKit" for="gender">{{'register.dog.gender' | translate}}</label>
 		<input type="text" class="col-md-5 col-sm-12 form-control registerKit" id="gender" aria-describedby="kitIdHelp"
 			placeholder="" [(ngModel)]="dog.gender" name="gender" required>
 		<!-- [pattern]="kitNamePattern" #kitIdName="ngModel"> -->
 	</div>
 	<div class="form-row registerKit">
-		<label class="col-md-5 col-sm-12 registerKit" for="age">{{'register.dog.age' | translate}}</label>
+		<label class="col-sm-12 registerKit" for="age">{{'register.dog.age' | translate}}</label>
 		<input type="text" class="col-md-5 col-sm-12 form-control registerKit" id="age" aria-describedby="kitIdHelp"
 			placeholder="" [(ngModel)]="dog.age" name="age" required>
 		<!-- [pattern]="kitNamePattern" #kitIdName="ngModel"> -->
 	</div>
 	<div class="form-row registerKit">
-		<label class="col-md-5 col-sm-12 registerKit" for="microchip">{{'register.dog.save.microchip' | translate}} </label>
+		<label class="col-sm-12 registerKit" for="microchip">{{'register.dog.save.microchip' | translate}} </label>
 		<input type="text" class="col-md-5 col-sm-12 form-control registerKit" id="microchip"
 			aria-describedby="kitIdHelp" placeholder="" [(ngModel)]="dog.microchip" name="microchip" required>
 		<!-- [pattern]="kitNamePattern" #kitIdName="ngModel"> -->
 	</div>
 	
 	<div class="form-row registerKit">
-		<label class="col-md-5 col-sm-12 registerKit" for="conditions">{{'register.dog.save.diseases' | translate}} </label>
+		<label class="col-sm-12 registerKit" for="conditions">{{'register.dog.save.diseases' | translate}} </label>
 		<input type="text" class="col-md-5 col-sm-12 form-control registerKit" id="conditions"
-			aria-describedby="kitIdHelp" placeholder="" [(ngModel)]="dog.conditions" name="conditions" required>
+			aria-describedby="kitIdHelp" placeholder="" [(ngModel)]="dog.conditions" name="conditions">
 		<!-- [pattern]="kitNamePattern" #kitIdName="ngModel"> -->
 	</div>
 	<div>
@@ -127,30 +131,34 @@
 
   <mdb-tab [title]="translateText('register.kitinfo')">
 	<!-- TODO: registering kit not possible if no dog registered-->
-	<table class="table table-striped table-hover table-sm table-responsive-sm table-add">
-		<thead class="thead-light">
-		  <tr>
-			<th>{{'register.kit.id' | translate}}</th>
-			<th>{{'register.kit.collectiondate' | translate}}</th>
-			<th>{{'register.kit.petname' | translate}}</th>
-			<th>{{'register.kit.type' | translate}}</th>
-		  </tr>
-		</thead>
-		<tbody>
-		  <tr *ngFor="let kit of kits">
-			<td>{{ kit.kitBatchNb }}</td>
-			<td>{{ kit.collectionDate }}</td>
-			<td>{{ kit.petName }}</td>
-			<td>{{ kit.kitType }}</td>
-		  </tr>
-		</tbody>
-	</table>
-
+	<div *ngIf="kits.length>0; else noKit">
+		<table class="table table-striped table-hover table-sm table-responsive-sm table-add">
+			<thead class="thead-light">
+			<tr>
+				<th>{{'register.kit.id' | translate}}</th>
+				<th>{{'register.kit.collectiondate' | translate}}</th>
+				<th>{{'register.kit.petname' | translate}}</th>
+				<th>{{'register.kit.type' | translate}}</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr *ngFor="let kit of kits">
+				<td>{{ kit.kitBatchNb }}</td>
+				<td>{{ kit.collectionDate }}</td>
+				<td>{{ kit.petName }}</td>
+				<td>{{ kit.kitType }}</td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+	<div #noKit>
+		<p [translate]="'register.nokit'"></p>
+	</div>
 	<button type="button" class="btn btn-warning btn-add" [translate]="'register.addkit.button'" (click)="addkitclick();" *ngIf="!addkit"></button>
 
 	<form #registerKitForm="ngForm" (ngSubmit)="saveKit()" *ngIf="addkit">
 		<div class="form-row registerKit">
-			<label class="col-md-5 col-sm-12 registerKit" for="kitBatchNb">{{'register.kit.collectionNb' | translate}}</label>
+			<label class="col-sm-12 registerKit" for="kitBatchNb">{{'register.kit.collectionNb' | translate}}</label>
 			<input type="text" class="col-md-5 col-sm-12 form-control registerKit" id="kitBatchNb" aria-describedby="kitIdHelp"
 				placeholder="XX00000000" [(ngModel)]="kit.kitBatchNb" name="kitId" required [pattern]="kitNamePattern"
 				#kitIdName="ngModel">
@@ -160,28 +168,21 @@
 				[translate]="'register.error.kitFormat'">* </span>
 		</div>
 	<div class="form-row registerKit">
-		<label class="col-md-5 col-sm-12 registerKit" for="collectionDate">{{'register.kit.collectionDate' | translate}} </label>
+		<label class="col-sm-12 registerKit" for="collectionDate">{{'register.kit.collectionDate' | translate}} </label>
 		<input type="text" class="col-md-5 col-sm-12 form-control registerKit" id="collectionDate"
 			aria-describedby="kitIdHelp" placeholder="" [(ngModel)]="kit.collectionDate" name="collectionDate" required>
-		<!-- [pattern]="kitNamePattern" #kitIdName="ngModel"> -->
 	</div>
 	
-	<!-- TODO: make a select from dog list-->
 	<div class="form-row registerKit">
-		<label class="col-md-3 col-sm-12 registerKit" for="petName" [translate]="'register.petname'"></label>
+		<label class="col-sm-12 registerKit" for="petName" [translate]="'register.petname'"></label>
 		<select class="col-md-5 col-sm-12 form-control registerKit" id="petName" [(ngModel)]="idDogSelected"
 			name="petName">
 			<option *ngFor="let dog of dogs" [value]="dog.id"> {{dog.name}}</option>
-			<!--<option value="Health & Breed" [translate]="'register.healthbreed'"></option>-->
 		</select>
-		<!--<input type="text" class="col-md-5 col-sm-12 form-control registerKit" id="petName"
-			aria-describedby="petNameHelp" [(ngModel)]="kit.petName" name="petName" required #petNameValid="ngModel">
-		<span class="warning-message registerKit col-md-3 col-sm-12" *ngIf="petNameValid.errors?.required"
-			[translate]="'register.error.petName'">* </span>-->
 	</div>
 
 	<div class="form-row registerKit">
-		<label class="col-md-5 col-sm-12 registerKit" for="kitType">{{'register.kit.kitType' | translate}}</label>
+		<label class="col-sm-12 registerKit" for="kitType">{{'register.kit.type' | translate}}</label>
 		<select class="col-md-5 col-sm-12 form-control registerKit" id="kitType" [(ngModel)]="kit.kitType"
 			name="kitType">
 			<option value="Health" [translate]="'register.health'"></option>
