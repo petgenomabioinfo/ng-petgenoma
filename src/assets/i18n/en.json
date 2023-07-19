@@ -49,7 +49,7 @@
 	"register.kit.type": "Kit Type",
 	"register.kitinfo": "Kits Information",
 	"register.kit.collectionNb": "DNA Sample collection number (See barcode of the test kit)",
-	"register.kit.collectionDate": "Date of collection",
+	"register.kit.collectionDate": "Date of collection (YYYY-MM-DD)",
 	"register.kit.cancel": "Cancel",
 	"register.nokit": "No registered Kits",
 	"register.nodog": "No registered Dogs"

@@ -73,7 +73,7 @@ export class RegisterComponent implements OnInit {
 
 	loadKits() {
 		this.api.ListKits({userKitsId: { eq: this.connectedUser.username }}).then(
-			res => { 
+			res => {
 				if (res) {
 					this.kits = Mappers.mapListKitsAPItoFront(res);
 				} else {
@@ -95,24 +95,26 @@ export class RegisterComponent implements OnInit {
 	}
 	
 	saveKit() {
-		this.kit.id = uuid.v4();
+		this.kit.id = this.kit.kitBatchNb;
 		this.kit.userKitsId = this.connectedUser.username;
 		this.kit.petName = this.dogs.find(dog => dog.id === this.idDogSelected).name;
 		this.kit.dogKitsId = this.idDogSelected;
 		this.kit.registrationDate = new Date().toISOString();
-		console.log(this.kit);
 		this.api.CreateKit(Mappers.mapKitFrontToAPI(this.kit)).then(
 			res => {
 				this.router.navigate(['/register']);
-				this.toastr.success('Kit Successfully Registered');
+				this.toastr.success('Kit Successfully Registered', 'Success' , {positionClass: 'toast-bottom-right'});
+				this.loadKits();
 			},
 			err => {
-				this.toastr.error('Something went wrong');
-				console.log('Error : ' + err.errors[0].message);
+				if (err.errors[0].errorType === 'DynamoDB:ConditionalCheckFailedException') {
+					this.toastr.error('Kit ID already registered', 'Error' , {positionClass: 'toast-bottom-right'});
+				} else {
+					this.toastr.error('Something went wrong', 'Error' , {positionClass: 'toast-bottom-right'});
+				}
 			}
 		);
 		this.addkit = false;
-		this.loadKits();
 	}
 
 	saveUser() {
@@ -120,10 +122,10 @@ export class RegisterComponent implements OnInit {
 		this.api.UpdateUser(Mappers.mapUserFrontToAPI(this.user)).then(
 			res => {
 				this.router.navigate(['/register']);
-				this.toastr.success('User Successfully Registered');
+				this.toastr.success('User Successfully Registered', 'Success' , {positionClass: 'toast-bottom-right'});
 			},
 			err => {
-				this.toastr.error('Something went wrong');
+				this.toastr.error('Something went wrong', 'Error' , {positionClass: 'toast-bottom-right'});
 				console.log('Error : ' + err.errors[0].message);
 			}
 		);
@@ -139,15 +141,15 @@ export class RegisterComponent implements OnInit {
 		this.api.CreateDog(Mappers.mapDogFronttoAPI(this.dog)).then(
 			res => {
 				this.router.navigate(['/register']);
-				this.toastr.success('Kit Successfully Registered');
+				this.toastr.success('Kit Successfully Registered', 'Success' , {positionClass: 'toast-bottom-right'});
+				this.loadDogs();
 			},
 			err => {
-				this.toastr.error('Something went wrong');
+				this.toastr.error('Something went wrong', 'Error' , {positionClass: 'toast-bottom-right'});
 				console.log('Error : ' + err.errors[0].message);
 			}
 		);
 		this.adddog = false;
-		this.loadDogs();
 	}
 
 	useLanguage(language: string) {
