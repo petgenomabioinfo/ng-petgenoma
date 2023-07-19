@@ -2,19 +2,43 @@
 query GetUser($id: ID!) {
   getUser(id: $id) {
     id
-    username
+    firstname
+    lastname
     phoneNb
+    email
+    street
+    city
+    postalCode
+    country
+    researchAuthorization
+    surveyAuthorization
+    dogs {
+      items {
+        id
+        name
+        breed
+        gender
+        age
+        microchip
+        conditions
+        createdAt
+        updatedAt
+        userDogsId
+      }
+      nextToken
+    }
     kits {
       items {
         id
         kitType
-        userID
         kitBatchNb
         processStatus
         registrationDate
-        petName
+        collecionDate
         createdAt
         updatedAt
+        userKitsId
+        dogKitsId
       }
       nextToken
     }
@@ -30,8 +54,19 @@ query ListUsers(
   listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
-      username
+      firstname
+      lastname
       phoneNb
+      email
+      street
+      city
+      postalCode
+      country
+      researchAuthorization
+      surveyAuthorization
+      dogs {
+        nextToken
+      }
       kits {
         nextToken
       }
@@ -41,17 +76,154 @@ query ListUsers(
     nextToken
   }
 }
+query GetDog($id: ID!) {
+  getDog(id: $id) {
+    id
+    kits {
+      items {
+        id
+        kitType
+        kitBatchNb
+        processStatus
+        registrationDate
+        collecionDate
+        createdAt
+        updatedAt
+        userKitsId
+        dogKitsId
+      }
+      nextToken
+    }
+    name
+    breed
+    gender
+    age
+    microchip
+    conditions
+    user {
+      id
+      firstname
+      lastname
+      phoneNb
+      email
+      street
+      city
+      postalCode
+      country
+      researchAuthorization
+      surveyAuthorization
+      dogs {
+        nextToken
+      }
+      kits {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+    userDogsId
+  }
+}
+query ListDogs($filter: ModelDogFilterInput, $limit: Int, $nextToken: String) {
+  listDogs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      kits {
+        nextToken
+      }
+      name
+      breed
+      gender
+      age
+      microchip
+      conditions
+      user {
+        id
+        firstname
+        lastname
+        phoneNb
+        email
+        street
+        city
+        postalCode
+        country
+        researchAuthorization
+        surveyAuthorization
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+      userDogsId
+    }
+    nextToken
+  }
+}
 query GetKit($id: ID!) {
   getKit(id: $id) {
     id
     kitType
-    userID
     kitBatchNb
     processStatus
     registrationDate
-    petName
+    collecionDate
+    dog {
+      id
+      kits {
+        nextToken
+      }
+      name
+      breed
+      gender
+      age
+      microchip
+      conditions
+      user {
+        id
+        firstname
+        lastname
+        phoneNb
+        email
+        street
+        city
+        postalCode
+        country
+        researchAuthorization
+        surveyAuthorization
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+      userDogsId
+    }
+    user {
+      id
+      firstname
+      lastname
+      phoneNb
+      email
+      street
+      city
+      postalCode
+      country
+      researchAuthorization
+      surveyAuthorization
+      dogs {
+        nextToken
+      }
+      kits {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
     createdAt
     updatedAt
+    userKitsId
+    dogKitsId
   }
 }
 query ListKits($filter: ModelKitFilterInput, $limit: Int, $nextToken: String) {
@@ -59,13 +231,41 @@ query ListKits($filter: ModelKitFilterInput, $limit: Int, $nextToken: String) {
     items {
       id
       kitType
-      userID
       kitBatchNb
       processStatus
       registrationDate
-      petName
+      collecionDate
+      dog {
+        id
+        name
+        breed
+        gender
+        age
+        microchip
+        conditions
+        createdAt
+        updatedAt
+        userDogsId
+      }
+      user {
+        id
+        firstname
+        lastname
+        phoneNb
+        email
+        street
+        city
+        postalCode
+        country
+        researchAuthorization
+        surveyAuthorization
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
+      userKitsId
+      dogKitsId
     }
     nextToken
   }

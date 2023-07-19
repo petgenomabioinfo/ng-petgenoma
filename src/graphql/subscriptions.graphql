@@ -1,20 +1,44 @@
 # this is an auto generated file. This will be overwritten
-subscription OnCreateUser {
-  onCreateUser {
+subscription OnCreateUser($filter: ModelSubscriptionUserFilterInput) {
+  onCreateUser(filter: $filter) {
     id
-    username
+    firstname
+    lastname
     phoneNb
+    email
+    street
+    city
+    postalCode
+    country
+    researchAuthorization
+    surveyAuthorization
+    dogs {
+      items {
+        id
+        name
+        breed
+        gender
+        age
+        microchip
+        conditions
+        createdAt
+        updatedAt
+        userDogsId
+      }
+      nextToken
+    }
     kits {
       items {
         id
         kitType
-        userID
         kitBatchNb
         processStatus
         registrationDate
-        petName
+        collecionDate
         createdAt
         updatedAt
+        userKitsId
+        dogKitsId
       }
       nextToken
     }
@@ -22,22 +46,46 @@ subscription OnCreateUser {
     updatedAt
   }
 }
-subscription OnUpdateUser {
-  onUpdateUser {
+subscription OnUpdateUser($filter: ModelSubscriptionUserFilterInput) {
+  onUpdateUser(filter: $filter) {
     id
-    username
+    firstname
+    lastname
     phoneNb
+    email
+    street
+    city
+    postalCode
+    country
+    researchAuthorization
+    surveyAuthorization
+    dogs {
+      items {
+        id
+        name
+        breed
+        gender
+        age
+        microchip
+        conditions
+        createdAt
+        updatedAt
+        userDogsId
+      }
+      nextToken
+    }
     kits {
       items {
         id
         kitType
-        userID
         kitBatchNb
         processStatus
         registrationDate
-        petName
+        collecionDate
         createdAt
         updatedAt
+        userKitsId
+        dogKitsId
       }
       nextToken
     }
@@ -45,22 +93,46 @@ subscription OnUpdateUser {
     updatedAt
   }
 }
-subscription OnDeleteUser {
-  onDeleteUser {
+subscription OnDeleteUser($filter: ModelSubscriptionUserFilterInput) {
+  onDeleteUser(filter: $filter) {
     id
-    username
+    firstname
+    lastname
     phoneNb
+    email
+    street
+    city
+    postalCode
+    country
+    researchAuthorization
+    surveyAuthorization
+    dogs {
+      items {
+        id
+        name
+        breed
+        gender
+        age
+        microchip
+        conditions
+        createdAt
+        updatedAt
+        userDogsId
+      }
+      nextToken
+    }
     kits {
       items {
         id
         kitType
-        userID
         kitBatchNb
         processStatus
         registrationDate
-        petName
+        collecionDate
         createdAt
         updatedAt
+        userKitsId
+        dogKitsId
       }
       nextToken
     }
@@ -68,42 +140,348 @@ subscription OnDeleteUser {
     updatedAt
   }
 }
-subscription OnCreateKit {
-  onCreateKit {
+subscription OnCreateDog($filter: ModelSubscriptionDogFilterInput) {
+  onCreateDog(filter: $filter) {
     id
-    kitType
-    userID
-    kitBatchNb
-    processStatus
-    registrationDate
-    petName
+    kits {
+      items {
+        id
+        kitType
+        kitBatchNb
+        processStatus
+        registrationDate
+        collecionDate
+        createdAt
+        updatedAt
+        userKitsId
+        dogKitsId
+      }
+      nextToken
+    }
+    name
+    breed
+    gender
+    age
+    microchip
+    conditions
+    user {
+      id
+      firstname
+      lastname
+      phoneNb
+      email
+      street
+      city
+      postalCode
+      country
+      researchAuthorization
+      surveyAuthorization
+      dogs {
+        nextToken
+      }
+      kits {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
     createdAt
     updatedAt
+    userDogsId
   }
 }
-subscription OnUpdateKit {
-  onUpdateKit {
+subscription OnUpdateDog($filter: ModelSubscriptionDogFilterInput) {
+  onUpdateDog(filter: $filter) {
     id
-    kitType
-    userID
-    kitBatchNb
-    processStatus
-    registrationDate
-    petName
+    kits {
+      items {
+        id
+        kitType
+        kitBatchNb
+        processStatus
+        registrationDate
+        collecionDate
+        createdAt
+        updatedAt
+        userKitsId
+        dogKitsId
+      }
+      nextToken
+    }
+    name
+    breed
+    gender
+    age
+    microchip
+    conditions
+    user {
+      id
+      firstname
+      lastname
+      phoneNb
+      email
+      street
+      city
+      postalCode
+      country
+      researchAuthorization
+      surveyAuthorization
+      dogs {
+        nextToken
+      }
+      kits {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
     createdAt
     updatedAt
+    userDogsId
   }
 }
-subscription OnDeleteKit {
-  onDeleteKit {
+subscription OnDeleteDog($filter: ModelSubscriptionDogFilterInput) {
+  onDeleteDog(filter: $filter) {
+    id
+    kits {
+      items {
+        id
+        kitType
+        kitBatchNb
+        processStatus
+        registrationDate
+        collecionDate
+        createdAt
+        updatedAt
+        userKitsId
+        dogKitsId
+      }
+      nextToken
+    }
+    name
+    breed
+    gender
+    age
+    microchip
+    conditions
+    user {
+      id
+      firstname
+      lastname
+      phoneNb
+      email
+      street
+      city
+      postalCode
+      country
+      researchAuthorization
+      surveyAuthorization
+      dogs {
+        nextToken
+      }
+      kits {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+    userDogsId
+  }
+}
+subscription OnCreateKit($filter: ModelSubscriptionKitFilterInput) {
+  onCreateKit(filter: $filter) {
     id
     kitType
-    userID
     kitBatchNb
     processStatus
     registrationDate
-    petName
+    collecionDate
+    dog {
+      id
+      kits {
+        nextToken
+      }
+      name
+      breed
+      gender
+      age
+      microchip
+      conditions
+      user {
+        id
+        firstname
+        lastname
+        phoneNb
+        email
+        street
+        city
+        postalCode
+        country
+        researchAuthorization
+        surveyAuthorization
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+      userDogsId
+    }
+    user {
+      id
+      firstname
+      lastname
+      phoneNb
+      email
+      street
+      city
+      postalCode
+      country
+      researchAuthorization
+      surveyAuthorization
+      dogs {
+        nextToken
+      }
+      kits {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
     createdAt
     updatedAt
+    userKitsId
+    dogKitsId
+  }
+}
+subscription OnUpdateKit($filter: ModelSubscriptionKitFilterInput) {
+  onUpdateKit(filter: $filter) {
+    id
+    kitType
+    kitBatchNb
+    processStatus
+    registrationDate
+    collecionDate
+    dog {
+      id
+      kits {
+        nextToken
+      }
+      name
+      breed
+      gender
+      age
+      microchip
+      conditions
+      user {
+        id
+        firstname
+        lastname
+        phoneNb
+        email
+        street
+        city
+        postalCode
+        country
+        researchAuthorization
+        surveyAuthorization
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+      userDogsId
+    }
+    user {
+      id
+      firstname
+      lastname
+      phoneNb
+      email
+      street
+      city
+      postalCode
+      country
+      researchAuthorization
+      surveyAuthorization
+      dogs {
+        nextToken
+      }
+      kits {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+    userKitsId
+    dogKitsId
+  }
+}
+subscription OnDeleteKit($filter: ModelSubscriptionKitFilterInput) {
+  onDeleteKit(filter: $filter) {
+    id
+    kitType
+    kitBatchNb
+    processStatus
+    registrationDate
+    collecionDate
+    dog {
+      id
+      kits {
+        nextToken
+      }
+      name
+      breed
+      gender
+      age
+      microchip
+      conditions
+      user {
+        id
+        firstname
+        lastname
+        phoneNb
+        email
+        street
+        city
+        postalCode
+        country
+        researchAuthorization
+        surveyAuthorization
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+      userDogsId
+    }
+    user {
+      id
+      firstname
+      lastname
+      phoneNb
+      email
+      street
+      city
+      postalCode
+      country
+      researchAuthorization
+      surveyAuthorization
+      dogs {
+        nextToken
+      }
+      kits {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+    userKitsId
+    dogKitsId
   }
 }

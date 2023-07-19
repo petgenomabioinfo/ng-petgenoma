@@ -1,6 +1,7 @@
-<div class="pet-nav justify-content-between bg-white border-bottom shadow-sm">
+<div class="pet-nav justify-content-between ">
 	<nav class="navbar navbar-light bg-default navbar-expand-lg static-top">
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+			aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse justify-content-end" id="navbarResponsive">
@@ -10,7 +11,7 @@
 						<!--<span class="sr-only">(current)</span>-->
 					</a>
 				</li>
-				
+
 				<li class="nav-item">
 					<a class="nav-link" href="register" [translate]="'nav.register'"></a>
 				</li>
@@ -21,13 +22,19 @@
 					<a class="nav-link" href="#">About</a>
 				</li>-->
 				<li class="nav-item">
-					<button class="btn flag" (click)="useLanguage('en')"><img src='../../assets/img/gb.svg' style="height:25px;"></button>
-					<button class="btn flag" (click)="useLanguage('es')"><img src='../../assets/img/mx.svg' style="height:25px;"></button>
-					<button class="btn flag" (click)="useLanguage('fr')"><img src='../../assets/img/fr.svg' style="height:25px;"></button>
-					<button class="btn flag" (click)="useLanguage('nl')"><img src='../../assets/img/nl.svg' style="height:25px;"></button>
+					<button class="btn flag" (click)="useLanguage('en')"><img src='../../assets/img/gb.svg'
+							style="height:25px;"></button>
+					<button class="btn flag" (click)="useLanguage('es')"><img src='../../assets/img/mx.svg'
+							style="height:25px;"></button>
+					<button class="btn flag" (click)="useLanguage('fr')"><img src='../../assets/img/fr.svg'
+							style="height:25px;"></button>
+					<button class="btn flag" (click)="useLanguage('nl')"><img src='../../assets/img/nl.svg'
+							style="height:25px;"></button>
 				</li>
 			</ul>
 		</div>
-	
+		<!-- TODO : add signout button -->
+		<button type="button" class="btn btn-outline-secondary btn-rounded signout-button" mdbRipple (click)="signOut()"
+			*ngIf="authenticator.authStatus === 'authenticated'">Logout</button>
 	</nav>
 </div>

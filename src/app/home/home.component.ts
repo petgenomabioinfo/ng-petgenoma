@@ -44,10 +44,15 @@ export class HomeComponent {
 	}
 
 	ngOnInit(): void {
-		this.shared.globalLanguage$.subscribe(value => {
-			this.translate.use(value);
-			this.lang = value;
-		});
+		// this.shared.globalLanguage$.subscribe(value => {
+		// 	this.translate.use(value);
+		// 	this.lang = value;
+		// });
+		if (localStorage.getItem('language')) {
+			this.translate.setDefaultLang(localStorage.getItem('language'));
+		} else {
+			this.translate.setDefaultLang('en');
+		}
 		// onAuthUIStateChange((authState, authData) => {
 		// 	this.authState = authState;
 		// 	this.user = authData as CognitoUserInterface;
@@ -70,17 +75,27 @@ export class HomeComponent {
 
 		await this.api.GetUser(user.username).then((res) => {
 			this.isUserLoaded = true;
-			console.log(res);
 			if (res) {
 				const kits = this.addReportFile(from(res.kits.items));
 				this.connectedUserData = res;
 				this.connectedUserData.kits.items = kits;
+				this.getDogName(this.connectedUserData.kits.items);
 				this.router.navigate(['/home']);
 			} else {
 				const userForUpdate = {
 					id: this.connectedUser.username,
-					phoneNb: '',
-					username: this.connectedUser.attributes.email,
+					// phoneNb: 'test',
+					// firstname: '',
+					// lastname: '',
+					email: this.connectedUser.attributes.email,
+					// street: '',
+					// city: '',
+					// postalCode: '',
+					// researchAuthorization: '',
+					// surveyAuthorization: '',
+					// dogs: [],
+					// kits: [],
+					//username: this.connectedUser.attributes.email,
 				};
 				this.api.CreateUser(userForUpdate).then(
 					res => {
@@ -96,6 +111,14 @@ export class HomeComponent {
 			//console.log(this.connectedUserData);
 		});
 
+	}
+
+	getDogName(kits) {
+		for (let kit of kits) {
+			this.api.GetDog(kit.dogKitsId).then((res) => {
+				kit.petName = res.name;
+			})
+		}
 	}
 
 	ngOnDestroy() {

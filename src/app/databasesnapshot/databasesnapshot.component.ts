@@ -5,7 +5,15 @@ import { AuthenticatorService } from '@aws-amplify/ui-angular';
 
 
 export class userData {
-	userId: string;
+	id: String;
+	firstname: String;
+	lastname: String;
+	phoneNb: String;
+	street: String;
+	city: String;
+	postalCode: String;
+	researchAuthorization: String;
+	surveyAuthorization: String;
 	userMail: string;
 	userPhone: string;
 	dateCreated: string;
@@ -50,7 +58,7 @@ export class DatabasesnapshotComponent implements OnInit {
 			res.items.map(
 				(kit) => {
 					let currentkit: any = kit;
-					this.loadUser(kit.userID).then(user => { currentkit.userMail = user.username });
+					this.loadUser(kit.user).then(user => { currentkit.userMail = user.email; });
 					kitslist.push(currentkit);
 				});
 			this.kits = res.items;

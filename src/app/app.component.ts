@@ -69,4 +69,9 @@ export class AppComponent {
 	ngOnDestroy() {
 		//return onAuthUIStateChange;
 	}
+
+	logOut() {
+		this.authenticator.signOut();
+		//TODO : reinitialize variables
+	}
 }

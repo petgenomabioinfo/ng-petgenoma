@@ -16,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { NavComponent } from './nav/nav.component';
 import { DatabasesnapshotComponent } from './databasesnapshot/databasesnapshot.component';
+import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { DatabasesnapshotComponent } from './databasesnapshot/databasesnapshot.c
     AppRoutingModule,
     AmplifyAuthenticatorModule,
     HttpClientModule,
+    MdbTabsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

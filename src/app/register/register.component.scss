@@ -5,19 +5,32 @@
 }
 
 .registerKit {
-	text-align:left;
-	margin-top: 20px;
-	align-items:center;
+	text-align: left;
+	margin-top: 10px;
+	align-items: center;
 }
 
 .warning-message {
 	text-align: left;
-	color:red;
-	align-items:center;
+	color: red;
+	align-items: center;
 }
 
 .submit-btn {
 	margin-top: 30px;
 	margin-bottom: 30px;
-	width: 200px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.btn-add {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.table-add{
+	margin-top: 20px;
+	margin-bottom: 20px;
 }

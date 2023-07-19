@@ -1,0 +1,13 @@
+{
+  "resourceName": "pguserpool",
+  "policyUUID": "c4817376",
+  "bucketName": "ngpetgenomaaws04c39af5e7ab433e8ded87d9270a4818",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ"
+  ],
+  "triggerFunction": "S3Trigger87c555c4",
+  "groupAccess": {}
+}
