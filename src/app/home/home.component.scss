@@ -39,6 +39,9 @@
 .button-card {
 	width: 100%;
 	text-align: center;
+	box-shadow: none !important;
+	--webkit-box-shadow: none !important;
+	border: none !important;
 }
 
 .btn-wrapping {
@@ -47,10 +50,11 @@
 
 .card {
 	border: none;
+	box-shadow: none !important;
 }
 
 .kit-list {
-	width: 70%;
+	width: 90%;
 	margin-left: auto;
 	margin-right: auto;
 	text-align: left;

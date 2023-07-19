@@ -53,7 +53,7 @@
   </mdb-tab>
 
   <mdb-tab [title]="translateText('register.doginfo')">
-	<div *ngIf="dogs.length>0; noDog">
+	<div *ngIf="dogs.length>0; else noDog;">
 		<table class="table table-striped table-hover table-sm table-responsive-sm table-add">
 			<thead class="thead-light">
 			<tr>
@@ -77,9 +77,9 @@
 			</tbody>
 		</table>
 	</div>
-	<div #noDog>
+	<ng-template #noDog>
 		<p [translate]="'register.nodog'"></p>
-	</div>
+	</ng-template>
 	<button type="button" class="btn btn-warning btn-add" [translate]="'register.adddog.button'" (click)="adddogclick();" *ngIf="!adddog"></button>
 
 	<form #registerDogForm="ngForm" (ngSubmit)="saveDog()" *ngIf="adddog">
@@ -97,9 +97,15 @@
 	</div>
 	<div class="form-row registerKit">
 		<label class="col-sm-12 registerKit" for="gender">{{'register.dog.gender' | translate}}</label>
-		<input type="text" class="col-md-5 col-sm-12 form-control registerKit" id="gender" aria-describedby="kitIdHelp"
+		<select class="col-md-5 col-sm-12 form-control registerKit" id="gender" [(ngModel)]="dog.gender"
+			name="gender" required>
+			<option value="" disabled selected hidden>Choose here</option>
+			<option value="Male">Male</option>
+			<option value="Female">Female</option>
+		</select>
+		<!--<input type="text" class="col-md-5 col-sm-12 form-control registerKit" id="gender" aria-describedby="kitIdHelp"
 			placeholder="" [(ngModel)]="dog.gender" name="gender" required>
-		<!-- [pattern]="kitNamePattern" #kitIdName="ngModel"> -->
+		[pattern]="kitNamePattern" #kitIdName="ngModel"> -->
 	</div>
 	<div class="form-row registerKit">
 		<label class="col-sm-12 registerKit" for="age">{{'register.dog.age' | translate}}</label>
@@ -131,7 +137,7 @@
 
   <mdb-tab [title]="translateText('register.kitinfo')">
 	<!-- TODO: registering kit not possible if no dog registered-->
-	<div *ngIf="kits.length>0; else noKit">
+	<div *ngIf="kits.length>0; else noKit;">
 		<table class="table table-striped table-hover table-sm table-responsive-sm table-add">
 			<thead class="thead-light">
 			<tr>
@@ -151,9 +157,9 @@
 			</tbody>
 		</table>
 	</div>
-	<div #noKit>
+	<ng-template #noKit>
 		<p [translate]="'register.nokit'"></p>
-	</div>
+	</ng-template>
 	<button type="button" class="btn btn-warning btn-add" [translate]="'register.addkit.button'" (click)="addkitclick();" *ngIf="!addkit"></button>
 
 	<form #registerKitForm="ngForm" (ngSubmit)="saveKit()" *ngIf="addkit">
@@ -176,7 +182,8 @@
 	<div class="form-row registerKit">
 		<label class="col-sm-12 registerKit" for="petName" [translate]="'register.petname'"></label>
 		<select class="col-md-5 col-sm-12 form-control registerKit" id="petName" [(ngModel)]="idDogSelected"
-			name="petName">
+			name="petName" required>
+			<option value="" disabled selected hidden>Choose here</option>
 			<option *ngFor="let dog of dogs" [value]="dog.id"> {{dog.name}}</option>
 		</select>
 	</div>
@@ -184,7 +191,8 @@
 	<div class="form-row registerKit">
 		<label class="col-sm-12 registerKit" for="kitType">{{'register.kit.type' | translate}}</label>
 		<select class="col-md-5 col-sm-12 form-control registerKit" id="kitType" [(ngModel)]="kit.kitType"
-			name="kitType">
+			name="kitType" required>
+			<option value="" disabled selected hidden>Choose here</option>
 			<option value="Health" [translate]="'register.health'"></option>
 			<!--<option value="Health & Breed" [translate]="'register.healthbreed'"></option>-->
 		</select>

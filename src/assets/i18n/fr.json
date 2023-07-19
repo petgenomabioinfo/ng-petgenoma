@@ -49,7 +49,7 @@
     "register.kit.type": "Type de kit",
     "register.kitinfo": "Informations sur les kits",
     "register.kit.collectionNb": "Numéro de collecte d'échantillon d'ADN (voir le code-barres du kit de test)",
-    "register.kit.collectionDate": "Date de collecte",
+    "register.kit.collectionDate": "Date de collecte (YYYY-MM-DD)",
     "register.kit.cancel": "Annuler",
     "register.nokit": "Aucun kit enregistré",
     "register.nodog": "Aucun chien enregistré"

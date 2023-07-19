@@ -49,7 +49,7 @@
     "register.kit.type": "Kittype",
     "register.kitinfo": "Kitinformatie",
     "register.kit.collectionNb": "Nummer van DNA-monstercollectie (zie barcode van de testkit)",
-    "register.kit.collectionDate": "Datum van monstername",
+    "register.kit.collectionDate": "Datum van monstername (YYYY-MM-DD)",
     "register.kit.cancel": "Annuleren",
     "register.nokit": "Geen geregistreerde kits",
     "register.nodog": "Geen geregistreerde honden"
