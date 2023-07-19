@@ -44,10 +44,15 @@ export class HomeComponent {
 	}
 
 	ngOnInit(): void {
-		this.shared.globalLanguage$.subscribe(value => {
-			this.translate.use(value);
-			this.lang = value;
-		});
+		// this.shared.globalLanguage$.subscribe(value => {
+		// 	this.translate.use(value);
+		// 	this.lang = value;
+		// });
+		if (localStorage.getItem('language')) {
+			this.translate.setDefaultLang(localStorage.getItem('language'));
+		} else {
+			this.translate.setDefaultLang('en');
+		}
 		// onAuthUIStateChange((authState, authData) => {
 		// 	this.authState = authState;
 		// 	this.user = authData as CognitoUserInterface;
@@ -74,6 +79,7 @@ export class HomeComponent {
 				const kits = this.addReportFile(from(res.kits.items));
 				this.connectedUserData = res;
 				this.connectedUserData.kits.items = kits;
+				this.getDogName(this.connectedUserData.kits.items);
 				this.router.navigate(['/home']);
 			} else {
 				const userForUpdate = {
@@ -105,6 +111,14 @@ export class HomeComponent {
 			//console.log(this.connectedUserData);
 		});
 
+	}
+
+	getDogName(kits) {
+		for (let kit of kits) {
+			this.api.GetDog(kit.dogKitsId).then((res) => {
+				kit.petName = res.name;
+			})
+		}
 	}
 
 	ngOnDestroy() {

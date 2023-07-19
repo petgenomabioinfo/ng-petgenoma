@@ -11,6 +11,7 @@ type User @model @auth(rules: [{ allow: private }]){
   street: String
   city: String
   postalCode: String
+  country: String
   researchAuthorization: String
   surveyAuthorization: String
   dogs: [Dog] @hasMany
@@ -35,6 +36,7 @@ type Kit @model @auth(rules: [{ allow: private }]){
   kitBatchNb: String
   processStatus: String
   registrationDate: String!
+  collecionDate: String
   dog: Dog! @belongsTo
   user: User! @belongsTo
 }

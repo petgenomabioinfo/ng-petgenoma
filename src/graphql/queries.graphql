@@ -9,6 +9,7 @@ query GetUser($id: ID!) {
     street
     city
     postalCode
+    country
     researchAuthorization
     surveyAuthorization
     dogs {
@@ -33,6 +34,7 @@ query GetUser($id: ID!) {
         kitBatchNb
         processStatus
         registrationDate
+        collecionDate
         createdAt
         updatedAt
         userKitsId
@@ -59,6 +61,7 @@ query ListUsers(
       street
       city
       postalCode
+      country
       researchAuthorization
       surveyAuthorization
       dogs {
@@ -83,6 +86,7 @@ query GetDog($id: ID!) {
         kitBatchNb
         processStatus
         registrationDate
+        collecionDate
         createdAt
         updatedAt
         userKitsId
@@ -105,6 +109,7 @@ query GetDog($id: ID!) {
       street
       city
       postalCode
+      country
       researchAuthorization
       surveyAuthorization
       dogs {
@@ -143,6 +148,7 @@ query ListDogs($filter: ModelDogFilterInput, $limit: Int, $nextToken: String) {
         street
         city
         postalCode
+        country
         researchAuthorization
         surveyAuthorization
         createdAt
@@ -162,6 +168,7 @@ query GetKit($id: ID!) {
     kitBatchNb
     processStatus
     registrationDate
+    collecionDate
     dog {
       id
       kits {
@@ -182,6 +189,7 @@ query GetKit($id: ID!) {
         street
         city
         postalCode
+        country
         researchAuthorization
         surveyAuthorization
         createdAt
@@ -200,6 +208,7 @@ query GetKit($id: ID!) {
       street
       city
       postalCode
+      country
       researchAuthorization
       surveyAuthorization
       dogs {
@@ -225,6 +234,7 @@ query ListKits($filter: ModelKitFilterInput, $limit: Int, $nextToken: String) {
       kitBatchNb
       processStatus
       registrationDate
+      collecionDate
       dog {
         id
         name
@@ -246,6 +256,7 @@ query ListKits($filter: ModelKitFilterInput, $limit: Int, $nextToken: String) {
         street
         city
         postalCode
+        country
         researchAuthorization
         surveyAuthorization
         createdAt

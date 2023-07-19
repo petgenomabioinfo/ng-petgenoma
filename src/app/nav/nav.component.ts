@@ -13,17 +13,22 @@ import { AuthenticatorService } from '@aws-amplify/ui-angular';
 export class NavComponent implements OnInit {
 
   constructor(public shared: SharedService, private translate: TranslateService, public app: AppComponent, public authenticator: AuthenticatorService) {
-    //translate.setDefaultLang('en');
   }
 
   ngOnInit(): void {
+    if (localStorage.getItem('language')) {
+      this.translate.setDefaultLang(localStorage.getItem('language'));
+    } else {
+      this.translate.setDefaultLang('en');
+    }
   }
 
 
   useLanguage(language: string) {
     this.shared.setGlobalVar(language);
     this.translate.use(language);
-    console.log('change lang', language);
+    localStorage.setItem('language', language);
+    //console.log('change lang', language);
   }
 
   signOut() {

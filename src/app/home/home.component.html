@@ -17,7 +17,7 @@
 			</thead>
 			<tbody>
 				<tr *ngFor="let item of connectedUserData.kits.items">
-					<td>{{item.id}}</td>
+					<td>{{item.kitBatchNb}}</td>
 					<td>{{item.kitType}}</td>
 					<td>
 						<ng-template [ngIf]="item.reportFile" [ngIfElse]="noreport">
@@ -44,7 +44,7 @@
 	<div class="content">
 		<div class="card mb-3">
 			<div class="row no-gutters g-0 btn-wrapping">
-				<div class="col-md-4 col-sm-12 button-card d-flex align-items-center">
+				<div class="col-md-4 col-sm-12 button-card d-flex align-items-center shadow-none border-0">
 					<a href="register" class="btn home-button btn-lg register-button" role="button" aria-pressed="true"
 						[translate]="'home.register'"></a>
 				</div>

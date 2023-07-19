@@ -12,6 +12,7 @@ mutation CreateUser(
     street
     city
     postalCode
+    country
     researchAuthorization
     surveyAuthorization
     dogs {
@@ -36,6 +37,7 @@ mutation CreateUser(
         kitBatchNb
         processStatus
         registrationDate
+        collecionDate
         createdAt
         updatedAt
         userKitsId
@@ -60,6 +62,7 @@ mutation UpdateUser(
     street
     city
     postalCode
+    country
     researchAuthorization
     surveyAuthorization
     dogs {
@@ -84,6 +87,7 @@ mutation UpdateUser(
         kitBatchNb
         processStatus
         registrationDate
+        collecionDate
         createdAt
         updatedAt
         userKitsId
@@ -108,6 +112,7 @@ mutation DeleteUser(
     street
     city
     postalCode
+    country
     researchAuthorization
     surveyAuthorization
     dogs {
@@ -132,6 +137,7 @@ mutation DeleteUser(
         kitBatchNb
         processStatus
         registrationDate
+        collecionDate
         createdAt
         updatedAt
         userKitsId
@@ -156,6 +162,7 @@ mutation CreateDog(
         kitBatchNb
         processStatus
         registrationDate
+        collecionDate
         createdAt
         updatedAt
         userKitsId
@@ -178,6 +185,7 @@ mutation CreateDog(
       street
       city
       postalCode
+      country
       researchAuthorization
       surveyAuthorization
       dogs {
@@ -207,6 +215,7 @@ mutation UpdateDog(
         kitBatchNb
         processStatus
         registrationDate
+        collecionDate
         createdAt
         updatedAt
         userKitsId
@@ -229,6 +238,7 @@ mutation UpdateDog(
       street
       city
       postalCode
+      country
       researchAuthorization
       surveyAuthorization
       dogs {
@@ -258,6 +268,7 @@ mutation DeleteDog(
         kitBatchNb
         processStatus
         registrationDate
+        collecionDate
         createdAt
         updatedAt
         userKitsId
@@ -280,6 +291,7 @@ mutation DeleteDog(
       street
       city
       postalCode
+      country
       researchAuthorization
       surveyAuthorization
       dogs {
@@ -306,6 +318,7 @@ mutation CreateKit(
     kitBatchNb
     processStatus
     registrationDate
+    collecionDate
     dog {
       id
       kits {
@@ -326,6 +339,7 @@ mutation CreateKit(
         street
         city
         postalCode
+        country
         researchAuthorization
         surveyAuthorization
         createdAt
@@ -344,6 +358,7 @@ mutation CreateKit(
       street
       city
       postalCode
+      country
       researchAuthorization
       surveyAuthorization
       dogs {
@@ -371,6 +386,7 @@ mutation UpdateKit(
     kitBatchNb
     processStatus
     registrationDate
+    collecionDate
     dog {
       id
       kits {
@@ -391,6 +407,7 @@ mutation UpdateKit(
         street
         city
         postalCode
+        country
         researchAuthorization
         surveyAuthorization
         createdAt
@@ -409,6 +426,7 @@ mutation UpdateKit(
       street
       city
       postalCode
+      country
       researchAuthorization
       surveyAuthorization
       dogs {
@@ -436,6 +454,7 @@ mutation DeleteKit(
     kitBatchNb
     processStatus
     registrationDate
+    collecionDate
     dog {
       id
       kits {
@@ -456,6 +475,7 @@ mutation DeleteKit(
         street
         city
         postalCode
+        country
         researchAuthorization
         surveyAuthorization
         createdAt
@@ -474,6 +494,7 @@ mutation DeleteKit(
       street
       city
       postalCode
+      country
       researchAuthorization
       surveyAuthorization
       dogs {

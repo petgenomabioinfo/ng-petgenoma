@@ -30,6 +30,7 @@ export type CreateUserInput = {
   street?: string | null;
   city?: string | null;
   postalCode?: string | null;
+  country?: string | null;
   researchAuthorization?: string | null;
   surveyAuthorization?: string | null;
 };
@@ -42,6 +43,7 @@ export type ModelUserConditionInput = {
   street?: ModelStringInput | null;
   city?: ModelStringInput | null;
   postalCode?: ModelStringInput | null;
+  country?: ModelStringInput | null;
   researchAuthorization?: ModelStringInput | null;
   surveyAuthorization?: ModelStringInput | null;
   and?: Array<ModelUserConditionInput | null> | null;
@@ -98,6 +100,7 @@ export type User = {
   street?: string | null;
   city?: string | null;
   postalCode?: string | null;
+  country?: string | null;
   researchAuthorization?: string | null;
   surveyAuthorization?: string | null;
   dogs?: ModelDogConnection | null;
@@ -141,6 +144,7 @@ export type Kit = {
   kitBatchNb?: string | null;
   processStatus?: string | null;
   registrationDate: string;
+  collecionDate?: string | null;
   dog: Dog;
   user: User;
   createdAt: string;
@@ -158,6 +162,7 @@ export type UpdateUserInput = {
   street?: string | null;
   city?: string | null;
   postalCode?: string | null;
+  country?: string | null;
   researchAuthorization?: string | null;
   surveyAuthorization?: string | null;
 };
@@ -227,6 +232,7 @@ export type CreateKitInput = {
   kitBatchNb?: string | null;
   processStatus?: string | null;
   registrationDate: string;
+  collecionDate?: string | null;
   userKitsId?: string | null;
   dogKitsId?: string | null;
 };
@@ -236,6 +242,7 @@ export type ModelKitConditionInput = {
   kitBatchNb?: ModelStringInput | null;
   processStatus?: ModelStringInput | null;
   registrationDate?: ModelStringInput | null;
+  collecionDate?: ModelStringInput | null;
   and?: Array<ModelKitConditionInput | null> | null;
   or?: Array<ModelKitConditionInput | null> | null;
   not?: ModelKitConditionInput | null;
@@ -249,6 +256,7 @@ export type UpdateKitInput = {
   kitBatchNb?: string | null;
   processStatus?: string | null;
   registrationDate?: string | null;
+  collecionDate?: string | null;
   userKitsId?: string | null;
   dogKitsId?: string | null;
 };
@@ -266,6 +274,7 @@ export type ModelUserFilterInput = {
   street?: ModelStringInput | null;
   city?: ModelStringInput | null;
   postalCode?: ModelStringInput | null;
+  country?: ModelStringInput | null;
   researchAuthorization?: ModelStringInput | null;
   surveyAuthorization?: ModelStringInput | null;
   and?: Array<ModelUserFilterInput | null> | null;
@@ -299,6 +308,7 @@ export type ModelKitFilterInput = {
   kitBatchNb?: ModelStringInput | null;
   processStatus?: ModelStringInput | null;
   registrationDate?: ModelStringInput | null;
+  collecionDate?: ModelStringInput | null;
   and?: Array<ModelKitFilterInput | null> | null;
   or?: Array<ModelKitFilterInput | null> | null;
   not?: ModelKitFilterInput | null;
@@ -315,6 +325,7 @@ export type ModelSubscriptionUserFilterInput = {
   street?: ModelSubscriptionStringInput | null;
   city?: ModelSubscriptionStringInput | null;
   postalCode?: ModelSubscriptionStringInput | null;
+  country?: ModelSubscriptionStringInput | null;
   researchAuthorization?: ModelSubscriptionStringInput | null;
   surveyAuthorization?: ModelSubscriptionStringInput | null;
   and?: Array<ModelSubscriptionUserFilterInput | null> | null;
@@ -369,6 +380,7 @@ export type ModelSubscriptionKitFilterInput = {
   kitBatchNb?: ModelSubscriptionStringInput | null;
   processStatus?: ModelSubscriptionStringInput | null;
   registrationDate?: ModelSubscriptionStringInput | null;
+  collecionDate?: ModelSubscriptionStringInput | null;
   and?: Array<ModelSubscriptionKitFilterInput | null> | null;
   or?: Array<ModelSubscriptionKitFilterInput | null> | null;
 };
@@ -383,6 +395,7 @@ export type CreateUserMutation = {
   street?: string | null;
   city?: string | null;
   postalCode?: string | null;
+  country?: string | null;
   researchAuthorization?: string | null;
   surveyAuthorization?: string | null;
   dogs?: {
@@ -411,6 +424,7 @@ export type CreateUserMutation = {
       kitBatchNb?: string | null;
       processStatus?: string | null;
       registrationDate: string;
+      collecionDate?: string | null;
       createdAt: string;
       updatedAt: string;
       userKitsId?: string | null;
@@ -432,6 +446,7 @@ export type UpdateUserMutation = {
   street?: string | null;
   city?: string | null;
   postalCode?: string | null;
+  country?: string | null;
   researchAuthorization?: string | null;
   surveyAuthorization?: string | null;
   dogs?: {
@@ -460,6 +475,7 @@ export type UpdateUserMutation = {
       kitBatchNb?: string | null;
       processStatus?: string | null;
       registrationDate: string;
+      collecionDate?: string | null;
       createdAt: string;
       updatedAt: string;
       userKitsId?: string | null;
@@ -481,6 +497,7 @@ export type DeleteUserMutation = {
   street?: string | null;
   city?: string | null;
   postalCode?: string | null;
+  country?: string | null;
   researchAuthorization?: string | null;
   surveyAuthorization?: string | null;
   dogs?: {
@@ -509,6 +526,7 @@ export type DeleteUserMutation = {
       kitBatchNb?: string | null;
       processStatus?: string | null;
       registrationDate: string;
+      collecionDate?: string | null;
       createdAt: string;
       updatedAt: string;
       userKitsId?: string | null;
@@ -532,6 +550,7 @@ export type CreateDogMutation = {
       kitBatchNb?: string | null;
       processStatus?: string | null;
       registrationDate: string;
+      collecionDate?: string | null;
       createdAt: string;
       updatedAt: string;
       userKitsId?: string | null;
@@ -555,6 +574,7 @@ export type CreateDogMutation = {
     street?: string | null;
     city?: string | null;
     postalCode?: string | null;
+    country?: string | null;
     researchAuthorization?: string | null;
     surveyAuthorization?: string | null;
     dogs?: {
@@ -585,6 +605,7 @@ export type UpdateDogMutation = {
       kitBatchNb?: string | null;
       processStatus?: string | null;
       registrationDate: string;
+      collecionDate?: string | null;
       createdAt: string;
       updatedAt: string;
       userKitsId?: string | null;
@@ -608,6 +629,7 @@ export type UpdateDogMutation = {
     street?: string | null;
     city?: string | null;
     postalCode?: string | null;
+    country?: string | null;
     researchAuthorization?: string | null;
     surveyAuthorization?: string | null;
     dogs?: {
@@ -638,6 +660,7 @@ export type DeleteDogMutation = {
       kitBatchNb?: string | null;
       processStatus?: string | null;
       registrationDate: string;
+      collecionDate?: string | null;
       createdAt: string;
       updatedAt: string;
       userKitsId?: string | null;
@@ -661,6 +684,7 @@ export type DeleteDogMutation = {
     street?: string | null;
     city?: string | null;
     postalCode?: string | null;
+    country?: string | null;
     researchAuthorization?: string | null;
     surveyAuthorization?: string | null;
     dogs?: {
@@ -686,6 +710,7 @@ export type CreateKitMutation = {
   kitBatchNb?: string | null;
   processStatus?: string | null;
   registrationDate: string;
+  collecionDate?: string | null;
   dog: {
     __typename: "Dog";
     id: string;
@@ -709,6 +734,7 @@ export type CreateKitMutation = {
       street?: string | null;
       city?: string | null;
       postalCode?: string | null;
+      country?: string | null;
       researchAuthorization?: string | null;
       surveyAuthorization?: string | null;
       createdAt: string;
@@ -728,6 +754,7 @@ export type CreateKitMutation = {
     street?: string | null;
     city?: string | null;
     postalCode?: string | null;
+    country?: string | null;
     researchAuthorization?: string | null;
     surveyAuthorization?: string | null;
     dogs?: {
@@ -754,6 +781,7 @@ export type UpdateKitMutation = {
   kitBatchNb?: string | null;
   processStatus?: string | null;
   registrationDate: string;
+  collecionDate?: string | null;
   dog: {
     __typename: "Dog";
     id: string;
@@ -777,6 +805,7 @@ export type UpdateKitMutation = {
       street?: string | null;
       city?: string | null;
       postalCode?: string | null;
+      country?: string | null;
       researchAuthorization?: string | null;
       surveyAuthorization?: string | null;
       createdAt: string;
@@ -796,6 +825,7 @@ export type UpdateKitMutation = {
     street?: string | null;
     city?: string | null;
     postalCode?: string | null;
+    country?: string | null;
     researchAuthorization?: string | null;
     surveyAuthorization?: string | null;
     dogs?: {
@@ -822,6 +852,7 @@ export type DeleteKitMutation = {
   kitBatchNb?: string | null;
   processStatus?: string | null;
   registrationDate: string;
+  collecionDate?: string | null;
   dog: {
     __typename: "Dog";
     id: string;
@@ -845,6 +876,7 @@ export type DeleteKitMutation = {
       street?: string | null;
       city?: string | null;
       postalCode?: string | null;
+      country?: string | null;
       researchAuthorization?: string | null;
       surveyAuthorization?: string | null;
       createdAt: string;
@@ -864,6 +896,7 @@ export type DeleteKitMutation = {
     street?: string | null;
     city?: string | null;
     postalCode?: string | null;
+    country?: string | null;
     researchAuthorization?: string | null;
     surveyAuthorization?: string | null;
     dogs?: {
@@ -893,6 +926,7 @@ export type GetUserQuery = {
   street?: string | null;
   city?: string | null;
   postalCode?: string | null;
+  country?: string | null;
   researchAuthorization?: string | null;
   surveyAuthorization?: string | null;
   dogs?: {
@@ -921,6 +955,7 @@ export type GetUserQuery = {
       kitBatchNb?: string | null;
       processStatus?: string | null;
       registrationDate: string;
+      collecionDate?: string | null;
       createdAt: string;
       updatedAt: string;
       userKitsId?: string | null;
@@ -944,6 +979,7 @@ export type ListUsersQuery = {
     street?: string | null;
     city?: string | null;
     postalCode?: string | null;
+    country?: string | null;
     researchAuthorization?: string | null;
     surveyAuthorization?: string | null;
     dogs?: {
@@ -972,6 +1008,7 @@ export type GetDogQuery = {
       kitBatchNb?: string | null;
       processStatus?: string | null;
       registrationDate: string;
+      collecionDate?: string | null;
       createdAt: string;
       updatedAt: string;
       userKitsId?: string | null;
@@ -995,6 +1032,7 @@ export type GetDogQuery = {
     street?: string | null;
     city?: string | null;
     postalCode?: string | null;
+    country?: string | null;
     researchAuthorization?: string | null;
     surveyAuthorization?: string | null;
     dogs?: {
@@ -1038,6 +1076,7 @@ export type ListDogsQuery = {
       street?: string | null;
       city?: string | null;
       postalCode?: string | null;
+      country?: string | null;
       researchAuthorization?: string | null;
       surveyAuthorization?: string | null;
       createdAt: string;
@@ -1057,6 +1096,7 @@ export type GetKitQuery = {
   kitBatchNb?: string | null;
   processStatus?: string | null;
   registrationDate: string;
+  collecionDate?: string | null;
   dog: {
     __typename: "Dog";
     id: string;
@@ -1080,6 +1120,7 @@ export type GetKitQuery = {
       street?: string | null;
       city?: string | null;
       postalCode?: string | null;
+      country?: string | null;
       researchAuthorization?: string | null;
       surveyAuthorization?: string | null;
       createdAt: string;
@@ -1099,6 +1140,7 @@ export type GetKitQuery = {
     street?: string | null;
     city?: string | null;
     postalCode?: string | null;
+    country?: string | null;
     researchAuthorization?: string | null;
     surveyAuthorization?: string | null;
     dogs?: {
@@ -1127,6 +1169,7 @@ export type ListKitsQuery = {
     kitBatchNb?: string | null;
     processStatus?: string | null;
     registrationDate: string;
+    collecionDate?: string | null;
     dog: {
       __typename: "Dog";
       id: string;
@@ -1150,6 +1193,7 @@ export type ListKitsQuery = {
       street?: string | null;
       city?: string | null;
       postalCode?: string | null;
+      country?: string | null;
       researchAuthorization?: string | null;
       surveyAuthorization?: string | null;
       createdAt: string;
@@ -1173,6 +1217,7 @@ export type OnCreateUserSubscription = {
   street?: string | null;
   city?: string | null;
   postalCode?: string | null;
+  country?: string | null;
   researchAuthorization?: string | null;
   surveyAuthorization?: string | null;
   dogs?: {
@@ -1201,6 +1246,7 @@ export type OnCreateUserSubscription = {
       kitBatchNb?: string | null;
       processStatus?: string | null;
       registrationDate: string;
+      collecionDate?: string | null;
       createdAt: string;
       updatedAt: string;
       userKitsId?: string | null;
@@ -1222,6 +1268,7 @@ export type OnUpdateUserSubscription = {
   street?: string | null;
   city?: string | null;
   postalCode?: string | null;
+  country?: string | null;
   researchAuthorization?: string | null;
   surveyAuthorization?: string | null;
   dogs?: {
@@ -1250,6 +1297,7 @@ export type OnUpdateUserSubscription = {
       kitBatchNb?: string | null;
       processStatus?: string | null;
       registrationDate: string;
+      collecionDate?: string | null;
       createdAt: string;
       updatedAt: string;
       userKitsId?: string | null;
@@ -1271,6 +1319,7 @@ export type OnDeleteUserSubscription = {
   street?: string | null;
   city?: string | null;
   postalCode?: string | null;
+  country?: string | null;
   researchAuthorization?: string | null;
   surveyAuthorization?: string | null;
   dogs?: {
@@ -1299,6 +1348,7 @@ export type OnDeleteUserSubscription = {
       kitBatchNb?: string | null;
       processStatus?: string | null;
       registrationDate: string;
+      collecionDate?: string | null;
       createdAt: string;
       updatedAt: string;
       userKitsId?: string | null;
@@ -1322,6 +1372,7 @@ export type OnCreateDogSubscription = {
       kitBatchNb?: string | null;
       processStatus?: string | null;
       registrationDate: string;
+      collecionDate?: string | null;
       createdAt: string;
       updatedAt: string;
       userKitsId?: string | null;
@@ -1345,6 +1396,7 @@ export type OnCreateDogSubscription = {
     street?: string | null;
     city?: string | null;
     postalCode?: string | null;
+    country?: string | null;
     researchAuthorization?: string | null;
     surveyAuthorization?: string | null;
     dogs?: {
@@ -1375,6 +1427,7 @@ export type OnUpdateDogSubscription = {
       kitBatchNb?: string | null;
       processStatus?: string | null;
       registrationDate: string;
+      collecionDate?: string | null;
       createdAt: string;
       updatedAt: string;
       userKitsId?: string | null;
@@ -1398,6 +1451,7 @@ export type OnUpdateDogSubscription = {
     street?: string | null;
     city?: string | null;
     postalCode?: string | null;
+    country?: string | null;
     researchAuthorization?: string | null;
     surveyAuthorization?: string | null;
     dogs?: {
@@ -1428,6 +1482,7 @@ export type OnDeleteDogSubscription = {
       kitBatchNb?: string | null;
       processStatus?: string | null;
       registrationDate: string;
+      collecionDate?: string | null;
       createdAt: string;
       updatedAt: string;
       userKitsId?: string | null;
@@ -1451,6 +1506,7 @@ export type OnDeleteDogSubscription = {
     street?: string | null;
     city?: string | null;
     postalCode?: string | null;
+    country?: string | null;
     researchAuthorization?: string | null;
     surveyAuthorization?: string | null;
     dogs?: {
@@ -1476,6 +1532,7 @@ export type OnCreateKitSubscription = {
   kitBatchNb?: string | null;
   processStatus?: string | null;
   registrationDate: string;
+  collecionDate?: string | null;
   dog: {
     __typename: "Dog";
     id: string;
@@ -1499,6 +1556,7 @@ export type OnCreateKitSubscription = {
       street?: string | null;
       city?: string | null;
       postalCode?: string | null;
+      country?: string | null;
       researchAuthorization?: string | null;
       surveyAuthorization?: string | null;
       createdAt: string;
@@ -1518,6 +1576,7 @@ export type OnCreateKitSubscription = {
     street?: string | null;
     city?: string | null;
     postalCode?: string | null;
+    country?: string | null;
     researchAuthorization?: string | null;
     surveyAuthorization?: string | null;
     dogs?: {
@@ -1544,6 +1603,7 @@ export type OnUpdateKitSubscription = {
   kitBatchNb?: string | null;
   processStatus?: string | null;
   registrationDate: string;
+  collecionDate?: string | null;
   dog: {
     __typename: "Dog";
     id: string;
@@ -1567,6 +1627,7 @@ export type OnUpdateKitSubscription = {
       street?: string | null;
       city?: string | null;
       postalCode?: string | null;
+      country?: string | null;
       researchAuthorization?: string | null;
       surveyAuthorization?: string | null;
       createdAt: string;
@@ -1586,6 +1647,7 @@ export type OnUpdateKitSubscription = {
     street?: string | null;
     city?: string | null;
     postalCode?: string | null;
+    country?: string | null;
     researchAuthorization?: string | null;
     surveyAuthorization?: string | null;
     dogs?: {
@@ -1612,6 +1674,7 @@ export type OnDeleteKitSubscription = {
   kitBatchNb?: string | null;
   processStatus?: string | null;
   registrationDate: string;
+  collecionDate?: string | null;
   dog: {
     __typename: "Dog";
     id: string;
@@ -1635,6 +1698,7 @@ export type OnDeleteKitSubscription = {
       street?: string | null;
       city?: string | null;
       postalCode?: string | null;
+      country?: string | null;
       researchAuthorization?: string | null;
       surveyAuthorization?: string | null;
       createdAt: string;
@@ -1654,6 +1718,7 @@ export type OnDeleteKitSubscription = {
     street?: string | null;
     city?: string | null;
     postalCode?: string | null;
+    country?: string | null;
     researchAuthorization?: string | null;
     surveyAuthorization?: string | null;
     dogs?: {
@@ -1692,6 +1757,7 @@ export class APIService {
           street
           city
           postalCode
+          country
           researchAuthorization
           surveyAuthorization
           dogs {
@@ -1720,6 +1786,7 @@ export class APIService {
               kitBatchNb
               processStatus
               registrationDate
+              collecionDate
               createdAt
               updatedAt
               userKitsId
@@ -1757,6 +1824,7 @@ export class APIService {
           street
           city
           postalCode
+          country
           researchAuthorization
           surveyAuthorization
           dogs {
@@ -1785,6 +1853,7 @@ export class APIService {
               kitBatchNb
               processStatus
               registrationDate
+              collecionDate
               createdAt
               updatedAt
               userKitsId
@@ -1822,6 +1891,7 @@ export class APIService {
           street
           city
           postalCode
+          country
           researchAuthorization
           surveyAuthorization
           dogs {
@@ -1850,6 +1920,7 @@ export class APIService {
               kitBatchNb
               processStatus
               registrationDate
+              collecionDate
               createdAt
               updatedAt
               userKitsId
@@ -1889,6 +1960,7 @@ export class APIService {
               kitBatchNb
               processStatus
               registrationDate
+              collecionDate
               createdAt
               updatedAt
               userKitsId
@@ -1912,6 +1984,7 @@ export class APIService {
             street
             city
             postalCode
+            country
             researchAuthorization
             surveyAuthorization
             dogs {
@@ -1958,6 +2031,7 @@ export class APIService {
               kitBatchNb
               processStatus
               registrationDate
+              collecionDate
               createdAt
               updatedAt
               userKitsId
@@ -1981,6 +2055,7 @@ export class APIService {
             street
             city
             postalCode
+            country
             researchAuthorization
             surveyAuthorization
             dogs {
@@ -2027,6 +2102,7 @@ export class APIService {
               kitBatchNb
               processStatus
               registrationDate
+              collecionDate
               createdAt
               updatedAt
               userKitsId
@@ -2050,6 +2126,7 @@ export class APIService {
             street
             city
             postalCode
+            country
             researchAuthorization
             surveyAuthorization
             dogs {
@@ -2091,6 +2168,7 @@ export class APIService {
           kitBatchNb
           processStatus
           registrationDate
+          collecionDate
           dog {
             __typename
             id
@@ -2114,6 +2192,7 @@ export class APIService {
               street
               city
               postalCode
+              country
               researchAuthorization
               surveyAuthorization
               createdAt
@@ -2133,6 +2212,7 @@ export class APIService {
             street
             city
             postalCode
+            country
             researchAuthorization
             surveyAuthorization
             dogs {
@@ -2175,6 +2255,7 @@ export class APIService {
           kitBatchNb
           processStatus
           registrationDate
+          collecionDate
           dog {
             __typename
             id
@@ -2198,6 +2279,7 @@ export class APIService {
               street
               city
               postalCode
+              country
               researchAuthorization
               surveyAuthorization
               createdAt
@@ -2217,6 +2299,7 @@ export class APIService {
             street
             city
             postalCode
+            country
             researchAuthorization
             surveyAuthorization
             dogs {
@@ -2259,6 +2342,7 @@ export class APIService {
           kitBatchNb
           processStatus
           registrationDate
+          collecionDate
           dog {
             __typename
             id
@@ -2282,6 +2366,7 @@ export class APIService {
               street
               city
               postalCode
+              country
               researchAuthorization
               surveyAuthorization
               createdAt
@@ -2301,6 +2386,7 @@ export class APIService {
             street
             city
             postalCode
+            country
             researchAuthorization
             surveyAuthorization
             dogs {
@@ -2343,6 +2429,7 @@ export class APIService {
           street
           city
           postalCode
+          country
           researchAuthorization
           surveyAuthorization
           dogs {
@@ -2371,6 +2458,7 @@ export class APIService {
               kitBatchNb
               processStatus
               registrationDate
+              collecionDate
               createdAt
               updatedAt
               userKitsId
@@ -2408,6 +2496,7 @@ export class APIService {
             street
             city
             postalCode
+            country
             researchAuthorization
             surveyAuthorization
             dogs {
@@ -2453,6 +2542,7 @@ export class APIService {
               kitBatchNb
               processStatus
               registrationDate
+              collecionDate
               createdAt
               updatedAt
               userKitsId
@@ -2476,6 +2566,7 @@ export class APIService {
             street
             city
             postalCode
+            country
             researchAuthorization
             surveyAuthorization
             dogs {
@@ -2533,6 +2624,7 @@ export class APIService {
               street
               city
               postalCode
+              country
               researchAuthorization
               surveyAuthorization
               createdAt
@@ -2569,6 +2661,7 @@ export class APIService {
           kitBatchNb
           processStatus
           registrationDate
+          collecionDate
           dog {
             __typename
             id
@@ -2592,6 +2685,7 @@ export class APIService {
               street
               city
               postalCode
+              country
               researchAuthorization
               surveyAuthorization
               createdAt
@@ -2611,6 +2705,7 @@ export class APIService {
             street
             city
             postalCode
+            country
             researchAuthorization
             surveyAuthorization
             dogs {
@@ -2653,6 +2748,7 @@ export class APIService {
             kitBatchNb
             processStatus
             registrationDate
+            collecionDate
             dog {
               __typename
               id
@@ -2676,6 +2772,7 @@ export class APIService {
               street
               city
               postalCode
+              country
               researchAuthorization
               surveyAuthorization
               createdAt
@@ -2720,6 +2817,7 @@ export class APIService {
           street
           city
           postalCode
+          country
           researchAuthorization
           surveyAuthorization
           dogs {
@@ -2748,6 +2846,7 @@ export class APIService {
               kitBatchNb
               processStatus
               registrationDate
+              collecionDate
               createdAt
               updatedAt
               userKitsId
@@ -2786,6 +2885,7 @@ export class APIService {
           street
           city
           postalCode
+          country
           researchAuthorization
           surveyAuthorization
           dogs {
@@ -2814,6 +2914,7 @@ export class APIService {
               kitBatchNb
               processStatus
               registrationDate
+              collecionDate
               createdAt
               updatedAt
               userKitsId
@@ -2852,6 +2953,7 @@ export class APIService {
           street
           city
           postalCode
+          country
           researchAuthorization
           surveyAuthorization
           dogs {
@@ -2880,6 +2982,7 @@ export class APIService {
               kitBatchNb
               processStatus
               registrationDate
+              collecionDate
               createdAt
               updatedAt
               userKitsId
@@ -2920,6 +3023,7 @@ export class APIService {
               kitBatchNb
               processStatus
               registrationDate
+              collecionDate
               createdAt
               updatedAt
               userKitsId
@@ -2943,6 +3047,7 @@ export class APIService {
             street
             city
             postalCode
+            country
             researchAuthorization
             surveyAuthorization
             dogs {
@@ -2990,6 +3095,7 @@ export class APIService {
               kitBatchNb
               processStatus
               registrationDate
+              collecionDate
               createdAt
               updatedAt
               userKitsId
@@ -3013,6 +3119,7 @@ export class APIService {
             street
             city
             postalCode
+            country
             researchAuthorization
             surveyAuthorization
             dogs {
@@ -3060,6 +3167,7 @@ export class APIService {
               kitBatchNb
               processStatus
               registrationDate
+              collecionDate
               createdAt
               updatedAt
               userKitsId
@@ -3083,6 +3191,7 @@ export class APIService {
             street
             city
             postalCode
+            country
             researchAuthorization
             surveyAuthorization
             dogs {
@@ -3125,6 +3234,7 @@ export class APIService {
           kitBatchNb
           processStatus
           registrationDate
+          collecionDate
           dog {
             __typename
             id
@@ -3148,6 +3258,7 @@ export class APIService {
               street
               city
               postalCode
+              country
               researchAuthorization
               surveyAuthorization
               createdAt
@@ -3167,6 +3278,7 @@ export class APIService {
             street
             city
             postalCode
+            country
             researchAuthorization
             surveyAuthorization
             dogs {
@@ -3210,6 +3322,7 @@ export class APIService {
           kitBatchNb
           processStatus
           registrationDate
+          collecionDate
           dog {
             __typename
             id
@@ -3233,6 +3346,7 @@ export class APIService {
               street
               city
               postalCode
+              country
               researchAuthorization
               surveyAuthorization
               createdAt
@@ -3252,6 +3366,7 @@ export class APIService {
             street
             city
             postalCode
+            country
             researchAuthorization
             surveyAuthorization
             dogs {
@@ -3295,6 +3410,7 @@ export class APIService {
           kitBatchNb
           processStatus
           registrationDate
+          collecionDate
           dog {
             __typename
             id
@@ -3318,6 +3434,7 @@ export class APIService {
               street
               city
               postalCode
+              country
               researchAuthorization
               surveyAuthorization
               createdAt
@@ -3337,6 +3454,7 @@ export class APIService {
             street
             city
             postalCode
+            country
             researchAuthorization
             surveyAuthorization
             dogs {
