@@ -43,7 +43,7 @@
 		<div class="form-row registerKit">
 			<label class="col-sm-12 registerKit" for="email">{{'register.email' | translate}}</label>
 			<input type="text" class="col-md-5 col-sm-12 form-control registerKit" id="email" aria-describedby="kitIdHelp"
-				placeholder="" [(ngModel)]="user.email" name="email" required>
+				placeholder="" [(ngModel)]="user.email" name="email" required disabled>
 		</div>
 		<div>
 			<button type="submit" [disabled]="!registerUserForm.valid" class="submit-btn btn btn-warning"
