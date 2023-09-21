@@ -163,7 +163,6 @@ export class HomeComponent {
 		if (filename == "mock") {
 			fileTodownload = this.mockReport;
 		}
-		console.log(fileTodownload);
 		Storage.get(fileTodownload, { level: 'public', download: true }).then(
 			(data: any) => {
 				let blob = new Blob([data.Body], { type: data.ContentType });

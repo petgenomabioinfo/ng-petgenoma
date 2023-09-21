@@ -8,11 +8,11 @@
 		<table class="table table-striped table-hover table-sm table-responsive-sm">
 			<thead class="thead-light">
 				<tr>
-					<th>Kit Id</th>
-					<th>Kit Type</th>
-					<th>Status</th>
-					<th>Pet Name</th>
-					<th style="text-align: center; vertical-align: middle;">Download Report</th>
+					<th [translate]="'home.table.kitid'"></th>
+					<th [translate]="'home.table.kittype'"></th>
+					<th [translate]="'home.table.kitstatus'"></th>
+					<th [translate]="'home.table.petname'"></th>
+					<th style="text-align: center; vertical-align: middle;" [translate]="'home.table.report'"></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -21,20 +21,19 @@
 					<td>{{item.kitType}}</td>
 					<td>
 						<ng-template [ngIf]="item.reportFile" [ngIfElse]="noreport">
-							Processed
+							<span [translate]="'home.table.kitprocessed'"></span>
 						</ng-template>
 						<ng-template #noreport>
-							Registered
+							<span [translate]="'home.table.kitregistered'"></span>
 						</ng-template>
 					</td>
 					<td>{{item.petName}}</td>
 					<td style="text-align: center; vertical-align: middle;">
 						<ng-template [ngIf]="item.reportFile" [ngIfElse]="noreportdl">
 							<button (click)="dlfile(item.reportFile)" class="btn btn-primary btn-dl"
-								type="button">Download PDF report</button>
+								type="button" [translate]="'home.table.dlpdf'"></button>
 						</ng-template>
-						<ng-template #noreportdl>
-							Report not available.
+						<ng-template #noreportdl [translate]="'home.table.noreport'">
 						</ng-template>
 					</td>
 				</tr>
